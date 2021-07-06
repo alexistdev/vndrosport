@@ -2,14 +2,6 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * Aplikasi Daihatsu
- * Dikembangkan oleh: AlexistDev
- * web: www.alexistdev.com
- * contact: alexistdev@gmail.com
- * hp : 082371408678
- */
-
-/**
  * Method untuk mengenerate string unik
  */
 if ( ! function_exists('kodegenerator')) {
@@ -118,7 +110,7 @@ function _unlogin(){
 if ( ! function_exists('_myJudul')) {
 	function _myJudul()
 	{
-		return "Dashboard Administrator ThePioneerOne";
+		return "VndroSport Administrator";
 	}
 }
 
@@ -126,7 +118,7 @@ if ( ! function_exists('_myJudul')) {
 if ( ! function_exists('_judulPendek')) {
 	function _judulPendek()
 	{
-		return "ThePioneerOne";
+		return "VndroSport";
 	}
 }
 
