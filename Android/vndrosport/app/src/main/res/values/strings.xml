@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">vndrosport</string>
+    <!--  Login   -->
+    <string name="login1">gambar login</string>
+    <string name="login2">Sign In</string>
+    <string name="login3">Silahkan login ke dalam akun anda</string>
+    <string name="login4">Email Address</string>
+    <string name="login5">Password</string>
+    <string name="login6">******</string>
+    <string name="login7">Lupa password ?</string>
+    <string name="login8">Belum punya akun? Daftar</string>
+</resources>
