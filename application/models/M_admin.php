@@ -7,7 +7,7 @@ class M_admin extends CI_Model
 	{
 		parent::__construct();
 		$this->load->database();
-		//$this->tbadmin = 'admin';
+		$this->tbadmin = 'admin';
 //		$this->tbdetailstaff = 'detailstaff';
 //		$this->tbusers = 'users';
 //		$this->tbdetailuser = 'detailuser';
@@ -19,5 +19,14 @@ class M_admin extends CI_Model
 //		$this->tbinbox = 'inbox';
 	}
 
+	#########################################################################################
+	#                                   tabel admin                     					#
+	#########################################################################################
+
+	public function validasi_login($username)
+	{
+		$this->db->where('username', $username);
+		return $this->db->get($this->tbadmin);
+	}
 
 }

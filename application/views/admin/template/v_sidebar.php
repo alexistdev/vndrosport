@@ -36,53 +36,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 						</p>
 					</a>
 				</li>
-				<li class="nav-item">
-					<a href="<?= base_url('admin/berita'); ?>" class="nav-link">
-						<i class="nav-icon fas fa-bullhorn"></i>
-						<p>
-							Berita dan Promo
-						</p>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?= base_url('Transaksi'); ?>" class="nav-link">
-						<i class="nav-icon fas fa-th"></i>
-						<p>
-							Booking Body Repair
-						</p>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?= base_url('admin/pesan'); ?>" class="nav-link">
-						<i class="nav-icon fas fa-envelope"></i>
-						<p>
-							Pesan
-						</p>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link">
-						<i class="nav-icon fas fa-car"></i>
-						<p>
-							Data Kendaraan
-							<i class="fas fa-angle-left right"></i>
-						</p>
-					</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item">
-							<a href="<?= base_url('admin/kendaraan'); ?>" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Master Data Kendaraan</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Data Kendaraan Client</p>
-							</a>
-						</li>
-					</ul>
-				</li>
+
 
 				<li class="nav-item">
 					<a href="<?= base_url('admin/client'); ?>" class="nav-link">
@@ -96,7 +50,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 					<a href="<?= base_url('admin/staff'); ?>" class="nav-link">
 						<i class="nav-icon fas fa-users-cog"></i>
 						<p>
-							Staff
+							Toko
 						</p>
 					</a>
 				</li>

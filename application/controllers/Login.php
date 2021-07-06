@@ -3,13 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
-	/**
-	 * Aplikasi Daihatsu
-	 * Dikembangkan oleh: AlexistDev
-	 * web: www.alexistdev.com
-	 * contact: alexistdev@gmail.com
-	 * hp : 082371408678
-	 */
 
 	public $session;
 	public $form_validation;
@@ -106,27 +99,7 @@ class Login extends CI_Controller {
 						$this->session->set_userdata($data_session);
 						redirect("admin/dashboard");
 						break;
-					case 2:
-						$data_session = [
-							'is_login_br' => TRUE
-						];
-						$this->session->set_userdata($data_session);
-						redirect("Staff");
-						break;
-					case 3:
-						$data_session = [
-							'is_login_asuransi' => TRUE
-						];
-						$this->session->set_userdata($data_session);
-						redirect("Assurance");
-						break;
-					case 3:
-						$data_session = [
-							'is_login_author' => TRUE
-						];
-						$this->session->set_userdata($data_session);
-						redirect("Author");
-						break;
+
 					default:
 						$this->session->set_flashdata('pesan2', '<div class="alert alert-danger" role="alert">Anda tidak dapat login, silahkan hubungi administrator system!</div>');
 						redirect("Login");
