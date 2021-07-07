@@ -98,6 +98,12 @@ class M_admin extends CI_Model
 		$this->db->join($this->tbprovinsi,"$this->tbprovinsi.id = $this->tbkabupaten.id_provinsi");
 		//$this->db->group_by("$this->tbprovinsi.nama_provinsi", "ASC");
 		$this->db->order_by("$this->tbprovinsi.nama_provinsi", "ASC");
+		$this->db->order_by("$this->tbkabupaten.nama_kabupaten", "ASC");
 		return $this->db->get($this->tbkabupaten);
+	}
+
+	public function simpan_kabupaten($data)
+	{
+		$this->db->insert($this->tbkabupaten,$data);
 	}
 }
