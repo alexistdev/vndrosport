@@ -30,7 +30,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script>
 	$(function () {
 		$(".select2").select2();
+		$(window).bind("load", function() {
+			window.setTimeout(function() {
+				$(".alert").fadeTo(500, 0).slideUp(500, function() {
+					$(this).remove();
+				});
+			}, 2000);
+		});
 	});
+
 </script>
 </body>
 

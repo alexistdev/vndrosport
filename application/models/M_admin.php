@@ -54,8 +54,11 @@ class M_admin extends CI_Model
 	#                              tabel provinsi & negara                              	#
 	#########################################################################################
 
-	public function get_data_provinsi()
+	public function get_data_provinsi($id=null)
 	{
+		if($id != null){
+			$this->db->where("$this->tbprovinsi.id",$id);
+		}
 		$this->db->select("$this->tbnegara.id AS id_negara , $this->tbnegara.iso,$this->tbnegara.code,$this->tbnegara.nama_negara,$this->tbprovinsi.id AS id_provinsi,$this->tbprovinsi.nama_provinsi,$this->tbprovinsi.created_at,$this->tbprovinsi.updated_at");
 		$this->db->join($this->tbnegara,"$this->tbnegara.id = $this->tbprovinsi.id_negara");
 		return $this->db->get($this->tbprovinsi);
@@ -71,5 +74,15 @@ class M_admin extends CI_Model
 		$this->db->insert($this->tbprovinsi,$data);
 	}
 
+	public function update_data_provinsi($data,$id)
+	{
+		$this->db->where('id',$id);
+		$this->db->update($this->tbprovinsi,$data);
+	}
 
+	public function hapus_provinsi($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete($this->tbprovinsi);
+	}
 }

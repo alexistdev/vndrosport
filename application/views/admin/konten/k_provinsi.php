@@ -59,14 +59,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									<?php foreach($dataProvinsi as $rowProvinsi): ?>
 										<tr>
 											<td class="text-center"><?= sanitasi($no++); ?></td>
-											<td ><?= ucwords(sanitasi($rowProvinsi['nama_provinsi'])); ?></td>
+											<td ><?= strtoupper(sanitasi($rowProvinsi['nama_provinsi'])); ?></td>
 											<td class="text-center"><?= strtoupper(sanitasi($rowProvinsi['nama_negara'])); ?></td>
 											<td class="text-center"><?= date('l d-m-Y H:i:s', sanitasi($rowProvinsi['created_at'])); ?></td>
 											<td class="text-center"><?= date('l d-m-Y H:i:s', sanitasi($rowProvinsi['updated_at'])); ?></td>
 											<td class="text-center">
-												<button class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></button>
+												<a href="<?= base_url('admin/provinsi/edit/'.encrypt_url(sanitasi($rowProvinsi['id_provinsi']))); ?>"><button class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></button></a>
 												<button class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Tampil Kabupaten"><i class="fas fa-eye"></i></button>
-												<button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
+												<span id="tombolHapus" data-toggle="modal" data-target="#modalHapus" data-id="<?= encrypt_url(sanitasi($rowProvinsi['id_provinsi'])) ?>">
+													<button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
+												</span>
 											</td>
 										</tr>
 									<?php endforeach ;?>

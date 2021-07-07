@@ -55,6 +55,8 @@ $route['translate_uri_dashes'] = FALSE;
 /* Route Master Data */
 $route['admin/provinsi'] = 'administrator/Provinsi';
 $route['admin/provinsi/add'] = 'administrator/Provinsi/add';
+$route['admin/provinsi/edit/(:any)'] = 'administrator/Provinsi/edit/$1';
+$route['admin/provinsi/hapus/(:any)'] = 'administrator/Provinsi/hapus/$1';
 /* Route Administrator */
 $route['admin/dashboard'] = 'administrator/Member';
 $route['admin/setting'] = 'administrator/Setting';
