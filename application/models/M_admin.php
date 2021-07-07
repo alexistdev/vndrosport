@@ -12,7 +12,7 @@ class M_admin extends CI_Model
 		$this->tbdetailuser = 'detailuser';
 		$this->tbnegara = 'negara';
 		$this->tbprovinsi = 'provinsi';
-//		$this->tbdetailberita = 'detailberita';
+		$this->tbkabupaten = 'kabupaten';
 //		$this->tbjeniskendaraan = 'jenis_kendaraan';
 //		$this->tbtipekendaraan = 'tipe_kendaraan';
 //		$this->tbkendaraan = 'kendaraan';
@@ -84,5 +84,20 @@ class M_admin extends CI_Model
 	{
 		$this->db->where('id', $id);
 		$this->db->delete($this->tbprovinsi);
+	}
+	#########################################################################################
+	#                              tabel kabupaten                                      	#
+	#########################################################################################
+
+	public function get_data_kabupaten($id=null)
+	{
+//		if($id != null){
+//			$this->db->where("$this->tbprovinsi.id",$id);
+//		}
+		//$this->db->select("$this->tbnegara.id AS id_negara , $this->tbnegara.iso,$this->tbnegara.code,$this->tbnegara.nama_negara,$this->tbprovinsi.id AS id_provinsi,$this->tbprovinsi.nama_provinsi,$this->tbprovinsi.created_at,$this->tbprovinsi.updated_at");
+		$this->db->join($this->tbprovinsi,"$this->tbprovinsi.id = $this->tbkabupaten.id_provinsi");
+		//$this->db->group_by("$this->tbprovinsi.nama_provinsi", "ASC");
+		$this->db->order_by("$this->tbprovinsi.nama_provinsi", "ASC");
+		return $this->db->get($this->tbkabupaten);
 	}
 }

@@ -52,7 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+							<a href="<?= base_url('admin/kabupaten'); ?>" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Master Kabupaten</p>
 							</a>
