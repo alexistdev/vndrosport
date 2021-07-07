@@ -10,7 +10,8 @@ class M_admin extends CI_Model
 		$this->tbadmin = 'admin';
 		$this->tbusers = 'users';
 		$this->tbdetailuser = 'detailuser';
-//		$this->tbberita = 'berita';
+		$this->tbnegara = 'negara';
+		$this->tbprovinsi = 'provinsi';
 //		$this->tbdetailberita = 'detailberita';
 //		$this->tbjeniskendaraan = 'jenis_kendaraan';
 //		$this->tbtipekendaraan = 'tipe_kendaraan';
@@ -48,5 +49,27 @@ class M_admin extends CI_Model
 	{
 		$this->db->insert($this->tbdetailuser,$data);
 	}
+
+	#########################################################################################
+	#                              tabel provinsi & negara                              	#
+	#########################################################################################
+
+	public function get_data_provinsi()
+	{
+		$this->db->select("$this->tbnegara.id AS id_negara , $this->tbnegara.iso,$this->tbnegara.code,$this->tbnegara.nama_negara,$this->tbprovinsi.id AS id_provinsi,$this->tbprovinsi.nama_provinsi,$this->tbprovinsi.created_at,$this->tbprovinsi.updated_at");
+		$this->db->join($this->tbnegara,"$this->tbnegara.id = $this->tbprovinsi.id_negara");
+		return $this->db->get($this->tbprovinsi);
+	}
+
+	public function get_data_negara()
+	{
+		return $this->db->get($this->tbnegara);
+	}
+
+	public function simpan_provinsi($data)
+	{
+		$this->db->insert($this->tbprovinsi,$data);
+	}
+
 
 }

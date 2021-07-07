@@ -36,7 +36,41 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 						</p>
 					</a>
 				</li>
-
+				<li class="nav-item">
+					<a href="#" class="nav-link">
+						<i class="nav-icon fas fa-file"></i>
+						<p>
+							Master Data
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('admin/provinsi'); ?>" class="nav-link">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Master Provinsi</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Master Kabupaten</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Master Kecamatan</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Master Desa</p>
+							</a>
+						</li>
+					</ul>
+				</li>
 
 				<li class="nav-item">
 					<a href="<?= base_url('admin/client'); ?>" class="nav-link">

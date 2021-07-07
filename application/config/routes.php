@@ -52,7 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-
+/* Route Master Data */
+$route['admin/provinsi'] = 'administrator/Provinsi';
+$route['admin/provinsi/add'] = 'administrator/Provinsi/add';
 /* Route Administrator */
 $route['admin/dashboard'] = 'administrator/Member';
 $route['admin/setting'] = 'administrator/Setting';
