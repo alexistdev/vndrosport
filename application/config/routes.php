@@ -53,7 +53,12 @@ $route['default_controller'] = 'Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-/** Route Administrator */
+/* Route Administrator */
 $route['admin/dashboard'] = 'administrator/Member';
 $route['admin/setting'] = 'administrator/Setting';
 $route['admin/logout'] = 'administrator/Member/Logout';
+
+/* Client */
+$route['admin/client'] = 'administrator/Client';
+$route['admin/client/add'] = 'administrator/Client/add';
+
