@@ -91,12 +91,11 @@ class M_admin extends CI_Model
 
 	public function get_data_kabupaten($id=null)
 	{
-//		if($id != null){
-//			$this->db->where("$this->tbprovinsi.id",$id);
-//		}
-		//$this->db->select("$this->tbnegara.id AS id_negara , $this->tbnegara.iso,$this->tbnegara.code,$this->tbnegara.nama_negara,$this->tbprovinsi.id AS id_provinsi,$this->tbprovinsi.nama_provinsi,$this->tbprovinsi.created_at,$this->tbprovinsi.updated_at");
+		if($id != null){
+			$this->db->where("$this->tbkabupaten.id",$id);
+		}
+		$this->db->select("$this->tbprovinsi.id AS id_provinsi,$this->tbprovinsi.nama_provinsi , $this->tbkabupaten.id AS id_kabupaten,$this->tbkabupaten.nama_kabupaten,$this->tbkabupaten.created_at,$this->tbkabupaten.updated_at");
 		$this->db->join($this->tbprovinsi,"$this->tbprovinsi.id = $this->tbkabupaten.id_provinsi");
-		//$this->db->group_by("$this->tbprovinsi.nama_provinsi", "ASC");
 		$this->db->order_by("$this->tbprovinsi.nama_provinsi", "ASC");
 		$this->db->order_by("$this->tbkabupaten.nama_kabupaten", "ASC");
 		return $this->db->get($this->tbkabupaten);
@@ -105,5 +104,17 @@ class M_admin extends CI_Model
 	public function simpan_kabupaten($data)
 	{
 		$this->db->insert($this->tbkabupaten,$data);
+	}
+
+	public function update_data_kabupaten($data,$id)
+	{
+		$this->db->where('id',$id);
+		$this->db->update($this->tbkabupaten,$data);
+	}
+
+	public function hapus_kabupaten($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete($this->tbkabupaten);
 	}
 }

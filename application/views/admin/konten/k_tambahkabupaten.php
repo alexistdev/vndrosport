@@ -42,7 +42,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="card card-dark card-outline">
 						<div class="card-body">
 							<?php if($tag == 'edit') { ?>
-							<form action="<?= base_url('admin/kabupaten/edit/'.sanitasi($idProvinsi))?>"  method="post">
+							<form action="<?= base_url('admin/kabupaten/edit/'.sanitasi($idKabupaten))?>"  method="post">
 								<?php } else { ?>
 								<form action="<?= base_url('admin/kabupaten/add')?>"  method="post">
 									<?php } ?>

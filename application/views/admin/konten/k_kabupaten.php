@@ -43,12 +43,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body">
-							<table id="tabelRiwayat" class="table table-bordered table-hover" style="width: 100%">
+							<table id="tabelKabupaten" class="table table-bordered table-hover" style="width: 100%">
 								<thead>
 								<tr>
 									<th class="text-center">No</th>
-									<th class="text-center">Nama Provinsi</th>
-									<th class="text-center" width="10%">Nama Kabupaten</th>
+									<th class="text-center">Provinsi</th>
+									<th class="text-center" width="10%">Kabupaten</th>
 									<th class="text-center">Dibuat tgl</th>
 									<th class="text-center">Update tgl</th>
 									<th class="text-center">Action</th>
@@ -57,7 +57,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								<tbody>
 								<?php $no=1; $provinsi="";?>
 								<?php foreach($dataKabupaten as $rowKabupaten): ?>
-
 									<tr>
 										<td class="text-center"><?= $no++; ?></td>
 										<?php if($provinsi != $rowKabupaten['nama_provinsi']) { ?>
@@ -67,17 +66,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										<?php } ?>
 										<?php $provinsi = $rowKabupaten['nama_provinsi'] ;?>
 										<td><?= strtoupper(sanitasi($rowKabupaten['nama_kabupaten'])); ?></td>
-										<td class="text-center"><?= date('l d-m-Y H:i:s', sanitasi($rowKabupaten['created_at'])); ?></td>
-										<td class="text-center"><?= date('l d-m-Y H:i:s', sanitasi($rowKabupaten['updated_at'])); ?></td>
+										<td class="text-center"><?= (sanitasi($rowKabupaten['created_at']) != null)? date('l d-m-Y H:i:s', sanitasi($rowKabupaten['created_at'])) : date('l d-m-Y H:i:s', time()); ?></td>
+										<td class="text-center"><?= (sanitasi($rowKabupaten['updated_at']) != null)? date('l d-m-Y H:i:s', sanitasi($rowKabupaten['updated_at'])) : date('l d-m-Y H:i:s', time()); ?></td>
 										<td class="text-center">
-											<a href="<?= base_url('admin/kabupaten/edit/'.encrypt_url(sanitasi($rowKabupaten['id']))); ?>"><button class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></button></a>
+											<a href="<?= base_url('admin/kabupaten/edit/'.encrypt_url(sanitasi($rowKabupaten['id_kabupaten']))); ?>"><button class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></button></a>
 											<button class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Tampil Kabupaten"><i class="fas fa-eye"></i></button>
-											<span id="tombolHapus" data-toggle="modal" data-target="#modalHapus" data-id="<?= encrypt_url(sanitasi($rowKabupaten['id'])) ?>">
+											<span id="tombolHapus" data-toggle="modal" data-target="#modalHapus" data-id="<?= encrypt_url(sanitasi($rowKabupaten['id_kabupaten'])) ?>">
 													<button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
 												</span>
 										</td>
 									</tr>
-
 								<?php endforeach; ?>
 								</tbody>
 							</table>
