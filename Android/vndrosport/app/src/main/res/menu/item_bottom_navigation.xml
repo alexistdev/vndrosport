@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/dash1"
+        android:id="@+id/home_menu"
+        android:icon="@drawable/ic_home"/>
+    <item android:title="@string/dash2"
+        android:id="@+id/history_menu"
+        android:icon="@drawable/ic_history"/>
+    <item android:title="@string/dash3"
+        android:id="@+id/keranjang_menu"
+        android:icon="@drawable/ic_keranjang"/>
+    <item android:title="@string/dash4"
+        android:id="@+id/akun_menu"
+        android:icon="@drawable/ic_akun"/>
+</menu>

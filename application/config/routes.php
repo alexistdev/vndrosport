@@ -61,6 +61,7 @@ $route['admin/kabupaten'] = 'administrator/Kabupatens';
 $route['admin/kabupaten/add'] = 'administrator/Kabupatens/add';
 $route['admin/kabupaten/edit/(:any)'] = 'administrator/Kabupatens/edit/$1';
 $route['admin/kabupaten/hapus/(:any)'] = 'administrator/Kabupatens/hapus/$1';
+$route['admin/kecamatan'] = 'administrator/Kecamatan';
 /* Route Administrator */
 $route['admin/dashboard'] = 'administrator/Member';
 $route['admin/setting'] = 'administrator/Setting';

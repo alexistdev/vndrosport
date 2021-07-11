@@ -1,12 +1,20 @@
 <resources>
-    <string name="app_name">vndrosport</string>
-    <!--  Login   -->
-    <string name="login1">gambar login</string>
-    <string name="login2">Sign In</string>
-    <string name="login3">Silahkan login ke dalam akun anda</string>
-    <string name="login4">Email Address</string>
-    <string name="login5">Password</string>
-    <string name="login6">******</string>
-    <string name="login7">Lupa password ?</string>
-    <string name="login8">Belum punya akun? Daftar</string>
+	<string name="app_name">vndrosport</string>
+	<!--  Login   -->
+	<string name="login1">gambar login</string>
+	<string name="login2">Sign In</string>
+	<string name="login3">Silahkan login ke dalam akun anda</string>
+	<string name="login4">Email Address</string>
+	<string name="login5">Password</string>
+	<string name="login6">******</string>
+	<string name="login7">Lupa password ?</string>
+	<string name="login8">Belum punya akun? Daftar</string>
+
+	<!--  Dashboard   -->
+	<string name="dash1">Home</string>
+	<string name="dash2">Riwayat Order</string>
+	<string name="dash3">Keranjang</string>
+	<string name="dash4">Akun</string>
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
