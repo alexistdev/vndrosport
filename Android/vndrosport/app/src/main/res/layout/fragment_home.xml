@@ -41,7 +41,8 @@
 					android:background="@drawable/rect1"
 					android:elevation="10dp"
 					app:cardCornerRadius="5dp"
-					android:layout_marginTop="155dp"
+					android:layout_marginTop="135dp"
+					android:layout_marginBottom="25dp"
 					android:layout_marginStart="100dp"
 					android:layout_marginEnd="16dp">
 					<LinearLayout
@@ -49,7 +50,7 @@
 						android:layout_height="match_parent"
 						android:orientation="horizontal">
 						<androidx.recyclerview.widget.RecyclerView
-							android:id="@+id/rcberita"
+							android:id="@+id/rcSpesial"
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
 							android:layout_marginTop="8dp"/>

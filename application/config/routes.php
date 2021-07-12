@@ -71,3 +71,7 @@ $route['admin/logout'] = 'administrator/Member/Logout';
 $route['admin/client'] = 'administrator/Client';
 $route['admin/client/add'] = 'administrator/Client/add';
 
+/* Api */
+$route['api/spesial'] = 'api/Spesial';
+
+

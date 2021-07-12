@@ -6,15 +6,6 @@ class Setting extends CI_Controller
 
 	public $session;
 
-
-	/**
-	 * Aplikasi Daihatsu
-	 * Dikembangkan oleh: AlexistDev
-	 * web: www.alexistdev.com
-	 * contact: alexistdev@gmail.com
-	 * hp : 082371408678
-	 */
-
 	public function __construct()
 	{
 		parent::__construct();
