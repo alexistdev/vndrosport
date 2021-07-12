@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . 'libraries/RestController.php';
 use chriskacerguis\RestServer\RestController;
 
-class Spesial extends RestController
+class Produk extends RestController
 {
 
 	public $api;
@@ -15,22 +15,22 @@ class Spesial extends RestController
 		$this->load->model('m_api', 'api');
 	}
 
-
 	public function index_get()
 	{
-		$getSpesial = $this->api->get_data_spesial(true);
-		if($getSpesial->num_rows() != 0 ){
+		$getProduk = $this->api->get_data_produk();
+		if($getProduk->num_rows() != 0 ){
 			$data = [
 				'status' => true,
-				'result' => $getSpesial->result_array(),
+				'result' => $getProduk->result_array(),
 				'message' => 'Data berhasil didapatkan',
 			];
 			$this->response($data, 200);
-		}else {
+		} else {
 			$this->response( [
 				'status' => false,
 				'message' => 'No data found'
 			], 404 );
 		}
 	}
+
 }

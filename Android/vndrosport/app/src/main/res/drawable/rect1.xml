@@ -2,7 +2,7 @@
 
     <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/listview_background_shape">
-        <stroke android:width="0dp" android:color="#4c71f5" />
+        <stroke android:width="5dp" android:color="#4c71f5" />
         <padding android:left="0dp"
             android:top="0dp"
             android:right="0dp"

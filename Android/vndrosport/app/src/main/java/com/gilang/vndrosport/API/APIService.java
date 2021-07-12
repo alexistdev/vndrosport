@@ -3,6 +3,7 @@ package com.gilang.vndrosport.API;
 import android.content.Context;
 import com.gilang.vndrosport.BuildConfig;
 import com.gilang.vndrosport.config.Constants;
+import com.gilang.vndrosport.response.ResponseProduk;
 import com.gilang.vndrosport.response.ResponseSpesial;
 
 import java.util.concurrent.TimeUnit;
@@ -15,6 +16,11 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 
 public interface APIService {
+
+	/* Mendapatkan API Berita */
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@GET("api/produk")
+	Call<ResponseProduk> produkHome();
 
 	/* Mendapatkan API Berita */
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})

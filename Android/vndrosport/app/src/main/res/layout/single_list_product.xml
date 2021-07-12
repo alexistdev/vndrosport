@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
+	android:background="@drawable/rect1"
+	android:layout_width="175dp"
+	android:layout_height="300dp">
+
+	<ImageView
+		android:layout_marginTop="5dp"
+		android:layout_width="175dp"
+		android:layout_height="150dp"
+		android:contentDescription="@string/dash12"
+		android:src="@drawable/raket"/>
+	<TextView
+		android:layout_marginTop="10dp"
+		android:id="@+id/txt_judul"
+		android:layout_marginStart="10dp"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/dash12"
+		android:textStyle="bold"
+		android:textSize="12sp"/>
+
+	<LinearLayout
+		android:layout_margin="5dp"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+		<TextView
+			android:id="@+id/txt_harga"
+			android:layout_marginStart="10dp"
+			android:layout_marginEnd="10dp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/dash13"
+			android:textStyle="bold"
+			android:textSize="16sp"
+			app:drawableEndCompat="@drawable/ic_baseline_star_24" />
+	</LinearLayout>
+
+	<Button
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/bgToolbar"
+		android:text="@string/dash14"
+		android:layout_marginStart="20dp"
+		android:layout_marginEnd="20dp"
+		android:layout_marginBottom="5dp"/>
+
+
+
+</LinearLayout>

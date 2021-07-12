@@ -18,6 +18,13 @@
 	<string name="dash5">Spesial Promo</string>
 	<string name="dash6">Judul</string>
 	<string name="dash7">posted: 14-05-2021</string>
+	<string name="dash8">View All</string>
+	<string name="dash9">Kategori</string>
+	<string name="dash10">Promo</string>
+	<string name="dash11">Delivery</string>
+	<string name="dash12">Raket Yonex Carbon</string>
+	<string name="dash13">Rp.20.000,-</string>
+	<string name="dash14">BELI</string>
 	<!-- TODO: Remove or change this placeholder text -->
 	<string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
