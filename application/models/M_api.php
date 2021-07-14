@@ -9,6 +9,8 @@ class M_api extends CI_Model
 		$this->load->database();
 		$this->tbspesial = 'spesial';
 		$this->tbproduk = 'produk';
+		$this->tbmerek = 'merek';
+		$this->tbkategori = 'kategori';
 	}
 
 	public function get_data_spesial($single=false)
@@ -22,8 +24,14 @@ class M_api extends CI_Model
 		return $this->db->get($this->tbspesial);
 	}
 
-	public function get_data_produk()
+	public function get_data_produk($id=null)
 	{
+		if($id != null){
+			$this->db->where("$this->tbproduk.id", $id);
+		}
+		$this->db->select("$this->tbkategori.nama_kategori,$this->tbmerek.nama_merek, $this->tbproduk.id,$this->tbproduk.nama_produk, $this->tbproduk.harga,$this->tbproduk.gambar,$this->tbproduk.ukuran,$this->tbproduk.warna");
+		$this->db->join($this->tbkategori,"$this->tbkategori.id = $this->tbproduk.id_kategori");
+		$this->db->join($this->tbmerek,"$this->tbmerek.id = $this->tbproduk.id_merek");
 		$this->db->order_by("$this->tbproduk.id", "DESC");
 		return $this->db->get($this->tbproduk);
 	}

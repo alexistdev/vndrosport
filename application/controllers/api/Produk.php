@@ -33,4 +33,31 @@ class Produk extends RestController
 		}
 	}
 
+	public function detail_get()
+	{
+		$id = $this->get('id');
+		if($id != null || !empty($id)){
+			$getDetail = $this->api->get_data_produk($id);
+			if($getDetail->num_rows() != 0){
+				$data = [
+					'status' => true,
+					'result' => $getDetail->result_array(),
+					'message' => 'Data berhasil didapatkan',
+				];
+				$this->response($data, 200);
+			} else {
+				$this->response( [
+					'status' => false,
+					'message' => 'No data found'
+				], 404 );
+			}
+		} else {
+			$this->response( [
+				'status' => false,
+				'message' => 'No data found'
+			], 404 );
+		}
+
+	}
+
 }

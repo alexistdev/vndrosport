@@ -11,4 +11,7 @@
 	<color name="bgToolbar">#506890</color>
 	<color name="toolbarSelector">#070707</color>
 	<color name="warnaKategori">#FFDCB4</color>
+
+	<color name="detail1">#e6ffffff</color>
+	<color name="detail2">#70dfdfdf</color>
 </resources>
