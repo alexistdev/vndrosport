@@ -7,6 +7,8 @@ public class ProdukModel {
 	private final String idProduk;
 	@SerializedName("nama_produk")
 	private final String namaProduk;
+	@SerializedName("nama_toko")
+	private final String namaToko;
 	@SerializedName("harga")
 	private final String hargaProduk;
 	@SerializedName("nama_kategori")
@@ -19,16 +21,20 @@ public class ProdukModel {
 	private final String ukuranProduk;
 	@SerializedName("warna")
 	private final String warnaProduk;
+	@SerializedName("deskripsi")
+	private final String deskripsiProduk;
 
-	public ProdukModel(String idProduk, String namaProduk, String hargaProduk, String namaKategori, String namaMerek, String gambarProduk, String ukuranProduk, String warnaProduk) {
+	public ProdukModel(String idProduk, String namaProduk, String namaToko, String hargaProduk, String namaKategori, String namaMerek, String gambarProduk, String ukuranProduk, String warnaProduk, String deskripsiProduk) {
 		this.idProduk = idProduk;
 		this.namaProduk = namaProduk;
+		this.namaToko = namaToko;
 		this.hargaProduk = hargaProduk;
 		this.namaKategori = namaKategori;
 		this.namaMerek = namaMerek;
 		this.gambarProduk = gambarProduk;
 		this.ukuranProduk = ukuranProduk;
 		this.warnaProduk = warnaProduk;
+		this.deskripsiProduk = deskripsiProduk;
 	}
 
 	public String getIdProduk() {
@@ -37,6 +43,10 @@ public class ProdukModel {
 
 	public String getNamaProduk() {
 		return namaProduk;
+	}
+
+	public String getNamaToko() {
+		return namaToko;
 	}
 
 	public String getHargaProduk() {
@@ -61,5 +71,9 @@ public class ProdukModel {
 
 	public String getWarnaProduk() {
 		return warnaProduk;
+	}
+
+	public String getDeskripsiProduk() {
+		return deskripsiProduk;
 	}
 }

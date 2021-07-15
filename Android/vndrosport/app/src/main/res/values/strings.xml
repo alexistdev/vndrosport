@@ -46,4 +46,8 @@
 	<string name="produk7">Kategori : Raket</string>
 	<string name="produk8">Warna : Merah</string>
 	<string name="produk9">DESCRIPTION</string>
+	<string name="produk10">Merek : </string>
+	<string name="produk11">Kategori : </string>
+	<string name="produk12">Ukuran : </string>
+	<string name="produk13">Warna : </string>
 </resources>

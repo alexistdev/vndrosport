@@ -3,6 +3,7 @@ package com.gilang.vndrosport.API;
 import android.content.Context;
 import com.gilang.vndrosport.BuildConfig;
 import com.gilang.vndrosport.config.Constants;
+import com.gilang.vndrosport.model.ProdukModel;
 import com.gilang.vndrosport.response.ResponseProduk;
 import com.gilang.vndrosport.response.ResponseSpesial;
 
@@ -14,6 +15,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Query;
 
 public interface APIService {
 
@@ -26,6 +28,11 @@ public interface APIService {
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
 	@GET("api/spesial")
 	Call<ResponseSpesial> tampilSpesial();
+
+	/* Mendapatkan API Berita */
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@GET("api/produk/detail")
+	Call<ProdukModel> tampilDetail(@Query("id") String idProduk);
 
 	class Factory{
 		public static APIService create(Context mContext){

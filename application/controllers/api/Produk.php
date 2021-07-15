@@ -39,11 +39,19 @@ class Produk extends RestController
 		if($id != null || !empty($id)){
 			$getDetail = $this->api->get_data_produk($id);
 			if($getDetail->num_rows() != 0){
-				$data = [
-					'status' => true,
-					'result' => $getDetail->result_array(),
-					'message' => 'Data berhasil didapatkan',
-				];
+				foreach ($getDetail->result_array() as $row){
+					$data['status'] = true;
+					$data['nama_toko'] =$row['nama_toko'];
+					$data['nama_kategori'] =$row['nama_kategori'];
+					$data['nama_merek'] =$row['nama_merek'];
+					$data['id'] =$row['id'];
+					$data['nama_produk'] =$row['nama_produk'];
+					$data['harga'] =$row['harga'];
+					$data['gambar'] =$row['gambar'];
+					$data['ukuran'] =$row['ukuran'];
+					$data['warna'] =$row['warna'];
+					$data['deskripsi'] =$row['deskripsi'];
+				}
 				$this->response($data, 200);
 			} else {
 				$this->response( [
