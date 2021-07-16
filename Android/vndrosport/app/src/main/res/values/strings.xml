@@ -32,7 +32,7 @@
 	<string name="dash9">Kategori</string>
 	<string name="dash10">Promo</string>
 	<string name="dash11">Delivery</string>
-	<string name="dash12">Raket Yonex Carbon</string>
+	<string name="dash12">Nama Produk</string>
 	<string name="dash13">Rp.20.000,-</string>
 	<string name="dash14">BELI</string>
 
@@ -63,4 +63,10 @@
 	<string name="cart7">Alamat</string>
 	<string name="cart8">Jl.Z.A Pagar Alam, No.93, Labuhan Ratu, Bandar Lampung, Lampung, Indonesia 35141</string>
 	<string name="cart9">Checkout</string>
+	<string name="cart10">Gambar</string>
+	<string name="cart11"><strike>Rp.10.000,-</strike></string>
+	<string name="cart12">- 30%</string>
+	<string name="cart13">Rp.10.000,-</string>
+	<string name="cart14">01</string>
+
 </resources>

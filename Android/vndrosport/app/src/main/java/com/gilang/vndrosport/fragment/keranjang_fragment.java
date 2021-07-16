@@ -1,66 +1,100 @@
 package com.gilang.vndrosport.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.gilang.vndrosport.API.APIService;
+import com.gilang.vndrosport.API.NoConnectivityException;
 import com.gilang.vndrosport.R;
+import com.gilang.vndrosport.adapter.KeranjangAdapter;
+import com.gilang.vndrosport.model.KeranjangModel;
+import com.gilang.vndrosport.response.ResponseKeranjang;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link keranjang_fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.internal.EverythingIsNonNull;
+
+
 public class keranjang_fragment extends Fragment {
+	private RecyclerView gridView;
+	private KeranjangAdapter keranjangAdapter;
+	private List<KeranjangModel> daftarKeranjang;
 
-	// TODO: Rename parameter arguments, choose names that match
-	// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-	private static final String ARG_PARAM1 = "param1";
-	private static final String ARG_PARAM2 = "param2";
 
-	// TODO: Rename and change types of parameters
-	private String mParam1;
-	private String mParam2;
-
-	public keranjang_fragment() {
-		// Required empty public constructor
-	}
-
-	/**
-	 * Use this factory method to create a new instance of
-	 * this fragment using the provided parameters.
-	 *
-	 * @param param1 Parameter 1.
-	 * @param param2 Parameter 2.
-	 * @return A new instance of fragment keranjang_fragment.
-	 */
-	// TODO: Rename and change types and number of parameters
-	public static keranjang_fragment newInstance(String param1, String param2) {
-		keranjang_fragment fragment = new keranjang_fragment();
-		Bundle args = new Bundle();
-		args.putString(ARG_PARAM1, param1);
-		args.putString(ARG_PARAM2, param2);
-		fragment.setArguments(args);
-		return fragment;
-	}
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		if (getArguments() != null) {
-			mParam1 = getArguments().getString(ARG_PARAM1);
-			mParam2 = getArguments().getString(ARG_PARAM2);
-		}
-	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
-		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.fragment_keranjang, container, false);
+		View mview = inflater.inflate(R.layout.fragment_keranjang, container, false);
+		dataInit(mview);
+		setupRecyclerView();
+		setData(getContext());
+		return mview;
+	}
+
+	public void setData(Context mContext)
+	{
+		try {
+			Call<ResponseKeranjang> call = APIService.Factory.create(mContext).dapatKeranjang("1", "XiTYHklpnU");
+			call.enqueue(new Callback<ResponseKeranjang>() {
+				@EverythingIsNonNull
+				@Override
+				public void onResponse(Call<ResponseKeranjang> call, Response<ResponseKeranjang> response) {
+					if(response.isSuccessful()){
+						if(response.body() != null){
+							daftarKeranjang = response.body().getDaftarKeranjang();
+							keranjangAdapter.replaceData(daftarKeranjang);
+						}
+					}
+				}
+				@EverythingIsNonNull
+				@Override
+				public void onFailure(Call<ResponseKeranjang> call, Throwable t) {
+					if(t instanceof NoConnectivityException) {
+						pesan("Internet Offline!");
+					}
+				}
+			});
+		} catch (Exception e){
+			e.printStackTrace();
+			pesan(e.getMessage());
+		}
+	}
+
+
+	private void dataInit(View mview){
+		gridView = mview.findViewById(R.id.rcCart);
+	}
+
+	private void setupRecyclerView() {
+		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext()){
+			@Override
+			public RecyclerView.LayoutParams generateDefaultLayoutParams() {
+				return new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+			}
+		};
+		if(this.getContext() != null){
+			keranjangAdapter = new KeranjangAdapter(new ArrayList<>(),getContext());
+			gridView.setLayoutManager(linearLayoutManager);
+			gridView.setAdapter(keranjangAdapter);
+		}
+	}
+
+	private void pesan(String msg)
+	{
+		Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
 	}
 }

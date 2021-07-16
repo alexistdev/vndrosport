@@ -135,7 +135,7 @@ public class home_fragment extends Fragment {
 		gridSpesial.setLayoutManager(linearLayoutManager);
 		gridSpesial.setAdapter(spesialAdapter);
 
-		produkAdapter = new ProdukAdapter(new ArrayList<>());
+		produkAdapter = new ProdukAdapter(new ArrayList<>(),getContext());
 		gridProduk.setHasFixedSize(false);
 		gridProduk.setLayoutManager(new GridLayoutManager(getContext(),2));
 		gridProduk.setAdapter(produkAdapter);

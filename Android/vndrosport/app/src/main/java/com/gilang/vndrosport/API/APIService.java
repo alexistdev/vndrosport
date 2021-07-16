@@ -4,6 +4,7 @@ import android.content.Context;
 import com.gilang.vndrosport.BuildConfig;
 import com.gilang.vndrosport.config.Constants;
 import com.gilang.vndrosport.model.ProdukModel;
+import com.gilang.vndrosport.response.ResponseKeranjang;
 import com.gilang.vndrosport.response.ResponseProduk;
 import com.gilang.vndrosport.response.ResponseSpesial;
 
@@ -33,6 +34,13 @@ public interface APIService {
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
 	@GET("api/produk/detail")
 	Call<ProdukModel> tampilDetail(@Query("id") String idProduk);
+
+
+	/* Mendapatkan Keranjang */
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@GET("api/keranjang")
+	Call<ResponseKeranjang> dapatKeranjang(@Query("id_user") String idUser,
+										   @Query("token") String token);
 
 	class Factory{
 		public static APIService create(Context mContext){

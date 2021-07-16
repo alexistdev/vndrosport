@@ -114,4 +114,33 @@ class Keranjang extends RestController
 			], 404 );
 		}
  	}
+
+	public function index_get()
+	{
+		$idUser = $this->get('id_user');
+		$myToken = $this->get('token');
+		$cekUser = $this->api->cek_user($idUser,$myToken);
+		if($cekUser!= 0){
+			$idKeranjang = $this->api->get_data_keranjang($idUser)->row()->id;
+			$getData = $this->api->get_detail_keranjang_byid($idKeranjang);
+			if($getData->num_rows() != 0){
+				$dataResponse = [
+					'status' => true,
+					'result' => $getData->result_array(),
+					'message' => 'Data berhasil didapatkan !',
+				];
+				$this->response($dataResponse, 200);
+			}else{
+				$this->response( [
+					'status' => false,
+					'message' => 'No data found'
+				], 404 );
+			}
+		} else {
+			$this->response( [
+				'status' => false,
+				'message' => 'Not Authorized'
+			], 404 );
+		}
+	}
 }
