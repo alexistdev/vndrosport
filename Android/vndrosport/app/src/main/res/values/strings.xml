@@ -50,4 +50,17 @@
 	<string name="produk11">Kategori : </string>
 	<string name="produk12">Ukuran : </string>
 	<string name="produk13">Warna : </string>
+	<string name="produk14">Last online : </string>
+	<string name="produk15">Rp. </string>
+
+	<!--  Keranjang Belanja   -->
+	<string name="cart1">Sub Total</string>
+	<string name="cart2">-</string>
+	<string name="cart3">Biaya Antar</string>
+	<string name="cart4">Total Biaya</string>
+	<string name="cart5">George Clooney</string>
+	<string name="cart6">08123456789</string>
+	<string name="cart7">Alamat</string>
+	<string name="cart8">Jl.Z.A Pagar Alam, No.93, Labuhan Ratu, Bandar Lampung, Lampung, Indonesia 35141</string>
+	<string name="cart9">Checkout</string>
 </resources>

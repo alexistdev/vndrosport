@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:orientation="vertical"
 	tools:context=".fragment.keranjang_fragment">
-
-	<!-- TODO: Update blank fragment layout -->
-	<TextView
+	<com.google.android.material.appbar.AppBarLayout
+		android:id="@+id/toolbarCart"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:text="@string/hello_blank_fragment" />
+		android:layout_height="wrap_content">
+		<androidx.appcompat.widget.Toolbar
+			android:layout_width="match_parent"
+			app:titleTextColor="@color/white"
+			app:title="Keranjang Belanja"
+			android:layout_height="?attr/actionBarSize"
+			android:background="@color/bgToolbar"/>
+	</com.google.android.material.appbar.AppBarLayout>
+	<ScrollView
+		android:id="@+id/scCart"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:visibility="visible"
+		android:layout_margin="16dp"
+		android:scrollbars="none">
+
+		<RelativeLayout
+			android:layout_marginTop="50dp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="50dp">
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rcCart"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@drawable/rect2"/>
+			<include layout="@layout/bag_total"
+				android:id="@+id/bag"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/rcCart"/>
+		</RelativeLayout>
+	</ScrollView>
 
 </FrameLayout>

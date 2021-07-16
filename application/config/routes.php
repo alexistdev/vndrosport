@@ -75,5 +75,6 @@ $route['admin/client/add'] = 'administrator/Client/add';
 $route['api/spesial'] = 'api/Spesial';
 $route['api/produk'] = 'api/Produk';
 $route['api/produk/detail'] = 'api/Produk/detail';
+$route['api/keranjang'] = 'api/Keranjang';
 
 

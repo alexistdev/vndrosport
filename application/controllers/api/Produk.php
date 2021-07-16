@@ -42,6 +42,7 @@ class Produk extends RestController
 				foreach ($getDetail->result_array() as $row){
 					$data['status'] = true;
 					$data['nama_toko'] =$row['nama_toko'];
+					$data['last_online'] =$row['last_online'];
 					$data['nama_kategori'] =$row['nama_kategori'];
 					$data['nama_merek'] =$row['nama_merek'];
 					$data['id'] =$row['id'];

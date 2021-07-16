@@ -12,6 +12,9 @@ class M_api extends CI_Model
 		$this->tbmerek = 'merek';
 		$this->tbkategori = 'kategori';
 		$this->tbtoko = 'toko';
+		$this->tbusers = 'users';
+		$this->tbkeranjang = 'keranjang';
+		$this->tbdetailkeranjang = 'detailkeranjang';
 	}
 
 	public function get_data_spesial($single=false)
@@ -30,11 +33,72 @@ class M_api extends CI_Model
 		if($id != null){
 			$this->db->where("$this->tbproduk.id", $id);
 		}
-		$this->db->select("$this->tbtoko.nama_toko,$this->tbkategori.nama_kategori,$this->tbmerek.nama_merek, $this->tbproduk.id,$this->tbproduk.nama_produk, $this->tbproduk.harga,$this->tbproduk.gambar,$this->tbproduk.ukuran,$this->tbproduk.warna,$this->tbproduk.deskripsi");
+		$this->db->select("$this->tbtoko.nama_toko,$this->tbtoko.last_online,$this->tbkategori.nama_kategori,$this->tbmerek.nama_merek, $this->tbproduk.id,$this->tbproduk.nama_produk, $this->tbproduk.harga,$this->tbproduk.gambar,$this->tbproduk.ukuran,$this->tbproduk.warna,$this->tbproduk.deskripsi");
 		$this->db->join($this->tbkategori,"$this->tbkategori.id = $this->tbproduk.id_kategori");
 		$this->db->join($this->tbtoko,"$this->tbtoko.id = $this->tbproduk.id_toko");
 		$this->db->join($this->tbmerek,"$this->tbmerek.id = $this->tbproduk.id_merek");
 		$this->db->order_by("$this->tbproduk.id", "DESC");
 		return $this->db->get($this->tbproduk);
 	}
+
+	public function cek_user($id, $token)
+	{
+		$this->db->where('id_user' ,$id);
+		$this->db->where('remember_token', $token);
+		return $this->db->get($this->tbusers)->num_rows();
+	}
+
+	#########################################################################################
+	#                          keranjang & detailkeranjang                 					#
+	#########################################################################################
+
+	public function get_data_keranjang($idUser=null)
+	{
+		if($idUser){
+			$this->db->where('id_user',$idUser);
+		}
+		return $this->db->get($this->tbkeranjang);
+	}
+
+	public function simpan_keranjang($data)
+	{
+		$this->db->insert($this->tbkeranjang,$data);
+		return $this->db->insert_id();
+	}
+
+	public function simpan_detail_keranjang($data)
+	{
+		$this->db->insert($this->tbdetailkeranjang,$data);
+	}
+
+	public function get_detail_keranjang($idProduk=null)
+	{
+		if($idProduk){
+			$this->db->where('id_produk',$idProduk);
+		}
+		return $this->db->get($this->tbdetailkeranjang);
+	}
+
+	public function get_sub_total($idKeranjang)
+	{
+		$this->db->select_sum('m_sub_total');
+		$this->db->where('id_keranjang', $idKeranjang);
+		$result = $this->db->get($this->tbdetailkeranjang)->row();
+		return $result->m_sub_total;
+	}
+
+	public function update_data_keranjang($data,$id)
+	{
+		$this->db->where('id',$id);
+		$this->db->update($this->tbkeranjang,$data);
+	}
+
+	public function update_detail_keranjang($dataDetail,$idProduk,$idKeranjang)
+	{
+		$this->db->where('id_produk',$idProduk);
+		$this->db->where('id_keranjang',$idKeranjang);
+		$this->db->update($this->tbdetailkeranjang,$dataDetail);
+	}
+
+
 }

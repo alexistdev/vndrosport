@@ -41,7 +41,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="300dp"
 					android:scaleType="fitXY"
-					android:src="@drawable/raket"/>
+					android:src="@drawable/no_image"/>
 
 			</androidx.cardview.widget.CardView>
 
