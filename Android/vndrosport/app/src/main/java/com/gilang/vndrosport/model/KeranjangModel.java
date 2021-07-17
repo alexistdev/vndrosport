@@ -16,6 +16,7 @@ public class KeranjangModel {
 	@SerializedName("gambar")
 	private final String gambarProduk;
 
+
 	public KeranjangModel(String idDetailKeranjang, String namaProduk, String idKeranjang, String jumlahProduk, String subTotal, String gambarProduk) {
 		this.idDetailKeranjang = idDetailKeranjang;
 		this.namaProduk = namaProduk;

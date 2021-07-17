@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gilang.vndrosport.API.APIService;
@@ -17,10 +19,13 @@ import com.gilang.vndrosport.API.NoConnectivityException;
 import com.gilang.vndrosport.R;
 import com.gilang.vndrosport.adapter.KeranjangAdapter;
 import com.gilang.vndrosport.model.KeranjangModel;
+import com.gilang.vndrosport.model.TotalModel;
 import com.gilang.vndrosport.response.ResponseKeranjang;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +37,8 @@ public class keranjang_fragment extends Fragment {
 	private RecyclerView gridView;
 	private KeranjangAdapter keranjangAdapter;
 	private List<KeranjangModel> daftarKeranjang;
+	private LinearLayout layoutpesankosong,mLayoutTotal,mlayoutAlamat,mlayouttombol;
+	private TextView mSubTotal,mBiayaAntar,mTotalBiaya,mNamaLengkap,mNoTelp,mAlamat;
 
 
 
@@ -42,7 +49,58 @@ public class keranjang_fragment extends Fragment {
 		dataInit(mview);
 		setupRecyclerView();
 		setData(getContext());
+		setTotal(getContext());
 		return mview;
+	}
+
+	private void tidakTampil(){
+		mLayoutTotal.setVisibility(View.GONE);
+		mlayoutAlamat.setVisibility(View.GONE);
+		mlayouttombol.setVisibility(View.GONE);
+		layoutpesankosong.setVisibility(View.VISIBLE);
+	}
+	private void tampilKotak(){
+		mLayoutTotal.setVisibility(View.VISIBLE);
+		mlayoutAlamat.setVisibility(View.VISIBLE);
+		mlayouttombol.setVisibility(View.VISIBLE);
+		layoutpesankosong.setVisibility(View.INVISIBLE);
+	}
+
+	private void setTotal(Context mContext){
+		try{
+			Call<TotalModel> call = APIService.Factory.create(mContext).dataTotal("1", "XiTYHklpnU");
+			call.enqueue(new Callback<TotalModel>() {
+				@EverythingIsNonNull
+				@Override
+				public void onResponse(Call<TotalModel> call, Response<TotalModel> response) {
+					if(response.isSuccessful()){
+						if(response.body() != null){
+							Locale localeID = new Locale("in", "ID");
+							String eSubTotal = NumberFormat.getNumberInstance(localeID).format(Integer.parseInt(response.body().getSubTotal()));
+							String eBiayaAntar = NumberFormat.getNumberInstance(localeID).format(Integer.parseInt(response.body().getBiayaAntar()));
+							String eTotalBiaya = NumberFormat.getNumberInstance(localeID).format(Integer.parseInt(response.body().getTotalBiaya()));
+							mSubTotal.setText(String.format("%s%s",getResources().getString(R.string.cart16),eSubTotal));
+							mBiayaAntar.setText(String.format("%s%s",getResources().getString(R.string.cart16),eBiayaAntar));
+							mTotalBiaya.setText(String.format("%s%s",getResources().getString(R.string.cart16),eTotalBiaya));
+							mNamaLengkap.setText(response.body().getNamaLengkap());
+							mNoTelp.setText(response.body().getNoTelp());
+							mAlamat.setText(response.body().getAlamat());
+
+						}
+					}
+				}
+				@EverythingIsNonNull
+				@Override
+				public void onFailure(Call<TotalModel> call, Throwable t) {
+					if(t instanceof NoConnectivityException) {
+						pesan("Internet Offline!");
+					}
+				}
+			});
+		} catch (Exception e){
+			e.printStackTrace();
+			pesan(e.getMessage());
+		}
 	}
 
 	public void setData(Context mContext)
@@ -57,6 +115,7 @@ public class keranjang_fragment extends Fragment {
 						if(response.body() != null){
 							daftarKeranjang = response.body().getDaftarKeranjang();
 							keranjangAdapter.replaceData(daftarKeranjang);
+							tampilKotak();
 						}
 					}
 				}
@@ -76,7 +135,18 @@ public class keranjang_fragment extends Fragment {
 
 
 	private void dataInit(View mview){
+		mAlamat = mview.findViewById(R.id.tvAlamat);
+		mNoTelp = mview.findViewById(R.id.tvTelepon);
+		mNamaLengkap = mview.findViewById(R.id.tvNamaPengguna);
+		mTotalBiaya = mview.findViewById(R.id.tvTotalBiaya);
+		mBiayaAntar = mview.findViewById(R.id.tvBiayaAntar);
+		mSubTotal = mview.findViewById(R.id.tvSubTotal);
+		mlayouttombol = mview.findViewById(R.id.layoutTombolCheckout);
+		mlayoutAlamat =  mview.findViewById(R.id.layoutAlamat);
+		mLayoutTotal = mview.findViewById(R.id.layoutTotal);
+		layoutpesankosong = mview.findViewById(R.id.layoutkeranjang);
 		gridView = mview.findViewById(R.id.rcCart);
+		tidakTampil();
 	}
 
 	private void setupRecyclerView() {

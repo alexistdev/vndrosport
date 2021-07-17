@@ -20,7 +20,9 @@ import com.gilang.vndrosport.config.Constants;
 import com.gilang.vndrosport.model.ProdukModel;
 import com.gilang.vndrosport.page.Detailproduk;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyProdukHolder>{
 	public List<ProdukModel> mProdukList;
@@ -46,8 +48,11 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyProdukHo
 				.load(Constants.IMAGES_URL+mProdukList.get(position).getGambarProduk())
 				.apply(new RequestOptions().error(R.drawable.no_image))
 				.into(MyProdukHolder.mGambar);
+		Locale localeID = new Locale("in", "ID");
+		int harga = Integer.parseInt(mProdukList.get(position).getHargaProduk());
+		String eHarga = NumberFormat.getNumberInstance(localeID).format(harga);
 		holder.mJudul.setText(mProdukList.get(position).getNamaProduk());
-		holder.mHarga.setText("Rp " + mProdukList.get(position).getHargaProduk());
+		holder.mHarga.setText(String.format("%s%s",holder.itemView.getContext().getString(R.string.cart16),eHarga));
 		holder.mBeli.setOnClickListener(v -> Toast.makeText(v.getContext(),"test",Toast.LENGTH_LONG).show());
 		holder.itemView.setOnClickListener(view -> {
 			Intent mIntent = new Intent(view.getContext(), Detailproduk.class);

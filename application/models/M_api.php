@@ -13,6 +13,7 @@ class M_api extends CI_Model
 		$this->tbkategori = 'kategori';
 		$this->tbtoko = 'toko';
 		$this->tbusers = 'users';
+		$this->tbdetailuser = 'detailuser';
 		$this->tbkeranjang = 'keranjang';
 		$this->tbdetailkeranjang = 'detailkeranjang';
 	}
@@ -105,6 +106,14 @@ class M_api extends CI_Model
 		$this->db->where('id_produk',$idProduk);
 		$this->db->where('id_keranjang',$idKeranjang);
 		$this->db->update($this->tbdetailkeranjang,$dataDetail);
+	}
+
+	public function get_total_keranjang($idUser)
+	{
+		$this->db->select("$this->tbdetailuser.nama_lengkap,$this->tbdetailuser.notelp,$this->tbdetailuser.alamat,$this->tbkeranjang.sub_total,$this->tbkeranjang.biaya_antar,$this->tbkeranjang.total_biaya");
+		$this->db->join($this->tbdetailuser,"$this->tbdetailuser.id_user = $this->tbkeranjang.id_user");
+		$this->db->where("$this->tbkeranjang.id_user",$idUser);
+		return $this->db->get($this->tbkeranjang);
 	}
 
 

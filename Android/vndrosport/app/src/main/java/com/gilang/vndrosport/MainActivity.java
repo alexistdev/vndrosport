@@ -37,6 +37,16 @@ public class MainActivity extends AppCompatActivity {
 			}
 			return loadFragment(fragment);
 		});
+
+		Bundle extras = getIntent().getExtras();
+		if(extras!=null && extras.containsKey("bukaKeranjang")) {
+			boolean bukaKeranjang = extras.getBoolean("bukaKeranjang");
+			if(bukaKeranjang){
+				Fragment fragment = null;
+				fragment = new keranjang_fragment();
+				loadFragment(fragment);
+			}
+		}
     }
 
 	private boolean loadFragment(Fragment fragment) {
@@ -48,4 +58,6 @@ public class MainActivity extends AppCompatActivity {
 		}
 		return false;
 	}
+
+
 }

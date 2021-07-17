@@ -17,7 +17,9 @@ import com.gilang.vndrosport.config.Constants;
 import com.gilang.vndrosport.model.KeranjangModel;
 
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.MyKeranjangHolder> {
 	public List<KeranjangModel> mKeranjangList;
@@ -43,8 +45,11 @@ public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.MyKe
 				.load(Constants.IMAGES_URL+mKeranjangList.get(position).getGambarProduk())
 				.apply(new RequestOptions().error(R.drawable.no_image))
 				.into(MyKeranjangHolder.mGambar);
+		Locale localeID = new Locale("in", "ID");
+		int harga = Integer.parseInt(mKeranjangList.get(position).getSubTotal());
+		String eHarga = NumberFormat.getNumberInstance(localeID).format(harga);
 		holder.mJudul.setText(mKeranjangList.get(position).getNamaProduk());
-		holder.mharga.setText(mKeranjangList.get(position).getSubTotal());
+		holder.mharga.setText(String.format("%s%s",holder.itemView.getContext().getString(R.string.cart16),eHarga));
 		holder.mJumlah.setText(mKeranjangList.get(position).getJumlahProduk());
 	}
 

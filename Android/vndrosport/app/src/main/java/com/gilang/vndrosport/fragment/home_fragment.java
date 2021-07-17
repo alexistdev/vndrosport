@@ -17,6 +17,7 @@ import com.gilang.vndrosport.API.NoConnectivityException;
 import com.gilang.vndrosport.R;
 import com.gilang.vndrosport.adapter.ProdukAdapter;
 import com.gilang.vndrosport.adapter.SpesialAdapter;
+import com.gilang.vndrosport.model.KeranjangModel;
 import com.gilang.vndrosport.model.ProdukModel;
 import com.gilang.vndrosport.model.SpesialModel;
 import com.gilang.vndrosport.response.ResponseProduk;
@@ -37,24 +38,6 @@ public class home_fragment extends Fragment {
 	private List<SpesialModel> daftarSpesial;
 	private List<ProdukModel> daftarProduk;
 
-//    public static home_fragment newInstance(String param1, String param2) {
-//        home_fragment fragment = new home_fragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
-//
 
 
 	@Override
@@ -100,6 +83,7 @@ public class home_fragment extends Fragment {
 			pesan(e.getMessage());
 		}
 	}
+
 
 	private void setData(Context mContext) {
 		try {

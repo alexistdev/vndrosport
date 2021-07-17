@@ -38,9 +38,10 @@ class Keranjang extends RestController
 					$idKeranjang = $getKeranjang->row()->id;
 					if($getIdProduk->num_rows() != 0){
 						//produk akan diperbaharui jumlahnya
+						$jumlahOld = $getIdProduk->row()->jumlah;
 						$dataDetail = [
-							'jumlah' => $jumlah,
-							'm_sub_total' => $msubTotal
+							'jumlah' => $jumlah + $jumlahOld,
+							'm_sub_total' =>  ($jumlah + $jumlahOld) * $hargaProduk,
 						];
 						$this->api->update_detail_keranjang($dataDetail,$idProduk,$idKeranjang);
 						$subTotal = $this->api->get_sub_total($idKeranjang);
@@ -130,6 +131,38 @@ class Keranjang extends RestController
 					'message' => 'Data berhasil didapatkan !',
 				];
 				$this->response($dataResponse, 200);
+			}else{
+				$this->response( [
+					'status' => false,
+					'message' => 'No data found'
+				], 404 );
+			}
+		} else {
+			$this->response( [
+				'status' => false,
+				'message' => 'Not Authorized'
+			], 404 );
+		}
+	}
+
+	public function total_get()
+	{
+		$idUser = $this->get('id_user');
+		$myToken = $this->get('token');
+		$cekUser = $this->api->cek_user($idUser,$myToken);
+		if($cekUser!= 0){
+			$getDataTotal = $this->api->get_total_keranjang($idUser);
+			if($getDataTotal->num_rows()!= 0){
+				foreach ($getDataTotal->result_array() as $row){
+					$data['status'] = true;
+					$data['nama_lengkap'] = ucwords($row['nama_lengkap']);
+					$data['notelp'] =$row['notelp'];
+					$data['alamat'] = ucfirst($row['alamat']);
+					$data['sub_total'] =$row['sub_total'];
+					$data['biaya_antar'] =$row['biaya_antar'];
+					$data['total_biaya'] =$row['total_biaya'];
+				}
+				$this->response($data, 200);
 			}else{
 				$this->response( [
 					'status' => false,

@@ -52,6 +52,7 @@
 	<string name="produk13">Warna : </string>
 	<string name="produk14">Last online : </string>
 	<string name="produk15">Rp. </string>
+	<string name="produk16">BELI</string>
 
 	<!--  Keranjang Belanja   -->
 	<string name="cart1">Sub Total</string>
@@ -68,5 +69,7 @@
 	<string name="cart12">- 30%</string>
 	<string name="cart13">Rp.10.000,-</string>
 	<string name="cart14">01</string>
+	<string name="cart15">Keranjang Kosong</string>
+	<string name="cart16">Rp.</string>
 
 </resources>
