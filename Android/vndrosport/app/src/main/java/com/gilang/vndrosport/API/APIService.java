@@ -21,6 +21,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface APIService {
@@ -61,6 +62,15 @@ public interface APIService {
 									@Field("token") String mytoken,
 									@Field("idProduk") String idProduk,
 									@Field("jumlah") String jumlah);
+
+	/* Menambah Produk */
+	@FormUrlEncoded
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@PUT("api/keranjang")
+	Call<KeranjangModel> updateKeranjang(@Field("id_user") String idUser,
+										 @Field("token") String token,
+										 @Field("idProduk") String idProduk,
+										 @Field("opsi") String opsi);
 
 
 	class Factory{

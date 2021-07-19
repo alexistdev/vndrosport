@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 public class KeranjangModel {
 	@SerializedName("id")
 	private final String idDetailKeranjang;
+	@SerializedName("id_produk")
+	private final String idProduk;
 	@SerializedName("nama_produk")
 	private final String namaProduk;
 	@SerializedName("id_keranjang")
@@ -17,8 +19,9 @@ public class KeranjangModel {
 	private final String gambarProduk;
 
 
-	public KeranjangModel(String idDetailKeranjang, String namaProduk, String idKeranjang, String jumlahProduk, String subTotal, String gambarProduk) {
+	public KeranjangModel(String idDetailKeranjang, String idProduk, String namaProduk, String idKeranjang, String jumlahProduk, String subTotal, String gambarProduk) {
 		this.idDetailKeranjang = idDetailKeranjang;
+		this.idProduk = idProduk;
 		this.namaProduk = namaProduk;
 		this.idKeranjang = idKeranjang;
 		this.jumlahProduk = jumlahProduk;
@@ -28,6 +31,10 @@ public class KeranjangModel {
 
 	public String getIdDetailKeranjang() {
 		return idDetailKeranjang;
+	}
+
+	public String getIdProduk() {
+		return idProduk;
 	}
 
 	public String getNamaProduk() {

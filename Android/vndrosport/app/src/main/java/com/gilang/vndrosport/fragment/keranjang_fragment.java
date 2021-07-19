@@ -1,19 +1,18 @@
 package com.gilang.vndrosport.fragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.gilang.vndrosport.API.APIService;
 import com.gilang.vndrosport.API.NoConnectivityException;
 import com.gilang.vndrosport.R;
@@ -21,19 +20,18 @@ import com.gilang.vndrosport.adapter.KeranjangAdapter;
 import com.gilang.vndrosport.model.KeranjangModel;
 import com.gilang.vndrosport.model.TotalModel;
 import com.gilang.vndrosport.response.ResponseKeranjang;
-
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.internal.EverythingIsNonNull;
 
 
-public class keranjang_fragment extends Fragment {
+public class keranjang_fragment extends Fragment implements KeranjangAdapter.ClickListener{
+
 	private RecyclerView gridView;
 	private KeranjangAdapter keranjangAdapter;
 	private List<KeranjangModel> daftarKeranjang;
@@ -51,6 +49,15 @@ public class keranjang_fragment extends Fragment {
 		setData(getContext());
 		setTotal(getContext());
 		return mview;
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		setupRecyclerView();
+		setData(getContext());
+		setTotal(getContext());
+		keranjangAdapter.notifyDataSetChanged();
 	}
 
 	private void tidakTampil(){
@@ -157,13 +164,29 @@ public class keranjang_fragment extends Fragment {
 			}
 		};
 		if(this.getContext() != null){
-			keranjangAdapter = new KeranjangAdapter(new ArrayList<>(),getContext());
+			keranjangAdapter = new KeranjangAdapter(getContext(),new ArrayList<>(),this::dataItemKeranjang);
 			gridView.setLayoutManager(linearLayoutManager);
 			gridView.setAdapter(keranjangAdapter);
 		}
 	}
 
-	private void pesan(String msg)
+	@Override
+	public void dataItemKeranjang(String msg) {
+		setData(getContext());
+		setTotal(getContext());
+		pesan(msg);
+	}
+
+	private void pesan(String msg){
+		Toast toast = Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT);
+		View view = toast.getView();
+		TextView  view1=(TextView)view.findViewById(android.R.id.message);
+		view1.setTextColor(Color.WHITE);
+		view.setBackgroundResource(R.color.warnaPesanToast);
+		toast.setGravity(Gravity.CENTER, 0,0);
+		toast.show();
+	}
+	private void pesan2(String msg)
 	{
 		Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
 	}

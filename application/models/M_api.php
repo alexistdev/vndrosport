@@ -82,7 +82,7 @@ class M_api extends CI_Model
 	public function get_detail_keranjang_byid($idKeranjang=null)
 	{
 		$this->db->where('id_keranjang',$idKeranjang);
-		$this->db->select("$this->tbproduk.nama_produk,$this->tbproduk.gambar,$this->tbdetailkeranjang.id_keranjang,$this->tbdetailkeranjang.jumlah,$this->tbdetailkeranjang.m_sub_total,$this->tbdetailkeranjang.id");
+		$this->db->select("$this->tbdetailkeranjang.id_produk,$this->tbproduk.nama_produk,$this->tbproduk.gambar,$this->tbdetailkeranjang.id_keranjang,$this->tbdetailkeranjang.jumlah,$this->tbdetailkeranjang.m_sub_total,$this->tbdetailkeranjang.id");
 		$this->db->join($this->tbproduk,"$this->tbproduk.id = $this->tbdetailkeranjang.id_produk");
 		return $this->db->get($this->tbdetailkeranjang);
 	}

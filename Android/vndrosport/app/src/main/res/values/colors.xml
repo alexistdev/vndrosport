@@ -14,4 +14,5 @@
 
 	<color name="detail1">#e6ffffff</color>
 	<color name="detail2">#70dfdfdf</color>
+	<color name="warnaPesanToast">#4CAF50</color>
 </resources>

@@ -176,4 +176,83 @@ class Keranjang extends RestController
 			], 404 );
 		}
 	}
+
+	public function index_put()
+	{
+		$idUser = $this->put('id_user');
+		$myToken = $this->put('token');
+		$idProduk = $this->put('idProduk');
+		$opsi = $this->put('opsi');
+		$cekUser = $this->api->cek_user($idUser,$myToken);
+		if($cekUser!= 0){
+			//cek apakah idProduk Ada
+			$getProduk = $this->api->get_data_produk($idProduk);
+			if($getProduk->num_rows() != 0){
+				$getDetailKeranjang = $this->api->get_detail_keranjang($idProduk);
+				$idKeranjang = $getDetailKeranjang->row()->id_keranjang;
+				$jumlah = $getDetailKeranjang->row()->jumlah;
+				$hargaProduk = $getProduk->row()->harga;
+
+				switch ($opsi) {
+					case 1:
+						$jumlah++;
+						$dataDetailKeranjang = [
+							'jumlah' => $jumlah,
+							'm_sub_total' => $hargaProduk * $jumlah,
+						];
+						$this->api->update_detail_keranjang($dataDetailKeranjang,$idProduk,$idKeranjang);
+						$subTotal = $this->api->get_sub_total($idKeranjang);
+						$dataKeranjang = [
+							'sub_total' => $subTotal,
+							'total_biaya' => $subTotal+20000,
+						];
+						$this->api->update_data_keranjang($dataKeranjang,$idKeranjang);
+						$dataResponse1 = [
+							'status' => true,
+							'message' => 'Produk ditambahkan !',
+						];
+						$this->response($dataResponse1, 200);
+						break;
+					case 2:
+						$jumlah--;
+						$dataDetailKeranjang = [
+							'jumlah' => $jumlah,
+							'm_sub_total' => $hargaProduk * $jumlah,
+						];
+						$this->api->update_detail_keranjang($dataDetailKeranjang,$idProduk,$idKeranjang);
+						$subTotal = $this->api->get_sub_total($idKeranjang);
+						$dataKeranjang = [
+							'sub_total' => $subTotal,
+							'total_biaya' => $subTotal+20000,
+						];
+						$this->api->update_data_keranjang($dataKeranjang,$idKeranjang);
+						$dataResponse1 = [
+							'status' => true,
+							'message' => 'Produk dikurangi !',
+						];
+						$this->response($dataResponse1, 200);
+						break;
+						break;
+					default:
+						$dataResponse = [
+							'status' => false,
+							'message' => 'Gagal Mendapatkan Data !',
+						];
+						$this->response($dataResponse, 404);
+						break;
+				}
+			} else {
+				$this->response( [
+					'status' => false,
+					'message' => 'No data found'
+				], 404 );
+			}
+		}else{
+			$this->response( [
+				'status' => false,
+				'message' => 'Not Authorized'
+			], 404 );
+		}
+
+	}
 }
