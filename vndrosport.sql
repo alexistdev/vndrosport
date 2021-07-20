@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2021 at 01:45 AM
+-- Generation Time: Jul 20, 2021 at 02:24 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -85,8 +85,9 @@ CREATE TABLE `detailkeranjang` (
 --
 
 INSERT INTO `detailkeranjang` (`id`, `id_keranjang`, `id_produk`, `jumlah`, `m_sub_total`) VALUES
-(8, 2, 2, 3, 1350000),
-(9, 2, 3, 2, 900000);
+(8, 2, 2, 14, 6300000),
+(9, 2, 3, 14, 1540000),
+(10, 2, 4, 3, 750000);
 
 -- --------------------------------------------------------
 
@@ -112,6 +113,20 @@ CREATE TABLE `detailuser` (
 
 INSERT INTO `detailuser` (`id_detailuser`, `nama_lengkap`, `notelp`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `id_user`) VALUES
 (1, 'alex', '082371408678', 'Jalan keren agak kesamping', NULL, NULL, NULL, NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_pesanan`
+--
+
+CREATE TABLE `detail_pesanan` (
+  `id` int(11) NOT NULL,
+  `id_pesanan` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `sub_total` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -182,7 +197,7 @@ CREATE TABLE `keranjang` (
 --
 
 INSERT INTO `keranjang` (`id`, `id_user`, `sub_total`, `biaya_antar`, `total_biaya`) VALUES
-(2, 1, 2250000, 20000, 2270000);
+(2, 1, 8590000, 20000, 8610000);
 
 -- --------------------------------------------------------
 
@@ -227,6 +242,23 @@ INSERT INTO `negara` (`id`, `iso`, `code`, `nama_negara`, `created_at`, `updated
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pesanan`
+--
+
+CREATE TABLE `pesanan` (
+  `id` int(11) NOT NULL,
+  `id_user` bigint(20) UNSIGNED NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `tanggal` int(11) NOT NULL,
+  `sub_total` int(11) NOT NULL,
+  `biaya_antar` int(11) NOT NULL,
+  `total_jumlah` int(11) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `produk`
 --
 
@@ -253,7 +285,8 @@ CREATE TABLE `produk` (
 
 INSERT INTO `produk` (`id`, `id_kategori`, `id_merek`, `nama_produk`, `warna`, `ukuran`, `harga`, `stok`, `gambar`, `deskripsi`, `id_toko`, `created_at`, `updated_at`, `status`) VALUES
 (2, 1, 1, 'Raket aluminium kelas atas', 'polos', 'L', 450000, 12, 'raket.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, ', 1, 1221212, 1212121, 1),
-(3, 1, 1, 'Sepatu Bola Legendaris', 'merah', 'L', 110000, 12, 'sepatu.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, ', 1, 1221212, 1212121, 1);
+(3, 1, 1, 'Sepatu Bola Legendaris', 'merah', 'L', 110000, 12, 'sepatu.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, ', 1, 1221212, 1212121, 1),
+(4, 2, 1, 'Bola Sepak Keren', 'merah', 'L', 250000, 12, 'bola.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, ', 1, 1221212, 1212121, 1);
 
 -- --------------------------------------------------------
 
@@ -375,6 +408,13 @@ ALTER TABLE `detailuser`
   ADD KEY `id_user` (`id_user`);
 
 --
+-- Indexes for table `detail_pesanan`
+--
+ALTER TABLE `detail_pesanan`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pesanan` (`id_pesanan`);
+
+--
 -- Indexes for table `kabupaten`
 --
 ALTER TABLE `kabupaten`
@@ -405,6 +445,13 @@ ALTER TABLE `merek`
 --
 ALTER TABLE `negara`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pesanan`
+--
+ALTER TABLE `pesanan`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `produk`
@@ -457,13 +504,19 @@ ALTER TABLE `api_keys`
 -- AUTO_INCREMENT for table `detailkeranjang`
 --
 ALTER TABLE `detailkeranjang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `detailuser`
 --
 ALTER TABLE `detailuser`
   MODIFY `id_detailuser` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `detail_pesanan`
+--
+ALTER TABLE `detail_pesanan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kabupaten`
@@ -496,10 +549,16 @@ ALTER TABLE `negara`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `pesanan`
+--
+ALTER TABLE `pesanan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `provinsi`
@@ -542,6 +601,12 @@ ALTER TABLE `detailuser`
   ADD CONSTRAINT `detailuser_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `detail_pesanan`
+--
+ALTER TABLE `detail_pesanan`
+  ADD CONSTRAINT `detail_pesanan_ibfk_1` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `kabupaten`
 --
 ALTER TABLE `kabupaten`
@@ -552,6 +617,12 @@ ALTER TABLE `kabupaten`
 --
 ALTER TABLE `keranjang`
   ADD CONSTRAINT `keranjang_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `pesanan`
+--
+ALTER TABLE `pesanan`
+  ADD CONSTRAINT `pesanan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `produk`

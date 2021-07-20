@@ -16,6 +16,7 @@ class M_api extends CI_Model
 		$this->tbdetailuser = 'detailuser';
 		$this->tbkeranjang = 'keranjang';
 		$this->tbdetailkeranjang = 'detailkeranjang';
+		$this->tbpesanan = 'pesanan';
 	}
 
 	public function get_data_spesial($single=false)
@@ -59,6 +60,13 @@ class M_api extends CI_Model
 			$this->db->where('id_user',$idUser);
 		}
 		return $this->db->get($this->tbkeranjang);
+	}
+
+	public function get_judul_keranjang($idKeranjang)
+	{
+		$this->db->limit(1);
+		$this->db->join($this->tbproduk,"$this->tbproduk.id = $this->tbdetailkeranjang.id_produk");
+		return $this->db->get($this->tbdetailkeranjang);
 	}
 
 	public function simpan_keranjang($data)
@@ -116,5 +124,14 @@ class M_api extends CI_Model
 		return $this->db->get($this->tbkeranjang);
 	}
 
+	#########################################################################################
+	#                          pesanan & detail_pesanan                 					#
+	#########################################################################################
+
+	public function simpan_pesanan($dataPesanan)
+	{
+		$this->db->insert($this->tbpesanan,$data);
+		return $this->db->insert_id();
+	}
 
 }

@@ -71,6 +71,11 @@
 	<string name="cart14">01</string>
 	<string name="cart15">Keranjang Kosong</string>
 	<string name="cart16">Rp.</string>
+	<string name="cart17">Kembali</string>
+	<string name="cart18">Silahkan transfer ke:</string>
+	<string name="cart19">BCA</string>
+	<string name="cart120">No.Rek: 123456789</string>
+	<string name="cart121">PT VndroSport , tbk INC</string>
 
 
 </resources>

@@ -15,9 +15,13 @@
 		android:supportsRtl="true"
 		android:theme="@style/Theme.Vndrosport"
 		android:usesCleartextTraffic="true">
-		<activity android:name=".page.Detailproduk"
+		<activity android:name=".page.Success"
 			android:parentActivityName=".MainActivity"
 			android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+		<activity
+			android:name=".page.Detailproduk"
+			android:parentActivityName=".MainActivity"
+			android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
 		<activity android:name=".page.login" />
 		<activity
 			android:name=".MainActivity"

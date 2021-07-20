@@ -77,5 +77,6 @@ $route['api/produk'] = 'api/Produk';
 $route['api/produk/detail'] = 'api/Produk/detail';
 $route['api/keranjang'] = 'api/Keranjang';
 $route['api/keranjang/total'] = 'api/Keranjang/total';
+$route['api/Checkout'] = 'api/Checkout';
 
 
