@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Member extends CI_Controller
+class Produk extends CI_Controller
 {
-
 	public $session;
+	public $toko;
 
 
 	public function __construct()
@@ -24,14 +24,12 @@ class Member extends CI_Controller
 	public function index()
 	{
 		$data['title'] = _store();
-		$view ='v_member';
-		$this->_layout($data,$view);
-	}
+		$idUser = $this->session->userdata('id_user');
+		$idToko = $this->toko->get_data_toko($idUser)->row()->id;
+		$data['dataProduk'] = $this->toko->get_data_produk($idToko)->result_array();
 
-	public function logout()
-	{
-		$this->session->sess_destroy();
-		redirect('Login');
+		$view ='v_produk';
+		$this->_layout($data,$view);
 	}
 
 }

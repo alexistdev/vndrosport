@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 	<!-- Brand Logo -->
-	<a href="<?= base_url('Member'); ?>" class="brand-link">
+	<a href="<?= base_url('store/dashboard'); ?>" class="brand-link">
 		<img src="<?= base_url('gambar/myicon.png'); ?>"
 			 alt="AdminLTE Logo"
 			 class="brand-image img-circle elevation-3"
@@ -19,7 +19,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 				<img src="<?= base_url('gambar/myicon.png'); ?>" class="img-circle elevation-2" alt="User Image">
 			</div>
 			<div class="info">
-				<a href="<?= base_url('admin/dashboard'); ?>" class="d-block">Dashboard</a>
+				<a href="<?= base_url('store/dashboard'); ?>" class="d-block">Dashboard</a>
 			</div>
 		</div>
 
@@ -29,61 +29,32 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 				<!-- Add icons to the links using the .nav-icon class
 					 with font-awesome or any other icon font library -->
 				<li class="nav-item has-treeview">
-					<a href="<?= base_url('admin/dashboard'); ?>" class="nav-link">
+					<a href="<?= base_url('store/dashboard'); ?>" class="nav-link">
 						<i class="nav-icon fas fa-tachometer-alt"></i>
 						<p>
 							Dashboard
 						</p>
 					</a>
 				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link">
-						<i class="nav-icon fas fa-file"></i>
-						<p>
-							Master Data
-							<i class="fas fa-angle-left right"></i>
-						</p>
-					</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item">
-							<a href="<?= base_url('admin/provinsi'); ?>" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Master Provinsi</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?= base_url('admin/kabupaten'); ?>" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Master Kabupaten</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="<?= base_url('admin/kecamatan'); ?>" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Master Kecamatan</p>
-							</a>
-						</li>
-					</ul>
-				</li>
 
 				<li class="nav-item">
-					<a href="<?= base_url('admin/client'); ?>" class="nav-link">
-						<i class="nav-icon fas fa-user-friends"></i>
+					<a href="<?= base_url('store/produk'); ?>" class="nav-link">
+						<i class="nav-icon fas fa-box"></i>
 						<p>
-							Client
+							Produk
 						</p>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?= base_url('admin/staff'); ?>" class="nav-link">
-						<i class="nav-icon fas fa-users-cog"></i>
+					<a href="<?= base_url('store/transaksi'); ?>" class="nav-link">
+						<i class="nav-icon fas fa-balance-scale"></i>
 						<p>
-							Toko
+							Transaksi
 						</p>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?= base_url('admin/setting'); ?>" class="nav-link">
+					<a href="<?= base_url('store/setting'); ?>" class="nav-link">
 						<i class="nav-icon fas fa-cog"></i>
 						<p>
 							Setting

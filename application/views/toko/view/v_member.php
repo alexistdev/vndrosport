@@ -3,15 +3,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
 <html>
-<?php $this->load->view('admin/template/v_header') ?>
+<?php $this->load->view('toko/template/v_header') ?>
 
 <body class="hold-transition sidebar-mini pace-danger">
 <div class="wrapper">
 	<!-- Site wrapper -->
-	<?php $this->load->view('admin/template/v_navbar') ?>
-	<?php $this->load->view('admin/template/v_sidebar') ?>
-	<?php $this->load->view('admin/konten/k_member') ?>
-	<?php $this->load->view('admin/template/v_footer') ?>
+	<?php $this->load->view('toko/template/v_navbar') ?>
+	<?php $this->load->view('toko/template/v_sidebar') ?>
+	<?php $this->load->view('toko/konten/k_member') ?>
+	<?php $this->load->view('toko/template/v_footer') ?>
 </div>
 
 <!-- jQuery -->

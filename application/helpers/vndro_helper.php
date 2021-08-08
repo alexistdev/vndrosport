@@ -114,6 +114,14 @@ if ( ! function_exists('_myJudul')) {
 	}
 }
 
+/** untuk title */
+if ( ! function_exists('_store')) {
+	function _store()
+	{
+		return "VndroSport Store";
+	}
+}
+
 /** untuk title pendek */
 if ( ! function_exists('_judulPendek')) {
 	function _judulPendek()

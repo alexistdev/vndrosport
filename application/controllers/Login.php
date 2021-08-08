@@ -90,7 +90,8 @@ class Login extends CI_Controller {
 				redirect("Login");
 			} else {
 				$data_session = [
-					'is_login_toko' => TRUE
+					'id_user' => $cekLogin->id_user,
+					'is_login_toko' => TRUE,
 				];
 				$this->session->set_userdata($data_session);
 				redirect("store/dashboard");

@@ -35,5 +35,7 @@ $route['api/Checkout'] = 'api/Checkout';
 
 /* Route Toko */
 $route['store/dashboard'] = 'store/Member/index';
+$route['store/logout'] = 'store/Member/logout';
+$route['store/produk'] = 'store/Produk/index';
 
 
