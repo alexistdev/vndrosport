@@ -15,6 +15,7 @@ $route['admin/kabupaten/edit/(:any)'] = 'administrator/Kabupatens/edit/$1';
 $route['admin/kabupaten/hapus/(:any)'] = 'administrator/Kabupatens/hapus/$1';
 $route['admin/kecamatan'] = 'administrator/Kecamatan';
 /* Route Administrator */
+$route['admin/login'] = 'administrator/Login/index';
 $route['admin/dashboard'] = 'administrator/Member/index';
 $route['admin/setting'] = 'administrator/Setting/index';
 $route['admin/logout'] = 'administrator/Member/Logout';
@@ -31,5 +32,8 @@ $route['api/produk/detail'] = 'api/Produk/detail';
 $route['api/keranjang'] = 'api/Keranjang';
 $route['api/keranjang/total'] = 'api/Keranjang/total';
 $route['api/Checkout'] = 'api/Checkout';
+
+/* Route Toko */
+$route['store/dashboard'] = 'store/Member/index';
 
 

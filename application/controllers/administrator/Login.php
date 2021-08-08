@@ -13,9 +13,9 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('M_toko', 'login');
-		if ($this->session->userdata('is_login_in') == TRUE) {
-			redirect('Member');
+		$this->load->model('m_admin', 'login');
+		if ($this->session->userdata('is_login_admin') == TRUE) {
+			redirect('admin/dashboard');
 		}
 	}
 
@@ -89,11 +89,22 @@ class Login extends CI_Controller {
 				$this->session->set_flashdata('pesan2', '<div class="alert alert-danger" role="alert">Username atau password anda salah!</div>');
 				redirect("Login");
 			} else {
-				$data_session = [
-					'is_login_toko' => TRUE
-				];
-				$this->session->set_userdata($data_session);
-				redirect("store/dashboard");
+				$level= $cekLogin->level;
+
+				switch($level){
+					case 1:
+						$data_session = [
+							'is_login_admin' => TRUE
+						];
+						$this->session->set_userdata($data_session);
+						redirect("admin/dashboard");
+						break;
+
+					default:
+						$this->session->set_flashdata('pesan2', '<div class="alert alert-danger" role="alert">Anda tidak dapat login, silahkan hubungi administrator system!</div>');
+						redirect("Login");
+						break;
+				}
 			}
 		}
 	}

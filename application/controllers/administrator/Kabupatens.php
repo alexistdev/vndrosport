@@ -13,7 +13,7 @@ class Kabupatens extends CI_Controller
 		parent::__construct();
 		$this->load->model('m_admin', 'admin');
 		if ($this->session->userdata('is_login_admin') !== TRUE) {
-			redirect('Login');
+			redirect('admin/login');
 		}
 	}
 

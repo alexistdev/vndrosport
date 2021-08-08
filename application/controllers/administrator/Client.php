@@ -7,14 +7,16 @@ class Client extends CI_Controller
 	public $admin;
 	public $form_validation;
 	public $input;
+	public $toko;
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('m_admin', 'admin');
+		$this->load->model('M_admin', 'admin');
+		$this->load->model('M_toko', 'toko');
 		$this->load->helper('email');
 		if ($this->session->userdata('is_login_admin') !== TRUE) {
-			redirect('Login');
+			redirect('admin/login');
 		}
 	}
 
@@ -109,7 +111,7 @@ class Client extends CI_Controller
 			$password = password_hash($this->input->post('password', TRUE),PASSWORD_BCRYPT);
 			$namaLengkap = $this->input->post('namaLengkap', TRUE);
 			$noTelp = $this->input->post('noTelp', TRUE);
-
+			// tambah di tabel user
 			$dataUser = [
 				'email' => $email,
 				'password' => $password,
@@ -118,15 +120,24 @@ class Client extends CI_Controller
 				'updated_at' => time()
 			];
 			$idUser = $this->admin->simpan_user($dataUser);
+			// tambah di tabel detail user
 			$dataDetail = [
 				'nama_lengkap' => $namaLengkap,
 				'notelp' => $noTelp,
 				'id_user' => $idUser
 			];
 			$this->admin->simpan_detail_user($dataDetail);
+			//tambah di tabel  toko.
+			$dataToko = [
+				'nama_toko' => $namaLengkap,
+				'email' => $email,
+				'telp' => $noTelp,
+				'id_user' => $idUser,
+				'last_online' => time(),
+			];
+			$this->toko->simpan_toko($dataToko);
 			$this->session->set_flashdata('pesan1', '<div class="alert alert-success" role="alert">Data client berhasil ditambahkan!</div>');
 			redirect('admin/client');
 		}
 	}
-
 }

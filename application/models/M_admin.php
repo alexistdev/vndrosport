@@ -13,11 +13,14 @@ class M_admin extends CI_Model
 		$this->tbnegara = 'negara';
 		$this->tbprovinsi = 'provinsi';
 		$this->tbkabupaten = 'kabupaten';
+		$this->tbtoko = 'toko';
 //		$this->tbjeniskendaraan = 'jenis_kendaraan';
 //		$this->tbtipekendaraan = 'tipe_kendaraan';
 //		$this->tbkendaraan = 'kendaraan';
 //		$this->tbinbox = 'inbox';
 	}
+
+
 
 	#########################################################################################
 	#                                   tabel admin                     					#
