@@ -37,5 +37,6 @@ $route['api/Checkout'] = 'api/Checkout';
 $route['store/dashboard'] = 'store/Member/index';
 $route['store/logout'] = 'store/Member/logout';
 $route['store/produk'] = 'store/Produk/index';
+$route['store/produk/detail/(:any)'] = 'store/Produk/detail/$1';
 
 

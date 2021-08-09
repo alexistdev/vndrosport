@@ -10,12 +10,26 @@ class M_toko extends CI_Model
 		$this->toko = 'toko';
 		$this->user = 'users';
 		$this->produk = 'produk';
+		$this->merek = 'merek';
+		$this->kategori = 'kategori';
 	}
 
 	public function validasi_login($username)
 	{
 		$this->db->where('email', $username);
 		return $this->db->get($this->user);
+	}
+	#########################################################################################
+	#                                   tabel kategori                     					#
+	#########################################################################################
+
+	public function get_data_kategori($id=null)
+	{
+		if($id != null){
+			$this->db->where("$this->kategori.id",$id);
+		}
+		$this->db->order_by("$this->kategori.nama_kategori","ASC");
+		return $this->db->get($this->kategori);
 	}
 
 	#########################################################################################
@@ -46,5 +60,29 @@ class M_toko extends CI_Model
 		return $this->db->get($this->produk);
 	}
 
+	public function get_produk($id=null)
+	{
+		if($id != null){
+			$this->db->where("$this->produk.id",$id);
+		}
+		$this->db->order_by("$this->produk.id", "DESC");
+		return $this->db->get($this->produk);
+	}
 
+	public function simpan_produk($data)
+	{
+		$this->db->insert($this->produk,$data);
+	}
+
+	#########################################################################################
+	#                                   tabel merek                       					#
+	#########################################################################################
+	public function get_data_merek($id=null)
+	{
+		if($id != null){
+			$this->db->where("$this->merek.id",$id);
+		}
+		$this->db->order_by("$this->merek.nama_merek", "ASC");
+		return $this->db->get($this->merek);
+	}
 }

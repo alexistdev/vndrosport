@@ -64,7 +64,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										<td class="text-center"><?= sanitasi($row['stok']); ?></td>
 										<td class="text-center"><img src="<?= base_url('gambar/produk/'.sanitasi($row['gambar'])); ?>" alt="<?= sanitasi($row['nama_produk']); ?>" width="50px" height="auto"></td>
 										<td class="text-center">
-											<button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></button>
+											<a href="<?= base_url('store/produk/detail/'.encrypt_url(sanitasi($row['id']))); ?>"><button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></button></a>
 											<button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
 										</td>
 									</tr>
