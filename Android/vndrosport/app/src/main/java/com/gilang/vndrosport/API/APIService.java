@@ -3,6 +3,7 @@ package com.gilang.vndrosport.API;
 import android.content.Context;
 import com.gilang.vndrosport.BuildConfig;
 import com.gilang.vndrosport.config.Constants;
+import com.gilang.vndrosport.model.AkunModel;
 import com.gilang.vndrosport.model.CheckoutModel;
 import com.gilang.vndrosport.model.KeranjangModel;
 import com.gilang.vndrosport.model.LoginModel;
@@ -29,6 +30,23 @@ import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface APIService {
+	//API untuk getAkun
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@FormUrlEncoded
+	@PUT("api/akun")
+	Call<AkunModel> perbaharuiAkun(@Field("id_user") String idUser,
+								   @Field("token") String token,
+									@Field("nama_lengkap") String nama_lengkap,
+									@Field("alamat") String alamat,
+									@Field("password") String password,
+									@Field("no_telp") String no_telp);
+
+	//API untuk getAkun
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@GET("api/akun")
+	Call<AkunModel> tampilAkun(@Query("id_user") String idUser,
+							   @Query("token") String token);
+
 	//API untuk Checkout
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
 	@GET("api/pesanan")

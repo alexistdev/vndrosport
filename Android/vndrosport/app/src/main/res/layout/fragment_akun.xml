@@ -10,7 +10,7 @@
 	<RelativeLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
-	<androidx.cardview.widget.CardView
+		<androidx.cardview.widget.CardView
 		android:id="@+id/layoutForm"
 		android:layout_marginTop="30dp"
 		android:layout_marginBottom="80dp"
@@ -57,17 +57,6 @@
 				android:layout_margin="10dp"
 				android:autofillHints="@string/akun3"
 				android:hint="@string/akun3"
-				android:inputType="text"
-				android:minHeight="48dp"
-				tools:ignore="TextContrastCheck" />
-
-			<EditText
-				android:id="@+id/txt_nomorktp"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="10dp"
-				android:autofillHints="@string/akun4"
-				android:hint="@string/akun4"
 				android:inputType="text"
 				android:minHeight="48dp"
 				tools:ignore="TextContrastCheck" />
