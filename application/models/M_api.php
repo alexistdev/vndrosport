@@ -19,6 +19,30 @@ class M_api extends CI_Model
 		$this->tbpesanan = 'pesanan';
 	}
 
+	#########################################################################################
+	#                          Akun                                     					#
+	#########################################################################################
+
+	public function update_akun($data,$id)
+	{
+		$this->db->where("$this->tbusers.id_user",$id);
+		$this->db->update($this->tbusers,$data);
+	}
+
+	public function update_detail_akun($data,$id)
+	{
+		$this->db->where("$this->tbdetailuser.id_user",$id);
+		$this->db->update($this->tbdetailuser,$data);
+	}
+
+
+	public function get_data_akun($idUser)
+	{
+		$this->db->where("$this->tbusers.id_user",$idUser);
+		$this->db->join($this->tbdetailuser,"$this->tbdetailuser.id = $this->tbusers.id_user");
+		return $this->db->get($this->tbusers);
+
+	}
 	public function validasi_login($email)
 	{
 		$this->db->where('email', $email);
