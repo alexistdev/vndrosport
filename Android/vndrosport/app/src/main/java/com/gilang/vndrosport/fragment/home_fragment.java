@@ -1,10 +1,12 @@
 package com.gilang.vndrosport.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +19,12 @@ import com.gilang.vndrosport.API.NoConnectivityException;
 import com.gilang.vndrosport.R;
 import com.gilang.vndrosport.adapter.ProdukAdapter;
 import com.gilang.vndrosport.adapter.SpesialAdapter;
-import com.gilang.vndrosport.model.KeranjangModel;
 import com.gilang.vndrosport.model.ProdukModel;
 import com.gilang.vndrosport.model.SpesialModel;
+import com.gilang.vndrosport.page.Allproduk;
+import com.gilang.vndrosport.page.Kategori;
+import com.gilang.vndrosport.page.Payment;
+import com.gilang.vndrosport.page.Pengiriman;
 import com.gilang.vndrosport.response.ResponseProduk;
 import com.gilang.vndrosport.response.ResponseSpesial;
 import java.util.ArrayList;
@@ -37,6 +42,7 @@ public class home_fragment extends Fragment {
 	private ProdukAdapter produkAdapter;
 	private List<SpesialModel> daftarSpesial;
 	private List<ProdukModel> daftarProduk;
+	private LinearLayout mDelivery,mPayment,mKategori,mAll;
 
 
 
@@ -47,12 +53,35 @@ public class home_fragment extends Fragment {
 		setupRecyclerView();
 		setData(getContext());
 		setProduk(getContext());
+		mDelivery.setOnClickListener(v -> {
+			Intent intent = new Intent(getContext(), Pengiriman.class);
+			startActivity(intent);
+		});
+		mPayment.setOnClickListener(v -> {
+			Intent intent = new Intent(getContext(), Payment.class);
+			startActivity(intent);
+		});
+		mKategori.setOnClickListener(v -> {
+			Intent intent = new Intent(getContext(), Kategori.class);
+			startActivity(intent);
+		});
+		mAll.setOnClickListener(v -> {
+			Intent intent = new Intent(getContext(), Allproduk.class);
+			startActivity(intent);
+		});
+
+
 		return view;
 	}
 
 	private void dataInit(View mview){
 		gridSpesial = mview.findViewById(R.id.rcSpesial);
 		gridProduk = mview.findViewById(R.id.rcProduk);
+		mDelivery = mview.findViewById(R.id.pengiriman);
+		mPayment = mview.findViewById(R.id.pembayaran);
+		mKategori = mview.findViewById(R.id.kategori);
+		mAll = mview.findViewById(R.id.allproduk);
+
 	}
 
 	private void setProduk(Context mContext){

@@ -74,7 +74,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="100dp">
 				<LinearLayout
-					android:id="@+id/linierProdukSemua"
+					android:id="@+id/allproduk"
 					android:foreground="?android:attr/selectableItemBackground"
 					android:background="@drawable/card_button"
 					android:padding="5dp"
@@ -106,7 +106,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="100dp">
 				<LinearLayout
-					android:id="@+id/linierkategori"
+					android:id="@+id/kategori"
 					android:foreground="?android:attr/selectableItemBackground"
 					android:background="@drawable/card_button"
 					android:padding="5dp"
@@ -138,7 +138,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="100dp">
 				<LinearLayout
-					android:id="@+id/linierPromo"
+					android:id="@+id/pembayaran"
 					android:foreground="?android:attr/selectableItemBackground"
 					android:background="@drawable/card_button"
 					android:padding="5dp"
@@ -148,7 +148,7 @@
 					<ImageView
 						android:adjustViewBounds="true"
 						android:cropToPadding="true"
-						android:src="@drawable/promo"
+						android:src="@drawable/bank"
 						android:contentDescription="@string/dash10"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"/>

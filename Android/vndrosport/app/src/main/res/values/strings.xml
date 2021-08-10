@@ -30,7 +30,7 @@
 	<string name="dash7">posted: 14–05–2021</string>
 	<string name="dash8">View All</string>
 	<string name="dash9">Kategori</string>
-	<string name="dash10">Promo</string>
+	<string name="dash10">Payment</string>
 	<string name="dash11">Delivery</string>
 	<string name="dash12">Nama Produk</string>
 	<string name="dash13">Rp.20.000,-</string>
@@ -97,5 +97,9 @@
 	<string name="akun6">Password</string>
 	<string name="akun7">UBAH</string>
 	<string name="akun8">LOGOUT</string>
+
+	<!-- Akun   -->
+	<string name="kategori1">Nama Kategori</string>
+	<string name="kategori2">gambar</string>
 
 </resources>

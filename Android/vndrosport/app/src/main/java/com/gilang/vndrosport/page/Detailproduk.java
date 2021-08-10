@@ -8,6 +8,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -71,8 +72,10 @@ public class Detailproduk extends AppCompatActivity {
 	private void tambah(Context mContext, String idProduk)
 	{
 		try {
-			String idUser = "1";
-			String token = "XiTYHklpnU";
+			SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(
+					Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
+			String token = sharedPreferences.getString("token", "");
+			String idUser = sharedPreferences.getString("idUser", "");
 			Call<KeranjangModel> call = APIService.Factory.create(mContext).tambahKeranjang(idUser,token,idProduk,"1");
 			call.enqueue(new Callback<KeranjangModel>() {
 				@EverythingIsNonNull

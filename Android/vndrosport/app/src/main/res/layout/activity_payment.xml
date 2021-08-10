@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	android:orientation="vertical"
+    tools:context=".page.Payment">
+
+	<androidx.appcompat.widget.Toolbar
+		android:id="@+id/tbtoolbar"
+		app:titleTextColor="@color/white"
+		android:background="@color/bgToolbar"
+		android:minHeight="?attr/actionBarSize"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
+
+	<androidx.cardview.widget.CardView
+		android:id="@+id/cdCatatan"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="10dp"
+		android:layout_marginEnd="10dp"
+		android:layout_marginTop="10dp"
+		app:cardCornerRadius="3dp"
+		app:cardElevation="2dp"
+		app:cardUseCompatPadding="true">
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/bgToolbar"
+			android:orientation="vertical">
+			<TextView
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:text="CATATAN:"
+				android:textColor="@color/white"
+				android:textSize="20sp"
+				android:textStyle="bold"/>
+		</LinearLayout>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="16dp"
+			android:layout_marginEnd="16dp"
+			android:layout_marginTop="50dp"
+			android:orientation="vertical">
+
+			<TextView
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Pembayaran paling lambat 1x24 jam"
+				android:textSize="14sp"
+				android:layout_marginStart="5dp"
+				android:layout_gravity="center_vertical"
+				app:drawableStartCompat="@drawable/ic_arrow" />
+
+			<TextView
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Pengiriman akan dilakukan setelah pembayaran terkonfirmasi"
+				android:textSize="14sp"
+				app:drawableStartCompat="@drawable/ic_arrow"
+				android:layout_marginStart="5dp"
+				android:layout_gravity="center_vertical"/>
+
+			<TextView
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Pembayaran akan diteruskan ke merchant setelah barang diterima"
+				app:drawableStartCompat="@drawable/ic_arrow"
+				android:textSize="14sp"
+				android:layout_marginStart="5dp"
+				android:layout_gravity="center_vertical"/>
+
+
+		</LinearLayout>
+	</androidx.cardview.widget.CardView>
+	<androidx.cardview.widget.CardView
+		android:id="@+id/cdpembayaran"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="10dp"
+		android:layout_marginEnd="10dp"
+		android:layout_marginTop="10dp"
+		app:cardCornerRadius="3dp"
+		app:cardElevation="2dp"
+		app:cardUseCompatPadding="true">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/maroon"
+			android:orientation="vertical">
+			<TextView
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:text="Pembayaran Transfer ke:"
+				android:textColor="@color/white"
+				android:textSize="20sp"
+				android:textStyle="bold"/>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
+				android:layout_marginTop="10dp"
+				android:textStyle="bold"
+				android:textColor="@color/white"
+				android:text="BCA, a.n PT Vndro Sport"
+				android:textSize="16sp"
+				android:layout_gravity="center_vertical"/>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
+				android:layout_marginBottom="20dp"
+				android:textStyle="bold"
+				android:textColor="@color/white"
+				android:text="No.rek: 123456789"
+				android:textSize="16sp"
+				android:layout_gravity="center_vertical"/>
+		</LinearLayout>
+	</androidx.cardview.widget.CardView>
+</LinearLayout>

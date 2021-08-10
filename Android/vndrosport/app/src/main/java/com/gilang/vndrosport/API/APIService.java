@@ -10,6 +10,7 @@ import com.gilang.vndrosport.model.LoginModel;
 import com.gilang.vndrosport.model.PesananModel;
 import com.gilang.vndrosport.model.ProdukModel;
 import com.gilang.vndrosport.model.TotalModel;
+import com.gilang.vndrosport.response.ResponseKategori;
 import com.gilang.vndrosport.response.ResponseKeranjang;
 import com.gilang.vndrosport.response.ResponsePesanan;
 import com.gilang.vndrosport.response.ResponseProduk;
@@ -30,6 +31,12 @@ import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface APIService {
+	//API untuk kategori
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@GET("api/kategori")
+	Call<ResponseKategori> dapatKategori(@Query("id_user") String idUser,
+										 @Query("token") String token);
+
 	//API untuk getAkun
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
 	@FormUrlEncoded
