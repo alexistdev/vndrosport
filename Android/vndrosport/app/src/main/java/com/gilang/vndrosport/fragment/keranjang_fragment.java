@@ -1,6 +1,8 @@
 package com.gilang.vndrosport.fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -10,15 +12,20 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.gilang.vndrosport.API.APIService;
 import com.gilang.vndrosport.API.NoConnectivityException;
+import com.gilang.vndrosport.MainActivity;
 import com.gilang.vndrosport.R;
 import com.gilang.vndrosport.adapter.KeranjangAdapter;
+import com.gilang.vndrosport.config.Constants;
+import com.gilang.vndrosport.model.CheckoutModel;
 import com.gilang.vndrosport.model.KeranjangModel;
 import com.gilang.vndrosport.model.TotalModel;
+import com.gilang.vndrosport.page.login;
 import com.gilang.vndrosport.response.ResponseKeranjang;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -37,6 +44,7 @@ public class keranjang_fragment extends Fragment implements KeranjangAdapter.Cli
 	private List<KeranjangModel> daftarKeranjang;
 	private LinearLayout layoutpesankosong,mLayoutTotal,mlayoutAlamat,mlayouttombol;
 	private TextView mSubTotal,mBiayaAntar,mTotalBiaya,mNamaLengkap,mNoTelp,mAlamat;
+	private Button mCheckout;
 
 
 
@@ -45,10 +53,49 @@ public class keranjang_fragment extends Fragment implements KeranjangAdapter.Cli
 							 Bundle savedInstanceState) {
 		View mview = inflater.inflate(R.layout.fragment_keranjang, container, false);
 		dataInit(mview);
+		SharedPreferences sharedPreferences = requireContext().getSharedPreferences(
+				Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
+		String token = sharedPreferences.getString("token", "");
+		String idUser = sharedPreferences.getString("idUser", "");
 		setupRecyclerView();
 		setData(getContext());
 		setTotal(getContext());
+		mCheckout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				checkout(getContext(),idUser,token);
+			}
+		});
 		return mview;
+	}
+
+	private void checkout(Context mContext, String idUser, String token) {
+		try {
+			Call<CheckoutModel> check = APIService.Factory.create(mContext).simpanPesanan(idUser,token);
+			check.enqueue(new Callback<CheckoutModel>() {
+				@Override
+				public void onResponse(Call<CheckoutModel> call, Response<CheckoutModel> response) {
+					if(response.isSuccessful()) {
+						if (response.body() != null) {
+							Intent intent = new Intent(getContext(), MainActivity.class);
+							intent.putExtra("bukaOrder",true);
+							startActivity(intent);
+							pesan2("Anda berhasil checkout");
+						}
+					}
+				}
+
+				@Override
+				public void onFailure(Call<CheckoutModel> call, Throwable t) {
+					if(t instanceof NoConnectivityException) {
+						pesan("Internet Offline!");
+					}
+				}
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+			pesan(e.getMessage());
+		}
 	}
 
 	@Override
@@ -142,6 +189,7 @@ public class keranjang_fragment extends Fragment implements KeranjangAdapter.Cli
 
 
 	private void dataInit(View mview){
+		mCheckout = mview.findViewById(R.id.btnCheckout);
 		mAlamat = mview.findViewById(R.id.tvAlamat);
 		mNoTelp = mview.findViewById(R.id.tvTelepon);
 		mNamaLengkap = mview.findViewById(R.id.tvNamaPengguna);

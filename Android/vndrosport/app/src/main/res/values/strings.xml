@@ -77,5 +77,25 @@
 	<string name="cart120">No.Rek: 123456789</string>
 	<string name="cart121">PT VndroSport , tbk INC</string>
 
+	<!--  Halaman Pesanan   -->
+	<string name="pesanan1">gambar</string>
+	<string name="pesanan2">Order:#1</string>
+	<string name="pesanan3">Dikirim</string>
+	<string name="pesanan4">Nama Produk</string>
+	<string name="pesanan5">Total: Rp.100.000</string>
+	<string name="pesanan6">Order: #</string>
+	<string name="pesanan7">Diproses</string>
+	<string name="pesanan8">Dikirim</string>
+	<string name="pesanan9">Rp.</string>
+
+	<!-- Akun   -->
+	<string name="akun1">Email</string>
+	<string name="akun2">Nama Lengkap</string>
+	<string name="akun3">Telepon</string>
+	<string name="akun4">Nomor KTP</string>
+	<string name="akun5">Alamat</string>
+	<string name="akun6">Password</string>
+	<string name="akun7">UBAH</string>
+	<string name="akun8">LOGOUT</string>
 
 </resources>

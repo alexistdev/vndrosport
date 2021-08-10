@@ -57,7 +57,6 @@ class Checkout extends RestController
 					'message' => 'Data berhasil disimpan !'
 				];
 				$this->response($dataResponse, 200);
-
 			} else {
 				$this->response( [
 					'status' => false,

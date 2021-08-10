@@ -3,11 +3,14 @@ package com.gilang.vndrosport.API;
 import android.content.Context;
 import com.gilang.vndrosport.BuildConfig;
 import com.gilang.vndrosport.config.Constants;
+import com.gilang.vndrosport.model.CheckoutModel;
 import com.gilang.vndrosport.model.KeranjangModel;
 import com.gilang.vndrosport.model.LoginModel;
+import com.gilang.vndrosport.model.PesananModel;
 import com.gilang.vndrosport.model.ProdukModel;
 import com.gilang.vndrosport.model.TotalModel;
 import com.gilang.vndrosport.response.ResponseKeranjang;
+import com.gilang.vndrosport.response.ResponsePesanan;
 import com.gilang.vndrosport.response.ResponseProduk;
 import com.gilang.vndrosport.response.ResponseSpesial;
 
@@ -26,6 +29,19 @@ import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface APIService {
+	//API untuk Checkout
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@GET("api/pesanan")
+	Call<ResponsePesanan> tampilPesanan(@Query("id_user") String idUser,
+										@Query("token") String token);
+
+
+	//API untuk Checkout
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@FormUrlEncoded
+	@POST("api/checkout")
+	Call<CheckoutModel> simpanPesanan(@Field("id_user") String idUser,
+									  @Field("token") String token);
 
 	//API untuk login
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})

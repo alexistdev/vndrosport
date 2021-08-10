@@ -47,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
 				loadFragment(fragment);
 			}
 		}
+		if(extras!=null && extras.containsKey("bukaOrder")) {
+			boolean bukaKeranjang = extras.getBoolean("bukaOrder");
+			if(bukaKeranjang){
+				Fragment fragment = null;
+				fragment = new order_fragment();
+				loadFragment(fragment);
+			}
+		}
     }
 
 	private boolean loadFragment(Fragment fragment) {

@@ -155,7 +155,6 @@ class M_api extends CI_Model
 		return $this->db->insert_id();
 	}
 
-
 	public function get_data_detailpesanan($id)
 	{
 		$this->db->where("$this->tbdetailkeranjang.id_keranjang",$id);
@@ -165,6 +164,12 @@ class M_api extends CI_Model
 	public function simpan_detailpesanan($data)
 	{
 		$this->db->insert("detail_pesanan",$data);
+	}
+
+	public function get_data_pesanan($idUser)
+	{
+		$this->db->where("$this->tbpesanan.id_user",$idUser);
+		return $this->db->get($this->tbpesanan);
 	}
 
 }

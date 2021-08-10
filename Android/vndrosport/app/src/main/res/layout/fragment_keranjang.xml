@@ -35,11 +35,13 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:background="@drawable/rect2"/>
-			<include layout="@layout/bag_total"
+
+			<include
 				android:id="@+id/bag"
+				layout="@layout/bag_total"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_below="@+id/rcCart"/>
+				android:layout_below="@+id/rcCart" />
 		</RelativeLayout>
 	</ScrollView>
 

@@ -32,6 +32,7 @@ $route['api/produk/detail'] = 'api/Produk/detail';
 $route['api/keranjang'] = 'api/Keranjang';
 $route['api/keranjang/total'] = 'api/Keranjang/total';
 $route['api/checkout'] = 'api/Checkout/index';
+$route['api/pesanan'] = 'api/Pesanan/index';
 $route['api/auth'] = 'api/Auth/index';
 
 /* Route Toko */

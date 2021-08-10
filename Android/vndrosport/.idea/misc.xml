@@ -8,7 +8,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/drawable/ic_delivery.xml" value="0.403125" />
         <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/activity_login.xml" value="0.38697916666666665" />
+        <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/bag_total.xml" value="0.38697916666666665" />
+        <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/fragment_akun.xml" value="0.38697916666666665" />
+        <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/fragment_keranjang.xml" value="0.38697916666666665" />
+        <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/fragment_order.xml" value="0.38697916666666665" />
+        <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/single_list_pesanan.xml" value="0.38697916666666665" />
       </map>
     </option>
   </component>
