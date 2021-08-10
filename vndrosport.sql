@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2021 at 02:24 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: Aug 10, 2021 at 10:34 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 7.4.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -80,15 +80,6 @@ CREATE TABLE `detailkeranjang` (
   `m_sub_total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `detailkeranjang`
---
-
-INSERT INTO `detailkeranjang` (`id`, `id_keranjang`, `id_produk`, `jumlah`, `m_sub_total`) VALUES
-(8, 2, 2, 14, 6300000),
-(9, 2, 3, 14, 1540000),
-(10, 2, 4, 3, 750000);
-
 -- --------------------------------------------------------
 
 --
@@ -96,7 +87,7 @@ INSERT INTO `detailkeranjang` (`id`, `id_keranjang`, `id_produk`, `jumlah`, `m_s
 --
 
 CREATE TABLE `detailuser` (
-  `id_detailuser` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `nama_lengkap` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `notelp` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `alamat` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -111,8 +102,10 @@ CREATE TABLE `detailuser` (
 -- Dumping data for table `detailuser`
 --
 
-INSERT INTO `detailuser` (`id_detailuser`, `nama_lengkap`, `notelp`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `id_user`) VALUES
-(1, 'alex', '082371408678', 'Jalan keren agak kesamping', NULL, NULL, NULL, NULL, 1);
+INSERT INTO `detailuser` (`id`, `nama_lengkap`, `notelp`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `id_user`) VALUES
+(1, 'wakanda2', '0856020130021', 'alamatku2', NULL, NULL, NULL, NULL, 1),
+(2, 'samantha', '08123456789', NULL, NULL, NULL, NULL, NULL, 4),
+(3, 'Aaa', 'adadsad', NULL, NULL, NULL, NULL, NULL, 5);
 
 -- --------------------------------------------------------
 
@@ -127,6 +120,18 @@ CREATE TABLE `detail_pesanan` (
   `jumlah` int(11) NOT NULL,
   `sub_total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detail_pesanan`
+--
+
+INSERT INTO `detail_pesanan` (`id`, `id_pesanan`, `id_produk`, `jumlah`, `sub_total`) VALUES
+(1, 1, 2, 13, 5850000),
+(2, 1, 3, 13, 1430000),
+(3, 1, 4, 3, 750000),
+(4, 2, 6, 1, 25000),
+(5, 3, 6, 1, 25000),
+(6, 4, 6, 2, 50000);
 
 -- --------------------------------------------------------
 
@@ -192,13 +197,6 @@ CREATE TABLE `keranjang` (
   `total_biaya` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `keranjang`
---
-
-INSERT INTO `keranjang` (`id`, `id_user`, `sub_total`, `biaya_antar`, `total_biaya`) VALUES
-(2, 1, 8590000, 20000, 8610000);
-
 -- --------------------------------------------------------
 
 --
@@ -256,6 +254,16 @@ CREATE TABLE `pesanan` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `pesanan`
+--
+
+INSERT INTO `pesanan` (`id`, `id_user`, `judul`, `tanggal`, `sub_total`, `biaya_antar`, `total_jumlah`, `status`) VALUES
+(1, 1, 'Raket aluminium kelas atas', 1628562417, 8030000, 20000, 8050000, 1),
+(2, 1, 'adadada', 1628563245, 25000, 20000, 45000, 1),
+(3, 1, 'adadada', 1628563560, 25000, 20000, 45000, 1),
+(4, 1, 'adadada', 1628576506, 50000, 20000, 70000, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -272,7 +280,7 @@ CREATE TABLE `produk` (
   `harga` int(11) NOT NULL,
   `stok` int(11) NOT NULL,
   `gambar` varchar(128) NOT NULL,
-  `deskripsi` text NOT NULL,
+  `deskripsi` text DEFAULT NULL,
   `id_toko` int(11) NOT NULL,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
@@ -286,7 +294,9 @@ CREATE TABLE `produk` (
 INSERT INTO `produk` (`id`, `id_kategori`, `id_merek`, `nama_produk`, `warna`, `ukuran`, `harga`, `stok`, `gambar`, `deskripsi`, `id_toko`, `created_at`, `updated_at`, `status`) VALUES
 (2, 1, 1, 'Raket aluminium kelas atas', 'polos', 'L', 450000, 12, 'raket.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, ', 1, 1221212, 1212121, 1),
 (3, 1, 1, 'Sepatu Bola Legendaris', 'merah', 'L', 110000, 12, 'sepatu.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, ', 1, 1221212, 1212121, 1),
-(4, 2, 1, 'Bola Sepak Keren', 'merah', 'L', 250000, 12, 'bola.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, ', 1, 1221212, 1212121, 1);
+(4, 2, 1, 'Bola Sepak Keren', 'merah', 'L', 250000, 12, 'bola.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, ', 1, 1221212, 1212121, 1),
+(5, 2, 1, 'adada', 'dada', 'dadada', 2323232, 0, 'ad8HmrA6TI.jpg', '', 1, 0, 0, 0),
+(6, 2, 1, 'adadada', 'Merah', 'allsize', 25000, 0, 'sDiZju62g6.jpg', 'adada', 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -311,6 +321,19 @@ INSERT INTO `provinsi` (`id`, `id_negara`, `nama_provinsi`, `created_at`, `updat
 (2, 1, 'diy yogyakarta', 1625694613, 1625694613),
 (3, 1, 'aceh', 1625697889, 1625697889),
 (4, 1, 'sumatera barat', 1625701327, 1625701327);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sale`
+--
+
+CREATE TABLE `sale` (
+  `id` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `created_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -353,7 +376,8 @@ CREATE TABLE `toko` (
 --
 
 INSERT INTO `toko` (`id`, `nama_toko`, `email`, `telp`, `alamat`, `id_user`, `last_online`) VALUES
-(1, 'Alex Sport', 'alexistdev@gmail.com', '082371408678', 'Waykandis', 1, 1625616177);
+(1, 'Alex Sport', 'alexistdev@gmail.com', '082371408678', 'Waykandis', 1, 1625616177),
+(2, 'Aaa', 'dekil@gmail.com', 'adadsad', '', 5, 1628399018);
 
 -- --------------------------------------------------------
 
@@ -375,7 +399,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'alexistdev@gmail.com', '$2y$10$1c1qWogjz/FuzKPs/5URquErznnht8joKevBLiBRwlJ.G6tTXih4q', 'XiTYHklpnU', 1625616177, 1625616177);
+(1, 'alexistdev@gmail.com', '$2y$10$gSQbKOqpeYVMvxKMN1UCC.B1UtqH6H7O9aSh7X3CM1UxpXi.bowBW', 'XiTYHklpnU', 1625616177, 1628576476),
+(4, 'samantha@gmail.com', '$2y$10$eiOMo1Q0N72zHqM0pHie1eGK6I7CtmpEDTH9ETv7VWS8LgwzDDt6G', 'yekdXH2yl1', 1628397578, 1628397578),
+(5, 'dekil@gmail.com', '$2y$10$dsyJk4W0baiGbsa8nLwDWubqcSaWEdozy3O2g7w0r6plwiT8lONdu', '2KGdKDHsEs', 1628399018, 1628399018);
 
 --
 -- Indexes for dumped tables
@@ -404,7 +430,7 @@ ALTER TABLE `detailkeranjang`
 -- Indexes for table `detailuser`
 --
 ALTER TABLE `detailuser`
-  ADD PRIMARY KEY (`id_detailuser`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
 --
@@ -470,6 +496,13 @@ ALTER TABLE `provinsi`
   ADD KEY `id_negara` (`id_negara`);
 
 --
+-- Indexes for table `sale`
+--
+ALTER TABLE `sale`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_produk` (`id_produk`);
+
+--
 -- Indexes for table `spesial`
 --
 ALTER TABLE `spesial`
@@ -504,19 +537,19 @@ ALTER TABLE `api_keys`
 -- AUTO_INCREMENT for table `detailkeranjang`
 --
 ALTER TABLE `detailkeranjang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `detailuser`
 --
 ALTER TABLE `detailuser`
-  MODIFY `id_detailuser` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `kabupaten`
@@ -534,7 +567,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `merek`
@@ -552,19 +585,25 @@ ALTER TABLE `negara`
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `provinsi`
 --
 ALTER TABLE `provinsi`
   MODIFY `id` smallint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `sale`
+--
+ALTER TABLE `sale`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `spesial`
@@ -576,13 +615,13 @@ ALTER TABLE `spesial`
 -- AUTO_INCREMENT for table `toko`
 --
 ALTER TABLE `toko`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -637,6 +676,12 @@ ALTER TABLE `produk`
 --
 ALTER TABLE `provinsi`
   ADD CONSTRAINT `provinsi_ibfk_1` FOREIGN KEY (`id_negara`) REFERENCES `negara` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `sale`
+--
+ALTER TABLE `sale`
+  ADD CONSTRAINT `sale_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `spesial`

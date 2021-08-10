@@ -30,7 +30,6 @@ public class Kategori extends AppCompatActivity {
 	private List<KategoriModel> daftarKategori;
 	private ProgressDialog progressDialog;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

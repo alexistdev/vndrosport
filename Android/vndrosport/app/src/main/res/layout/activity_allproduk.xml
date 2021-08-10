@@ -14,4 +14,12 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"/>
 
+	<androidx.recyclerview.widget.RecyclerView
+		android:paddingStart="20dp"
+		android:paddingEnd="20dp"
+		android:id="@+id/rcItemProduk"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="70dp"
+		android:layout_marginBottom="70dp"/>
 </LinearLayout>
