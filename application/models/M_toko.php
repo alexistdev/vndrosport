@@ -12,6 +12,7 @@ class M_toko extends CI_Model
 		$this->produk = 'produk';
 		$this->merek = 'merek';
 		$this->kategori = 'kategori';
+		$this->sale = 'sale';
 	}
 
 	public function validasi_login($username)
@@ -19,6 +20,17 @@ class M_toko extends CI_Model
 		$this->db->where('email', $username);
 		return $this->db->get($this->user);
 	}
+	#########################################################################################
+	#                                   tabel Penjualan                   					#
+	#########################################################################################
+
+	public function get_data_sale($id)
+	{
+		$this->db->where("$this->sale.id_produk",$id);
+		return $this->db->get($this->sale);
+	}
+
+
 	#########################################################################################
 	#                                   tabel kategori                     					#
 	#########################################################################################
@@ -65,6 +77,8 @@ class M_toko extends CI_Model
 		if($id != null){
 			$this->db->where("$this->produk.id",$id);
 		}
+		$this->db->join($this->merek,"$this->merek.id = $this->produk.id_merek");
+		$this->db->join($this->kategori,"$this->kategori.id = $this->produk.id_kategori");
 		$this->db->order_by("$this->produk.id", "DESC");
 		return $this->db->get($this->produk);
 	}

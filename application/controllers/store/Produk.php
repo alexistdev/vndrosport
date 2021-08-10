@@ -170,6 +170,7 @@ class Produk extends CI_Controller
 		} else {
 			$getData = $this->toko->get_produk($id);
 			if($getData->num_rows() != 0){
+				$data = $this->_dataprepare($getData->row(),$id);
 				$data['title'] = _store();
 				$view ='v_detail_produk';
 				$this->_layout($data,$view);
@@ -179,9 +180,22 @@ class Produk extends CI_Controller
 		}
 	}
 
-	private function _dataprepare($id)
+	private function _dataprepare($getData,$idProduk)
 	{
 		$data = [];
+		$dataPenjualan = $this->toko->get_data_sale($idProduk)->num_rows();
+		$data['namaProduk'] = $getData->nama_produk;
+		$data['hargaProduk'] = $getData->harga;
+		$data['stokProduk'] = $getData->stok;
+		$data['terjual'] = $dataPenjualan;
+		$data['gambarProduk'] = $getData->gambar;
+		$data['kategoriProduk'] = $getData->nama_kategori;
+		$data['merekProduk'] = $getData->nama_merek;
+		$data['ukuranProduk'] = $getData->ukuran;
+		$data['warnaProduk'] = $getData->warna;
+		$data['ditambahkan'] = $getData->created_at;
+		$data['deskripsiProduk'] = $getData->deskripsi;
+		return $data;
 
 	}
 

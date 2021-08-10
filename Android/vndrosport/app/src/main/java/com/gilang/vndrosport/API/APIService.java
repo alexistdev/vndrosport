@@ -4,6 +4,7 @@ import android.content.Context;
 import com.gilang.vndrosport.BuildConfig;
 import com.gilang.vndrosport.config.Constants;
 import com.gilang.vndrosport.model.KeranjangModel;
+import com.gilang.vndrosport.model.LoginModel;
 import com.gilang.vndrosport.model.ProdukModel;
 import com.gilang.vndrosport.model.TotalModel;
 import com.gilang.vndrosport.response.ResponseKeranjang;
@@ -25,6 +26,13 @@ import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface APIService {
+
+	//API untuk login
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@FormUrlEncoded
+	@POST("api/Auth")
+	Call<LoginModel> loginUser(@Field("email") String email,
+							   @Field("password") String password);
 
 	/* Mendapatkan API Berita */
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})

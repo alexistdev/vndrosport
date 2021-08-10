@@ -19,6 +19,13 @@ class M_api extends CI_Model
 		$this->tbpesanan = 'pesanan';
 	}
 
+	public function validasi_login($email)
+	{
+		$this->db->where('email', $email);
+		return $this->db->get($this->tbusers);
+	}
+
+
 	public function get_data_spesial($single=false)
 	{
 		$this->db->select("$this->tbproduk.nama_produk, $this->tbspesial.id, $this->tbproduk.harga AS harga_asli,$this->tbspesial.harga AS harga_diskon");
@@ -124,14 +131,40 @@ class M_api extends CI_Model
 		return $this->db->get($this->tbkeranjang);
 	}
 
+	public function hapus_totalkeranjang($idUser)
+	{
+		$this->db->where('id_user',$idUser);
+		$this->db->delete($this->tbkeranjang);
+	}
+
+	public function hapus_keranjang($idKeranjang)
+	{
+		$this->db->where('id_keranjang',$idKeranjang);
+		$this->db->delete($this->tbdetailkeranjang);
+	}
+
+
+
 	#########################################################################################
 	#                          pesanan & detail_pesanan                 					#
 	#########################################################################################
 
 	public function simpan_pesanan($dataPesanan)
 	{
-		$this->db->insert($this->tbpesanan,$data);
+		$this->db->insert($this->tbpesanan,$dataPesanan);
 		return $this->db->insert_id();
+	}
+
+
+	public function get_data_detailpesanan($id)
+	{
+		$this->db->where("$this->tbdetailkeranjang.id_keranjang",$id);
+		return $this->db->get($this->tbdetailkeranjang);
+	}
+
+	public function simpan_detailpesanan($data)
+	{
+		$this->db->insert("detail_pesanan",$data);
 	}
 
 }

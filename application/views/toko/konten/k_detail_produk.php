@@ -8,7 +8,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Nama Produk</h1>
+					<h1><?= ucwords(sanitasi($namaProduk)); ?></h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
@@ -37,18 +37,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="col-md-12">
 					<!-- Default box -->
 					<div class="card">
-						<div class="card-header">
-							<h3 class="card-title">Projects Detail</h3>
-
-							<div class="card-tools">
-								<button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-									<i class="fas fa-minus"></i>
-								</button>
-								<button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-									<i class="fas fa-times"></i>
-								</button>
-							</div>
-						</div>
 						<div class="card-body">
 							<div class="row">
 								<div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
@@ -57,7 +45,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<div class="info-box bg-light">
 												<div class="info-box-content">
 													<span class="info-box-text text-center text-muted">Harga</span>
-													<span class="info-box-number text-center text-muted mb-0">2300</span>
+													<span class="info-box-number text-center text-muted mb-0">Rp <?= number_format(sanitasi($hargaProduk),0,",","."); ?></span>
 												</div>
 											</div>
 										</div>
@@ -65,7 +53,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<div class="info-box bg-light">
 												<div class="info-box-content">
 													<span class="info-box-text text-center text-muted">Stok</span>
-													<span class="info-box-number text-center text-muted mb-0">11</span>
+													<span class="info-box-number text-center text-muted mb-0"><?= sanitasi($stokProduk); ?></span>
 												</div>
 											</div>
 										</div>
@@ -73,7 +61,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<div class="info-box bg-light">
 												<div class="info-box-content">
 													<span class="info-box-text text-center text-muted">Terjual</span>
-													<span class="info-box-number text-center text-muted mb-0">22</span>
+													<span class="info-box-number text-center text-muted mb-0"><?= sanitasi($terjual); ?></span>
 												</div>
 											</div>
 										</div>
@@ -84,27 +72,35 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<table class="table table-striped">
 												<tbody>
 												<tr>
-													<th scope="row">Ukuran</th>
-													<td>:</td>
-													<td>All size</td>
+													<th scope="row" style="width: 15%">Kategori</th>
+													<td style="width: 5%">:</td>
+													<td><?= sanitasi($kategoriProduk); ?></td>
 												</tr>
 												<tr>
-													<th scope="row">Warna</th>
-													<td>:</td>
-													<td>Merah</td>
+													<th scope="row" style="width: 15%">Merek</th>
+													<td style="width: 5%">:</td>
+													<td><?= sanitasi($merekProduk); ?></td>
+												</tr>
+												<tr>
+													<th scope="row" style="width: 15%">Ukuran</th>
+													<td style="width: 5%">:</td>
+													<td><?= sanitasi($ukuranProduk); ?></td>
+												</tr>
+												<tr>
+													<th scope="row" style="width: 15%">Warna</th>
+													<td style="width: 5%">:</td>
+													<td><?= sanitasi($warnaProduk); ?></td>
 
 												</tr>
 												<tr>
-													<th scope="row">Ditambahkan</th>
-													<td>:</td>
-													<td>12-12-2021</td>
-
+													<th scope="row" style="width: 15%">Ditambahkan</th>
+													<td style="width: 5%">:</td>
+													<td><?= date("d-m-Y",sanitasi($ditambahkan)); ?></td>
 												</tr>
 												<tr>
-													<th scope="row">Deskripsi</th>
-													<td>:</td>
-													<td>12-12-2021</td>
-
+													<th scope="row" style="width: 15%">Deskripsi</th>
+													<td style="width: 5%">:</td>
+													<td><?= sanitasi($deskripsiProduk); ?></td>
 												</tr>
 												</tbody>
 											</table>
@@ -112,9 +108,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									</div>
 								</div>
 								<div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-									<img src="<?= base_url('gambar/produk/ad8HmrA6TI.jpg'); ?>" alt="gambar produk" height="300px">
+									<img src="<?= base_url('gambar/produk/'.sanitasi($gambarProduk)); ?>" alt="gambar produk" height="300px">
 									<div class="text-center mt-5 mb-3">
-										<a href="#" class="btn btn-sm btn-primary">Add files</a>
+										<a href="#" class="btn btn-sm btn-primary">Edit</a>
 										<a href="<?= base_url('store/produk'); ?>" class="btn btn-sm btn-danger">Batal</a>
 									</div>
 								</div>
@@ -130,4 +126,4 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<!--	/Modal Kunci Pesan	-->
+
