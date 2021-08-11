@@ -21,22 +21,22 @@ class Daftar extends RestController
 		$this->form_validation->set_rules(
 			'email',
 			'Email',
-			'trim|required|max_length[255]|valid_email',
+			'trim|required|max_length[255]|valid_email'
 		);
 		$this->form_validation->set_rules(
 			'password',
 			'Password',
-			'trim|max_length[255]|required',
+			'trim|max_length[255]|required'
 		);
 		$this->form_validation->set_rules(
 			'nama_lengkap',
 			'Nama Lengkap',
-			'trim|max_length[100]|required',
+			'trim|max_length[100]|required'
 		);
 		$this->form_validation->set_rules(
 			'no_telp',
 			'Nomor Telepon',
-			'trim|max_length[30]|required',
+			'trim|max_length[30]|required'
 		);
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
 		if ($this->form_validation->run() === false) {
@@ -75,6 +75,15 @@ class Daftar extends RestController
 					'provinsi' => null,
 				);
 				$this->api->simpan_detail_user($dataDetail);
+				//simpan toko:
+				$dataToko = array(
+					'nama_toko' => $namaLengkap,
+					'email' => $email,
+					'telp' => $noTelp,
+					'id_user' => $idUser,
+					'last_online' => time(),
+				);
+				$this->api->simpan_toko($dataToko);
 				$this->response( [
 					'status' => true,
 					'message' => 'Data berhasil disimpan',

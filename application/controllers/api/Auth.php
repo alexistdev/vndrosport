@@ -17,6 +17,7 @@ class Auth extends RestController
 
 	public function index_post()
 	{
+
 		$email = $this->post('email');
 		if(in_array($email,["",null])){
 			$this->response([
@@ -25,20 +26,28 @@ class Auth extends RestController
 			], 404);
 		} else {
 			$password = $this->post('password');
-			$cekLogin = $this->api->validasi_login($email)->row();
-			if(!password_verify($password, $cekLogin->password)){
-				$this->response([
+			$cekLogin = $this->api->validasi_login($email);
+			if($cekLogin->num_rows() != 0){
+				$dataPass = $cekLogin->row()->password;
+				if(password_verify($password,$dataPass)){
+					$dataSession = [
+						'status' => true,
+						'id_user' => $cekLogin->row()->id_user,
+						'token' => $cekLogin->row()->remember_token,
+						'message' => 'Anda berhasil login',
+					];
+					$this->response($dataSession,200);
+				} else {
+					$this->response([
 					'status' => false,
 					'message' => 'Email atau Password yang anda masukkan salah'
 				], 404);
+				}
 			} else {
-				$dataSession = [
-					'status' => true,
-					'id_user' => $cekLogin->id_user,
-					'token' => $cekLogin->remember_token,
-					'message' => 'Anda berhasil login',
-				];
-				$this->response($dataSession,200);
+				$this->response([
+					'status' => false,
+					'message' => 'Email belum terdaftar'
+				], 404);
 			}
 		}
 	}
