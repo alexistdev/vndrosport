@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2021 at 10:34 AM
+-- Generation Time: Aug 11, 2021 at 12:42 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.21
 
@@ -80,6 +80,13 @@ CREATE TABLE `detailkeranjang` (
   `m_sub_total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `detailkeranjang`
+--
+
+INSERT INTO `detailkeranjang` (`id`, `id_keranjang`, `id_produk`, `jumlah`, `m_sub_total`) VALUES
+(16, 7, 6, 4, 100000);
+
 -- --------------------------------------------------------
 
 --
@@ -105,7 +112,9 @@ CREATE TABLE `detailuser` (
 INSERT INTO `detailuser` (`id`, `nama_lengkap`, `notelp`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `id_user`) VALUES
 (1, 'wakanda2', '0856020130021', 'alamatku2', NULL, NULL, NULL, NULL, 1),
 (2, 'samantha', '08123456789', NULL, NULL, NULL, NULL, NULL, 4),
-(3, 'Aaa', 'adadsad', NULL, NULL, NULL, NULL, NULL, 5);
+(3, 'Aaa', 'adadsad', NULL, NULL, NULL, NULL, NULL, 5),
+(4, 'alexsander hendra wijaya', '123456', NULL, NULL, NULL, NULL, NULL, 6),
+(5, 'Superhero', '085621235456', NULL, NULL, NULL, NULL, NULL, 7);
 
 -- --------------------------------------------------------
 
@@ -131,7 +140,9 @@ INSERT INTO `detail_pesanan` (`id`, `id_pesanan`, `id_produk`, `jumlah`, `sub_to
 (3, 1, 4, 3, 750000),
 (4, 2, 6, 1, 25000),
 (5, 3, 6, 1, 25000),
-(6, 4, 6, 2, 50000);
+(6, 4, 6, 2, 50000),
+(7, 5, 6, 12, 300000),
+(8, 5, 4, 5, 1250000);
 
 -- --------------------------------------------------------
 
@@ -196,6 +207,13 @@ CREATE TABLE `keranjang` (
   `biaya_antar` int(11) NOT NULL,
   `total_biaya` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `keranjang`
+--
+
+INSERT INTO `keranjang` (`id`, `id_user`, `sub_total`, `biaya_antar`, `total_biaya`) VALUES
+(7, 7, 100000, 20000, 120000);
 
 -- --------------------------------------------------------
 
@@ -262,7 +280,8 @@ INSERT INTO `pesanan` (`id`, `id_user`, `judul`, `tanggal`, `sub_total`, `biaya_
 (1, 1, 'Raket aluminium kelas atas', 1628562417, 8030000, 20000, 8050000, 1),
 (2, 1, 'adadada', 1628563245, 25000, 20000, 45000, 1),
 (3, 1, 'adadada', 1628563560, 25000, 20000, 45000, 1),
-(4, 1, 'adadada', 1628576506, 50000, 20000, 70000, 1);
+(4, 1, 'adadada', 1628576506, 50000, 20000, 70000, 1),
+(5, 7, 'adadada', 1628677961, 1550000, 20000, 1570000, 1);
 
 -- --------------------------------------------------------
 
@@ -401,7 +420,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'alexistdev@gmail.com', '$2y$10$gSQbKOqpeYVMvxKMN1UCC.B1UtqH6H7O9aSh7X3CM1UxpXi.bowBW', 'XiTYHklpnU', 1625616177, 1628576476),
 (4, 'samantha@gmail.com', '$2y$10$eiOMo1Q0N72zHqM0pHie1eGK6I7CtmpEDTH9ETv7VWS8LgwzDDt6G', 'yekdXH2yl1', 1628397578, 1628397578),
-(5, 'dekil@gmail.com', '$2y$10$dsyJk4W0baiGbsa8nLwDWubqcSaWEdozy3O2g7w0r6plwiT8lONdu', '2KGdKDHsEs', 1628399018, 1628399018);
+(5, 'dekil@gmail.com', '$2y$10$dsyJk4W0baiGbsa8nLwDWubqcSaWEdozy3O2g7w0r6plwiT8lONdu', '2KGdKDHsEs', 1628399018, 1628399018),
+(6, 'alexistdev2@gmail.com', '$2y$10$DssGDxsAAqIsaUXJRvBLLuHC5rY8wHX7NDfqbFlbdG4l/NYY4XQm.', 'r7V72aUDeD', 1628672615, 1628672615),
+(7, 'superhero@gmail.com', '$2y$10$y5Fu56ERDnVKr4Q/OyuPp.CaIl4ZIo3pQllNW.KeC6..NEeFoQsku', 'RbzcDW7a7r', 1628674001, 1628674001);
 
 --
 -- Indexes for dumped tables
@@ -537,19 +558,19 @@ ALTER TABLE `api_keys`
 -- AUTO_INCREMENT for table `detailkeranjang`
 --
 ALTER TABLE `detailkeranjang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `detailuser`
 --
 ALTER TABLE `detailuser`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `kabupaten`
@@ -567,7 +588,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `merek`
@@ -585,7 +606,7 @@ ALTER TABLE `negara`
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `produk`
@@ -621,7 +642,7 @@ ALTER TABLE `toko`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

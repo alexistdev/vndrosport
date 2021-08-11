@@ -1,105 +1,113 @@
 <resources>
-	<string name="lorem_ipsum">Lorem ipsum dolor sit amet, tritani suscipit sea id. Dico eloquentiam et sea, movet intellegam at pri. In vis natum gubergren efficiendi. Esse integre vivendum nec te. Modus iusto sententiae duo ut, mei iudico graeci nostrud eu, mundi exerci repudiare ei pri. Mundi alterum facilisi ne mel, quas placerat hendrerit ei mea, hinc habeo illud ei pri.</string>
-	<string name="lorem_ipsum2">An verear theophrastus delicatissimi cum. In cum ancillae convenire. Est ne omnes causae corrumpit, eum duis sententiae necessitatibus te, mollis.</string>
-	<string name="lorem_ipsum3">Lorem ipsum dolor sit amet, vel at aeque graeci intellegat. Modus utinam mea ei, ut illum ponderum vim. Ridens tractatos.</string>
-	<string name="lorem_ipsum4">Possim discere alienum qui ei, per ex moderatius vituperatoribus. Justo consul minimum eum.</string>
-	<string name="lorem_ipsum8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, tritani suscipit sea id. Dico eloquentiam et sea, movet intellegam at pri. In vis natum gubergren efficiendi. Esse integre vivendum nec te. Modus iusto sententiae duo ut, mei iudico graeci nostrud eu, mundi exerci repudiare ei pri. Mundi alterum facilisi ne mel, quas placerat hendrerit ei mea, hinc habeo illud ei pri.</string>
+    <string name="lorem_ipsum2">An verear theophrastus delicatissimi cum. In cum ancillae convenire. Est ne omnes causae corrumpit, eum duis sententiae necessitatibus te, mollis.</string>
+    <string name="lorem_ipsum3">Lorem ipsum dolor sit amet, vel at aeque graeci intellegat. Modus utinam mea ei, ut illum ponderum vim. Ridens tractatos.</string>
+    <string name="lorem_ipsum4">Possim discere alienum qui ei, per ex moderatius vituperatoribus. Justo consul minimum eum.</string>
+    <string name="lorem_ipsum8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</string>
 
 
-	<!-- TODO: Remove or change this placeholder text -->
-	<string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-	<string name="app_name">vndrosport</string>
-	<!--  Login   -->
-	<string name="login1">gambar login</string>
-	<string name="login2">Sign In</string>
-	<string name="login3">Silahkan login ke dalam akun anda</string>
-	<string name="login4">Email Address</string>
-	<string name="login5">Password</string>
-	<string name="login6">******</string>
-	<string name="login7">Lupa password ?</string>
-	<string name="login8">Belum punya akun? Daftar</string>
+    <string name="app_name">vndrosport</string>
+    <!--  Login   -->
+    <string name="login1">gambar login</string>
+    <string name="login2">Sign In</string>
+    <string name="login3">Silahkan login ke dalam akun anda</string>
+    <string name="login4">Email Address</string>
+    <string name="login5">Password</string>
+    <string name="login6">******</string>
+    <string name="login7">Lupa password ?</string>
+    <string name="login8">Belum punya akun? Daftar</string>
 
-	<!--  Dashboard   -->
-	<string name="dash1">Home</string>
-	<string name="dash2">Riwayat Order</string>
-	<string name="dash3">Keranjang</string>
-	<string name="dash4">Akun</string>
-	<string name="dash5">Spesial Promo</string>
-	<string name="dash6">Judul</string>
-	<string name="dash7">posted: 14–05–2021</string>
-	<string name="dash8">View All</string>
-	<string name="dash9">Kategori</string>
-	<string name="dash10">Payment</string>
-	<string name="dash11">Delivery</string>
-	<string name="dash12">Nama Produk</string>
-	<string name="dash13">Rp.20.000,-</string>
-	<string name="dash14">BELI</string>
+    <!--  Dashboard   -->
+    <string name="dash1">Home</string>
+    <string name="dash2">Riwayat Order</string>
+    <string name="dash3">Keranjang</string>
+    <string name="dash4">Akun</string>
+    <string name="dash5">Spesial Promo</string>
+    <string name="dash6">Judul</string>
+    <string name="dash7">posted: 14–05–2021</string>
+    <string name="dash8">View All</string>
+    <string name="dash9">Kategori</string>
+    <string name="dash10">Payment</string>
+    <string name="dash11">Delivery</string>
+    <string name="dash12">Nama Produk</string>
+    <string name="dash13">Rp.20.000,-</string>
+    <string name="dash14">BELI</string>
 
-	<!--  Detail Produk   -->
-	<string name="produk1">Gambar Produk</string>
-	<string name="produk2">Nama Toko</string>
-	<string name="produk3">Online 12–12–2021 10:12:00</string>
-	<string name="produk4">Rp.20.000</string>
-	<string name="produk5">Merek : Yonex</string>
-	<string name="produk6">Ukuran : L</string>
-	<string name="produk7">Kategori : Raket</string>
-	<string name="produk8">Warna : Merah</string>
-	<string name="produk9">DESCRIPTION</string>
-	<string name="produk10">Merek : </string>
-	<string name="produk11">Kategori : </string>
-	<string name="produk12">Ukuran : </string>
-	<string name="produk13">Warna : </string>
-	<string name="produk14">Last online : </string>
-	<string name="produk15">Rp. </string>
-	<string name="produk16">BELI</string>
+    <!--  Detail Produk   -->
+    <string name="produk1">Gambar Produk</string>
+    <string name="produk2">Nama Toko</string>
+    <string name="produk3">Online 12–12–2021 10:12:00</string>
+    <string name="produk4">Rp.20.000</string>
+    <string name="produk5">Merek : Yonex</string>
+    <string name="produk6">Ukuran : L</string>
+    <string name="produk7">Kategori : Raket</string>
+    <string name="produk8">Warna : Merah</string>
+    <string name="produk9">DESCRIPTION</string>
+    <string name="produk10">Merek : </string>
+    <string name="produk11">Kategori : </string>
+    <string name="produk12">Ukuran : </string>
+    <string name="produk13">Warna : </string>
+    <string name="produk14">Last online : </string>
+    <string name="produk15">Rp. </string>
+    <string name="produk16">BELI</string>
 
-	<!--  Keranjang Belanja   -->
-	<string name="cart1">Sub Total</string>
-	<string name="cart2">-</string>
-	<string name="cart3">Biaya Antar</string>
-	<string name="cart4">Total Biaya</string>
-	<string name="cart5">George Clooney</string>
-	<string name="cart6">08123456789</string>
-	<string name="cart7">Alamat</string>
-	<string name="cart8">Jl.Z.A Pagar Alam, No.93, Labuhan Ratu, Bandar Lampung, Lampung, Indonesia 35141</string>
-	<string name="cart9">Checkout</string>
-	<string name="cart10">Gambar</string>
-	<string name="cart11"><strike>Rp.10.000,-</strike></string>
-	<string name="cart12">- 30%</string>
-	<string name="cart13">Rp.10.000,-</string>
-	<string name="cart14">01</string>
-	<string name="cart15">Keranjang Kosong</string>
-	<string name="cart16">Rp.</string>
-	<string name="cart17">Kembali</string>
-	<string name="cart18">Silahkan transfer ke:</string>
-	<string name="cart19">BCA</string>
-	<string name="cart120">No.Rek: 123456789</string>
-	<string name="cart121">PT VndroSport , tbk INC</string>
+    <!--  Keranjang Belanja   -->
+    <string name="cart1">Sub Total</string>
+    <string name="cart2">-</string>
+    <string name="cart3">Biaya Antar</string>
+    <string name="cart4">Total Biaya</string>
+    <string name="cart5">George Clooney</string>
+    <string name="cart6">08123456789</string>
+    <string name="cart7">Alamat</string>
+    <string name="cart8">Jl.Z.A Pagar Alam, No.93, Labuhan Ratu, Bandar Lampung, Lampung, Indonesia 35141</string>
+    <string name="cart9">Checkout</string>
+    <string name="cart10">Gambar</string>
+    <string name="cart11"><strike>Rp.10.000,-</strike></string>
+    <string name="cart12">- 30%</string>
+    <string name="cart13">Rp.10.000,-</string>
+    <string name="cart14">01</string>
+    <string name="cart15">Keranjang Kosong</string>
+    <string name="cart16">Rp.</string>
+    <string name="cart17">Kembali</string>
+    <string name="cart18">Silahkan transfer ke:</string>
+    <string name="cart19">BCA</string>
+    <string name="cart120">No.Rek: 123456789</string>
+    <string name="cart121">PT VndroSport , tbk INC</string>
 
-	<!--  Halaman Pesanan   -->
-	<string name="pesanan1">gambar</string>
-	<string name="pesanan2">Order:#1</string>
-	<string name="pesanan3">Dikirim</string>
-	<string name="pesanan4">Nama Produk</string>
-	<string name="pesanan5">Total: Rp.100.000</string>
-	<string name="pesanan6">Order: #</string>
-	<string name="pesanan7">Diproses</string>
-	<string name="pesanan8">Dikirim</string>
-	<string name="pesanan9">Rp.</string>
+    <!--  Halaman Pesanan   -->
+    <string name="pesanan1">gambar</string>
+    <string name="pesanan2">Order:#1</string>
+    <string name="pesanan3">Dikirim</string>
+    <string name="pesanan4">Nama Produk</string>
+    <string name="pesanan5">Total: Rp.100.000</string>
+    <string name="pesanan6">Order: #</string>
+    <string name="pesanan7">Diproses</string>
+    <string name="pesanan8">Dikirim</string>
+    <string name="pesanan9">Rp.</string>
 
-	<!-- Akun   -->
-	<string name="akun1">Email</string>
-	<string name="akun2">Nama Lengkap</string>
-	<string name="akun3">Telepon</string>
-	<string name="akun4">Nomor KTP</string>
-	<string name="akun5">Alamat</string>
-	<string name="akun6">Password</string>
-	<string name="akun7">UBAH</string>
-	<string name="akun8">LOGOUT</string>
+    <!-- Akun   -->
+    <string name="akun1">Email</string>
+    <string name="akun2">Nama Lengkap</string>
+    <string name="akun3">Telepon</string>
+    <string name="akun4">Nomor KTP</string>
+    <string name="akun5">Alamat</string>
+    <string name="akun6">Password</string>
+    <string name="akun7">UBAH</string>
+    <string name="akun8">LOGOUT</string>
 
-	<!-- Akun   -->
-	<string name="kategori1">Nama Kategori</string>
-	<string name="kategori2">gambar</string>
+    <!-- Kategori   -->
+    <string name="kategori1">Nama Kategori</string>
+    <string name="kategori2">gambar</string>
+
+	<!-- Daftar   -->
+	<string name="daftar1">Sign Up</string>
+	<string name="daftar2">Nama Lengkap</string>
+	<string name="daftar3">Nomor Telepon</string>
+	<string name="daftar4">Sudah punya akun? Login</string>
+
+
 
 </resources>

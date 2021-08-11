@@ -34,7 +34,7 @@ class Akun extends RestController
 			} else {
 				$this->response( [
 					'status' => false,
-					'message' => 'Not Authorized'
+					'message' => 'Data tidak ditemukan'
 				], 404 );
 			}
 		} else {

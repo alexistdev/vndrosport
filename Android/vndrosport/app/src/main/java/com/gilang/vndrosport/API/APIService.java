@@ -31,6 +31,16 @@ import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface APIService {
+	//API untuk Daftar
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@FormUrlEncoded
+	@POST("api/daftar")
+	Call<AkunModel> tambahUser(@Field("nama_lengkap") String namaLengkap,
+							   @Field("email") String email,
+							   @Field("password") String password,
+							   @Field("no_telp") String noTelp);
+
+
 	//API untuk kategori
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
 	@GET("api/kategori")

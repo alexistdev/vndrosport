@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:background="@color/maroon"
+	tools:context=".page.Daftar">
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="75dp"
+		android:src="@drawable/logo"
+		android:layout_marginTop="20dp"
+		android:layout_marginStart="12dp"
+		android:layout_marginEnd="12dp"
+		android:contentDescription="@string/login1"
+		android:layout_gravity="center"/>
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/daftar1"
+		android:textColor="@color/white"
+		android:layout_marginStart="20dp"
+		android:layout_marginEnd="20dp"
+		android:textSize="24sp"
+		android:textStyle="bold"/>
+
+	<androidx.cardview.widget.CardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="20dp"
+		android:layout_marginEnd="20dp"
+		android:layout_marginTop="10dp"
+		android:elevation="10dp"
+		app:cardCornerRadius="10dp">
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+			<!-- Start: Nama Lengkap -->
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/daftar2"
+				android:layout_marginStart="20dp"
+				android:layout_marginEnd="20dp"
+				android:layout_marginTop="20dp"
+				android:textSize="12sp"/>
+
+			<EditText
+				android:id="@+id/txt_nama"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
+				android:autofillHints="@string/login4"
+				android:hint="@string/daftar2"
+				android:inputType="text"
+				android:minHeight="48dp"
+				tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+			<!-- End: Nama Lengkap -->
+
+			<!-- Start: Nomor Telepon -->
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/daftar3"
+				android:layout_marginStart="20dp"
+				android:layout_marginEnd="20dp"
+				android:layout_marginTop="20dp"
+				android:textSize="12sp"/>
+
+			<EditText
+				android:id="@+id/txt_telp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
+				android:autofillHints="@string/login4"
+				android:hint="@string/daftar3"
+				android:inputType="text"
+				android:minHeight="48dp"
+				tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+			<!-- End: Nomor Telepon -->
+
+			<!-- Start: Email -->
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/login4"
+				android:layout_marginStart="20dp"
+				android:layout_marginEnd="20dp"
+				android:layout_marginTop="10dp"
+				android:textSize="12sp"/>
+
+			<EditText
+				android:id="@+id/txt_email"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
+				android:autofillHints="@string/login4"
+				android:hint="@string/login4"
+				android:inputType="textEmailAddress"
+				android:minHeight="48dp"
+				tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+			<!-- End: Email -->
+
+			<!-- Start: Password -->
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/login5"
+				android:layout_marginStart="20dp"
+				android:layout_marginEnd="20dp"
+				android:layout_marginTop="10dp"
+				android:textSize="12sp"/>
+
+			<EditText
+				android:id="@+id/txt_password"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
+				android:autofillHints="@string/login5"
+				android:hint="@string/login6"
+				android:inputType="textPassword"
+				android:minHeight="48dp" />
+			<!-- End: Email -->
+
+
+			<ImageView
+				android:id="@+id/btn_daftar"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:src="@drawable/tombol_daftar"
+				android:layout_gravity="center"
+				android:layout_marginStart="20dp"
+				android:layout_marginEnd="20dp"
+				android:contentDescription="@string/login1"/>
+		</LinearLayout>
+	</androidx.cardview.widget.CardView>
+	<TextView
+		android:id="@+id/txt_login"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:textColor="@color/white"
+		android:text="@string/daftar4"
+		android:layout_marginTop="10dp"
+		android:layout_marginStart="20dp"
+		android:layout_marginEnd="20dp"
+		android:textSize="14sp"/>
+</LinearLayout>

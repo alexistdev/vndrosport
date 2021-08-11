@@ -36,6 +36,7 @@ $route['api/pesanan'] = 'api/Pesanan/index';
 $route['api/auth'] = 'api/Auth/index';
 $route['api/akun'] = 'api/Akun/index';
 $route['api/kategori'] = 'api/Kategori/index';
+$route['api/daftar'] = 'api/Daftar/index';
 
 /* Route Toko */
 $route['store/dashboard'] = 'store/Member/index';

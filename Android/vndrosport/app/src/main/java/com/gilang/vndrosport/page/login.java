@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.gilang.vndrosport.API.APIService;
 import com.gilang.vndrosport.MainActivity;
@@ -25,6 +27,7 @@ public class login extends AppCompatActivity {
 	private EditText mEmail, mPassword;
 	private ImageView btnLogin;
 	private ProgressDialog pDialog;
+	private TextView mDaftar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,11 @@ public class login extends AppCompatActivity {
 				pesan("Semua kolom harus diisi!");
 			}
 		});
+
+		mDaftar.setOnClickListener(v -> {
+			Intent intent = new Intent(login.this, Daftar.class);
+			startActivity(intent);
+		});
     }
 
 	private void checkLogin(final String email, final String password){
@@ -66,6 +74,7 @@ public class login extends AppCompatActivity {
 								Intent intent = new Intent(login.this, MainActivity.class);
 								startActivity(intent);
 								finish();
+								pesan(response.body().getToken());
 							}
 						}
 					} else {
@@ -99,7 +108,7 @@ public class login extends AppCompatActivity {
 
 	public void init() {
 		btnLogin = findViewById(R.id.btn_login);
-//		btnDaftar = findViewById(R.id.tombol_daftar);
+		mDaftar = findViewById(R.id.txt_daftar);
 		mEmail = findViewById(R.id.txt_email);
 		mPassword = findViewById(R.id.txt_password);
 		pDialog = new ProgressDialog(this);

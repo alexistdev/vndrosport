@@ -46,11 +46,25 @@ class M_api extends CI_Model
 		$this->db->update($this->tbdetailuser,$data);
 	}
 
+	public function simpan_user($data)
+	{
+		$this->db->insert($this->tbusers,$data);
+		return $this->db->insert_id();
+	}
 
+	public function simpan_detail_user($data)
+	{
+		$this->db->insert($this->tbdetailuser,$data);
+	}
+
+	public function cek_email($email){
+		$this->db->where("$this->tbusers.email",$email);
+		return $this->db->get($this->tbusers);
+	}
 	public function get_data_akun($idUser)
 	{
 		$this->db->where("$this->tbusers.id_user",$idUser);
-		$this->db->join($this->tbdetailuser,"$this->tbdetailuser.id = $this->tbusers.id_user");
+		$this->db->join($this->tbdetailuser,"$this->tbdetailuser.id_user = $this->tbusers.id_user");
 		return $this->db->get($this->tbusers);
 
 	}

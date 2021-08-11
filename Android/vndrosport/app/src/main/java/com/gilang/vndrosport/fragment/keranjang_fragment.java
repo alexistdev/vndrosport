@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +49,6 @@ public class keranjang_fragment extends Fragment implements KeranjangAdapter.Cli
 	private Button mCheckout;
 
 
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
@@ -57,15 +58,11 @@ public class keranjang_fragment extends Fragment implements KeranjangAdapter.Cli
 				Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
 		String token = sharedPreferences.getString("token", "");
 		String idUser = sharedPreferences.getString("idUser", "");
+
 		setupRecyclerView();
 		setData(getContext());
 		setTotal(getContext());
-		mCheckout.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				checkout(getContext(),idUser,token);
-			}
-		});
+		mCheckout.setOnClickListener(v -> checkout(getContext(),idUser,token));
 		return mview;
 	}
 
@@ -73,6 +70,7 @@ public class keranjang_fragment extends Fragment implements KeranjangAdapter.Cli
 		try {
 			Call<CheckoutModel> check = APIService.Factory.create(mContext).simpanPesanan(idUser,token);
 			check.enqueue(new Callback<CheckoutModel>() {
+				@EverythingIsNonNull
 				@Override
 				public void onResponse(Call<CheckoutModel> call, Response<CheckoutModel> response) {
 					if(response.isSuccessful()) {
@@ -84,7 +82,7 @@ public class keranjang_fragment extends Fragment implements KeranjangAdapter.Cli
 						}
 					}
 				}
-
+				@EverythingIsNonNull
 				@Override
 				public void onFailure(Call<CheckoutModel> call, Throwable t) {
 					if(t instanceof NoConnectivityException) {
@@ -122,7 +120,11 @@ public class keranjang_fragment extends Fragment implements KeranjangAdapter.Cli
 
 	private void setTotal(Context mContext){
 		try{
-			Call<TotalModel> call = APIService.Factory.create(mContext).dataTotal("1", "XiTYHklpnU");
+			SharedPreferences sharedPreferences = requireContext().getSharedPreferences(
+					Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
+			String token = sharedPreferences.getString("token", "");
+			String idUser = sharedPreferences.getString("idUser", "");
+			Call<TotalModel> call = APIService.Factory.create(mContext).dataTotal(idUser, token);
 			call.enqueue(new Callback<TotalModel>() {
 				@EverythingIsNonNull
 				@Override
@@ -160,7 +162,11 @@ public class keranjang_fragment extends Fragment implements KeranjangAdapter.Cli
 	public void setData(Context mContext)
 	{
 		try {
-			Call<ResponseKeranjang> call = APIService.Factory.create(mContext).dapatKeranjang("1", "XiTYHklpnU");
+			SharedPreferences sharedPreferences = requireContext().getSharedPreferences(
+					Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
+			String token = sharedPreferences.getString("token", "");
+			String idUser = sharedPreferences.getString("idUser", "");
+			Call<ResponseKeranjang> call = APIService.Factory.create(mContext).dapatKeranjang(idUser, token);
 			call.enqueue(new Callback<ResponseKeranjang>() {
 				@EverythingIsNonNull
 				@Override
@@ -219,10 +225,31 @@ public class keranjang_fragment extends Fragment implements KeranjangAdapter.Cli
 	}
 
 	@Override
-	public void dataItemKeranjang(String msg) {
-		setData(getContext());
-		setTotal(getContext());
-		pesan(msg);
+	public void dataItemKeranjang(String idProduk, String Opsi, String msg) {
+		memperbaharuiKeranjang(idProduk,Opsi, msg);
+	}
+
+	public void memperbaharuiKeranjang(String idProduk, String Opsi, String msg)
+	{
+		SharedPreferences sharedPreferences = requireContext().getSharedPreferences(
+				Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
+		String token = sharedPreferences.getString("token", "");
+		String idUser = sharedPreferences.getString("idUser", "");
+		Call<KeranjangModel> call = APIService.Factory.create(getContext()).updateKeranjang(idUser,token,idProduk,Opsi);
+		call.enqueue(new Callback<KeranjangModel>() {
+			@EverythingIsNonNull
+			@Override
+			public void onResponse(Call<KeranjangModel> call, Response<KeranjangModel> response) {
+				pesan(msg);
+				setData(getContext());
+				setTotal(getContext());
+			}
+			@EverythingIsNonNull
+			@Override
+			public void onFailure(Call<KeranjangModel> call, Throwable t) {
+				Log.e("Retrofit Get", t.toString());
+			}
+		});
 	}
 
 	private void pesan(String msg){

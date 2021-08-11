@@ -11,7 +11,7 @@
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
 	"require": {
-		"php": ">=5.4",
+		"php": ">=7.3",
 		"chriskacerguis/codeigniter-restserver": "^3.1",
 		"almasaeed2010/adminlte": "~3.1"
 	},

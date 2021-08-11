@@ -17,9 +17,11 @@ public class KeranjangModel {
 	private final String subTotal;
 	@SerializedName("gambar")
 	private final String gambarProduk;
+	@SerializedName("message")
+	private final String message;
 
 
-	public KeranjangModel(String idDetailKeranjang, String idProduk, String namaProduk, String idKeranjang, String jumlahProduk, String subTotal, String gambarProduk) {
+	public KeranjangModel(String idDetailKeranjang, String idProduk, String namaProduk, String idKeranjang, String jumlahProduk, String subTotal, String gambarProduk, String message) {
 		this.idDetailKeranjang = idDetailKeranjang;
 		this.idProduk = idProduk;
 		this.namaProduk = namaProduk;
@@ -27,6 +29,7 @@ public class KeranjangModel {
 		this.jumlahProduk = jumlahProduk;
 		this.subTotal = subTotal;
 		this.gambarProduk = gambarProduk;
+		this.message = message;
 	}
 
 	public String getIdDetailKeranjang() {
@@ -55,5 +58,9 @@ public class KeranjangModel {
 
 	public String getGambarProduk() {
 		return gambarProduk;
+	}
+
+	public String getMessage() {
+		return message;
 	}
 }

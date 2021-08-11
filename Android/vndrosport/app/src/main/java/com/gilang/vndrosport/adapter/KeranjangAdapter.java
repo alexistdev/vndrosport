@@ -2,6 +2,8 @@ package com.gilang.vndrosport.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +21,6 @@ import com.gilang.vndrosport.API.APIService;
 import com.gilang.vndrosport.R;
 import com.gilang.vndrosport.config.Constants;
 import com.gilang.vndrosport.model.KeranjangModel;
-
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -52,6 +53,7 @@ public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.MyKe
 
 	@Override
 	public void onBindViewHolder (@NonNull KeranjangAdapter.MyKeranjangHolder holder, final int position){
+
 		Glide.with(context)
 				.load(Constants.IMAGES_URL+mKeranjangList.get(position).getGambarProduk())
 				.apply(new RequestOptions().error(R.drawable.no_image))
@@ -62,54 +64,18 @@ public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.MyKe
 		holder.mJudul.setText(mKeranjangList.get(position).getNamaProduk());
 		holder.mharga.setText(String.format("%s%s",holder.itemView.getContext().getString(R.string.cart16),eHarga));
 		holder.mJumlah.setText(mKeranjangList.get(position).getJumlahProduk());
-		MyKeranjangHolder.mAdd.setOnClickListener(v -> {
-			String idpr= mKeranjangList.get(position).getIdProduk();
-			Call<KeranjangModel> call = APIService.Factory.create(context).updateKeranjang("1","XiTYHklpnU",idpr,"1");
-			call.enqueue(new Callback<KeranjangModel>() {
-				@EverythingIsNonNull
-				@Override
-				public void onResponse(Call<KeranjangModel> call, Response<KeranjangModel> response) {
-					try {
-						clickListener.dataItemKeranjang("Produk berhasil ditambahkan !");
-					} catch (Exception e){
-						e.printStackTrace();
-					}
-				}
-				@EverythingIsNonNull
-				@Override
-				public void onFailure(Call<KeranjangModel> call, Throwable t) {
-					Log.e("Retrofit Get", t.toString());
-				}
-			});
+
+		holder.mAdd.setOnClickListener(v -> {
+//			Toast.makeText(v.getContext(), mKeranjangList.get(position).getIdProduk(), Toast.LENGTH_SHORT).show();
+			clickListener.dataItemKeranjang(mKeranjangList.get(position).getIdProduk(),"1", "Produk berhasil ditambahkan!");
 		});
-		MyKeranjangHolder.mMin.setOnClickListener(v -> {
+		holder.mMin.setOnClickListener(v -> {
+//			Toast.makeText(v.getContext(), mKeranjangList.get(position).getIdProduk(), Toast.LENGTH_SHORT).show();
 			int dataJumlah = Integer.parseInt(mKeranjangList.get(position).getJumlahProduk());
 			if(dataJumlah > 1) {
-				String idpr = mKeranjangList.get(position).getIdProduk();
-				Call<KeranjangModel> call = APIService.Factory.create(context).updateKeranjang("1", "XiTYHklpnU", idpr, "2");
-				call.enqueue(new Callback<KeranjangModel>() {
-					@EverythingIsNonNull
-					@Override
-					public void onResponse(Call<KeranjangModel> call, Response<KeranjangModel> response) {
-						try {
-							clickListener.dataItemKeranjang("Produk berhasil dikurangi !");
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-
-					@EverythingIsNonNull
-					@Override
-					public void onFailure(Call<KeranjangModel> call, Throwable t) {
-						Log.e("Retrofit Get", t.toString());
-					}
-				});
+				clickListener.dataItemKeranjang(mKeranjangList.get(position).getIdProduk(),"2", "Produk berhasil dikurangi!");
 			}else{
-				try {
-					clickListener.dataItemKeranjang("Minimum pembelian adalah 1");
-				} catch (Exception e){
-					e.printStackTrace();
-				}
+				Toast.makeText(v.getContext(), "Minimum pembelian adalah 1", Toast.LENGTH_SHORT).show();
 			}
 		});
 	}
@@ -129,8 +95,6 @@ public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.MyKe
 		private static ImageView mGambar,mAdd,mMin;
 		private final TextView mJudul,mharga,mJumlah;
 
-
-
 		MyKeranjangHolder(@NonNull View itemView) {
 			super(itemView);
 			mGambar = itemView.findViewById(R.id.imgCart);
@@ -144,6 +108,6 @@ public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.MyKe
 	}
 
 	public interface ClickListener{
-		void dataItemKeranjang(String msg);
+		void dataItemKeranjang(String idProduk, String opsi, String msg);
 	}
 }
