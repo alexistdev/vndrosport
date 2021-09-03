@@ -76,7 +76,7 @@ class Login extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
 		if ($this->form_validation->run() === false) {
 			$this->session->set_flashdata('pesan', validation_errors());
-			$data['image'] = $this->_create_captcha();
+			$data['image'] = $this->_create_captcha() ?? "";
 			$data['title'] = _myJudul();
 			$data['tag'] = 'user';
 			$view ='v_login';
