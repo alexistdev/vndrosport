@@ -140,4 +140,16 @@ class Client extends CI_Controller
 			redirect('admin/client');
 		}
 	}
+
+	public function hapus($idx=null)
+	{
+		$id = decrypt_url($idx);
+		if (in_array($id,["",null]) || $id == '') {
+			redirect('admin/client');
+		} else {
+			$this->admin->hapus_client($id);
+			$this->session->set_flashdata('pesan1', '<div class="alert alert-danger" role="alert">Data client berhasil dihapus!</div>');
+			redirect('admin/client');
+		}
+	}
 }

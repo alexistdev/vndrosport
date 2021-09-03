@@ -22,6 +22,7 @@
 		android:layout_marginStart="10dp"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:textColor = "@color/black"
 		android:text="@string/dash12"
 		android:textStyle="bold"
 		android:textSize="12sp"/>
@@ -37,6 +38,7 @@
 			android:layout_marginEnd="10dp"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:textColor = "@color/black"
 			android:text="@string/dash13"
 			android:textStyle="bold"
 			android:textSize="16sp"

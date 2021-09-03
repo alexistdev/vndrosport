@@ -34,6 +34,7 @@
 					android:maxLines="2"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:textColor = "?android:textColorPrimary"
 					android:text="@string/dash12"
 					app:drawableEndCompat="@drawable/ic_close" />
 				<LinearLayout
@@ -47,6 +48,7 @@
 						android:id="@+id/tvhargaCoret"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
+						android:textColor = "?android:textColorPrimary"
 						android:text="@string/cart11"
 						android:textSize="12sp"/>
 					<TextView
@@ -66,6 +68,7 @@
 						android:id="@+id/hargaCart"
 						android:layout_width="0dp"
 						android:layout_height="wrap_content"
+						android:textColor = "?android:textColorPrimary"
 						android:layout_weight="1"
 						android:text="@string/cart13"/>
 					<LinearLayout
@@ -86,6 +89,7 @@
 							android:layout_height="wrap_content"
 							android:text="@string/cart14"
 							android:gravity="center"
+							android:textColor = "?android:textColorPrimary"
 							android:layout_marginStart="10dp"
 							android:layout_marginEnd="10dp"
 							android:layout_gravity="center"/>

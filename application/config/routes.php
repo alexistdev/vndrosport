@@ -34,18 +34,20 @@ $route['admin/toko'] = 'administrator/Toko/index';
 /* Client */
 $route['admin/client'] = 'administrator/Client';
 $route['admin/client/add'] = 'administrator/Client/add';
+$route['admin/client/hapus/(:any)'] = 'administrator/Client/hapus/$1';
 
 /* Api */
 $route['api/spesial'] = 'api/Spesial';
 $route['api/produk'] = 'api/Produk';
 $route['api/produk/detail'] = 'api/Produk/detail';
-$route['api/keranjang'] = 'api/Keranjang';
+$route['api/keranjang'] = 'api/Keranjang/index';
 $route['api/keranjang/total'] = 'api/Keranjang/total';
 $route['api/checkout'] = 'api/Checkout/index';
 $route['api/pesanan'] = 'api/Pesanan/index';
 $route['api/auth'] = 'api/Auth/index';
 $route['api/akun'] = 'api/Akun/index';
 $route['api/kategori'] = 'api/Kategori/index';
+$route['api/kategori/q'] = 'api/Kategori/detail';
 $route['api/daftar'] = 'api/Daftar/index';
 
 /* Route Toko */

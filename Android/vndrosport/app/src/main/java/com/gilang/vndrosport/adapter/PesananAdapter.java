@@ -2,6 +2,7 @@ package com.gilang.vndrosport.adapter;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.gilang.vndrosport.R;
 import com.gilang.vndrosport.model.PesananModel;
+import com.gilang.vndrosport.page.Allproduk;
+import com.gilang.vndrosport.page.Payment;
+
 import java.util.List;
 
 public class PesananAdapter extends RecyclerView.Adapter<PesananAdapter.MyPesananHolder>{
@@ -43,6 +47,10 @@ public class PesananAdapter extends RecyclerView.Adapter<PesananAdapter.MyPesana
 		} else {
 			holder.mStatus.setText(kirim);
 		}
+		holder.itemView.setOnClickListener(view -> {
+			Intent mIntent = new Intent(view.getContext(), Payment.class);
+			view.getContext().startActivity(mIntent);
+		});
 	}
 	@Override
 	public int getItemCount () {

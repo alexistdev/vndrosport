@@ -108,6 +108,19 @@ class M_api extends CI_Model
 		return $this->db->get($this->tbproduk);
 	}
 
+	public function get_data_produk2($id=null)
+	{
+		if($id != null){
+			$this->db->where("$this->tbproduk.id_kategori", $id);
+		}
+		$this->db->select("$this->tbtoko.nama_toko,$this->tbtoko.last_online,$this->tbkategori.nama_kategori,$this->tbmerek.nama_merek, $this->tbproduk.id,$this->tbproduk.nama_produk, $this->tbproduk.harga,$this->tbproduk.gambar,$this->tbproduk.ukuran,$this->tbproduk.warna,$this->tbproduk.deskripsi");
+		$this->db->join($this->tbkategori,"$this->tbkategori.id = $this->tbproduk.id_kategori");
+		$this->db->join($this->tbtoko,"$this->tbtoko.id = $this->tbproduk.id_toko");
+		$this->db->join($this->tbmerek,"$this->tbmerek.id = $this->tbproduk.id_merek");
+		$this->db->order_by("$this->tbproduk.id", "DESC");
+		return $this->db->get($this->tbproduk);
+	}
+
 	public function cek_user($id, $token)
 	{
 		$this->db->where('id_user' ,$id);

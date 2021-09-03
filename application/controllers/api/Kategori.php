@@ -34,4 +34,26 @@ class Kategori extends RestController
 			], 404 );
 		}
 	}
+
+	public function detail_get()
+	{
+		$idUser = $this->get('id_user');
+		$token = $this->get('token');
+		$cekUser = $this->api->cek_user($idUser,$token);
+		if($cekUser!= 0){
+			$id = $this->get('id_kategori');
+			$getData = $this->api->get_data_produk2($id);
+			$dataResponse = [
+				'status' => true,
+				'result' => $getData->result_array(),
+				'message' => 'Data berhasil didapatkan !',
+			];
+			$this->response($dataResponse, 200);
+		} else {
+			$this->response( [
+				'status' => false,
+				'message' => 'Not Authorized'
+			], 404 );
+		}
+	}
 }

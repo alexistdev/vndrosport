@@ -39,7 +39,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<div class="card card-dark">
 						<div class="card-header">
 							<h3 class="card-title">Daftar Toko</h3>
-							<a href="<?= base_url('admin/kabupaten/add'); ?>"><button class="btn btn-primary btn-sm float-right"><i class="fas fa-plus"></i> &nbsp;Tambah</button></a>
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body">
@@ -69,11 +68,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										<td><?= date('l d-m-Y H:i:s',sanitasi($row['last_online'])); ?></td>
 										
 										<td class="text-center">
-											<a href="<?= base_url('admin/kabupaten/edit/'.encrypt_url(sanitasi($row['id_kabupaten']))); ?>"><button class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></button></a>
-											<button class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Tampil Kabupaten"><i class="fas fa-eye"></i></button>
-											<span id="tombolHapus" data-toggle="modal" data-target="#modalHapus" data-id="<?= encrypt_url(sanitasi($row['id_kabupaten'])) ?>">
-													<button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
-												</span>
+											<a href="<?= base_url('admin/toko/edit/'.encrypt_url(sanitasi($row['id']))); ?>"><button class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></button></a>
 										</td>
 									</tr>
 								<?php endforeach; ?>

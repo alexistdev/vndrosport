@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/cart15"
+			android:textColor = "?android:textColorPrimary"
             android:gravity="center_vertical"
             android:padding="16dp"/>
     </LinearLayout>
@@ -42,6 +43,7 @@
                 android:layout_weight="1"
                 android:id="@+id/bagtotal"
                 android:text="@string/cart1"
+				android:textColor = "@color/black"
                 android:gravity="start"
                 android:padding="16dp"/>
             <TextView
@@ -50,6 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
+				android:textColor = "@color/black"
                 android:text="@string/cart2"
                 android:gravity="end"/>
         </LinearLayout>
@@ -68,6 +71,7 @@
                 android:layout_weight="1"
                 android:id="@+id/bagAntar"
                 android:text="@string/cart3"
+				android:textColor = "@color/black"
                 android:gravity="start"
                 android:padding="16dp"/>
             <TextView
@@ -76,6 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
+				android:textColor = "@color/black"
                 android:text="@string/cart2"
                 android:gravity="end"/>
         </LinearLayout>
@@ -94,6 +99,7 @@
                 android:layout_weight="1"
                 android:id="@+id/bagTotal"
                 android:text="@string/cart4"
+				android:textColor = "@color/black"
                 android:gravity="start"
                 android:padding="16dp"/>
             <TextView
@@ -102,6 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
+				android:textColor = "@color/black"
                 android:text="@string/cart2"
                 android:gravity="end"/>
         </LinearLayout>
@@ -131,6 +138,7 @@
                 android:id="@+id/tvNamaPengguna"
                 android:text="@string/cart5"
                 android:gravity="start"
+				android:textColor = "@color/black"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"/>
             <TextView
@@ -141,6 +149,7 @@
                 android:id="@+id/tvTelepon"
                 android:text="@string/cart6"
                 android:gravity="start"
+				android:textColor = "@color/black"
                 android:paddingBottom="10dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"/>
@@ -160,6 +169,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="@string/cart7"
+				android:textColor = "@color/black"
                 android:gravity="start"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"/>
@@ -174,6 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="16sp"
+				android:textColor = "@color/black"
                 android:text="@string/cart8"
                 android:gravity="start"
                 android:paddingBottom="20dp"

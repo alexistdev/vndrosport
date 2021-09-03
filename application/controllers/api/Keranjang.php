@@ -181,10 +181,10 @@ class Keranjang extends RestController
 	{
 		$idUser = $this->put('id_user');
 		$myToken = $this->put('token');
-		$idProduk = $this->put('idProduk');
-		$opsi = $this->put('opsi');
 		$cekUser = $this->api->cek_user($idUser,$myToken);
 		if($cekUser!= 0){
+			$idProduk = $this->put('idProduk');
+			$opsi = $this->put('opsi');
 			//cek apakah idProduk Ada
 			$getProduk = $this->api->get_data_produk($idProduk);
 			if($getProduk->num_rows() != 0){
@@ -192,7 +192,6 @@ class Keranjang extends RestController
 				$idKeranjang = $getDetailKeranjang->row()->id_keranjang;
 				$jumlah = $getDetailKeranjang->row()->jumlah;
 				$hargaProduk = $getProduk->row()->harga;
-
 				switch ($opsi) {
 					case 1:
 						$jumlah++;

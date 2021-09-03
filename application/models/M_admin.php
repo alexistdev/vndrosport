@@ -112,6 +112,11 @@ class M_admin extends CI_Model
 		$this->db->insert($this->tbdetailuser,$data);
 	}
 
+	public function hapus_client($id)
+	{
+		$this->db->where('id_user', $id);
+		$this->db->delete($this->tbusers);
+	}
 
 
 	#########################################################################################

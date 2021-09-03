@@ -73,9 +73,14 @@
     <string name="cart16">Rp.</string>
     <string name="cart17">Kembali</string>
     <string name="cart18">Silahkan transfer ke:</string>
-    <string name="cart19">BCA</string>
-    <string name="cart120">No.Rek: 123456789</string>
+    <string name="cart19">BRI</string>
+    <string name="cart120">No.Rek: 1290-01-00-3026506</string>
     <string name="cart121">PT VndroSport , tbk INC</string>
+
+	<!-- Payment   -->
+	<string name="payment1">BRI No.Rek: 1290-01-00-3026506</string>
+	<string name="payment2">PT VndroSport , tbk INC</string>
+
 
     <!--  Halaman Pesanan   -->
     <string name="pesanan1">gambar</string>

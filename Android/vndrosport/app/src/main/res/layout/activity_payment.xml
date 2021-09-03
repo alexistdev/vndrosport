@@ -56,6 +56,7 @@
 				android:layout_marginTop="10dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:textColor="@color/black"
 				android:text="Pembayaran paling lambat 1x24 jam"
 				android:textSize="14sp"
 				android:layout_marginStart="5dp"
@@ -66,6 +67,7 @@
 				android:layout_marginTop="10dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:textColor="@color/black"
 				android:text="Pengiriman akan dilakukan setelah pembayaran terkonfirmasi"
 				android:textSize="14sp"
 				app:drawableStartCompat="@drawable/ic_arrow"
@@ -77,6 +79,7 @@
 				android:layout_marginBottom="10dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:textColor="@color/black"
 				android:text="Pembayaran akan diteruskan ke merchant setelah barang diterima"
 				app:drawableStartCompat="@drawable/ic_arrow"
 				android:textSize="14sp"
@@ -122,7 +125,7 @@
 				android:layout_marginTop="10dp"
 				android:textStyle="bold"
 				android:textColor="@color/white"
-				android:text="BCA, a.n PT Vndro Sport"
+				android:text="@string/payment2"
 				android:textSize="16sp"
 				android:layout_gravity="center_vertical"/>
 			<TextView
@@ -133,7 +136,7 @@
 				android:layout_marginBottom="20dp"
 				android:textStyle="bold"
 				android:textColor="@color/white"
-				android:text="No.rek: 123456789"
+				android:text="@string/payment1"
 				android:textSize="16sp"
 				android:layout_gravity="center_vertical"/>
 		</LinearLayout>

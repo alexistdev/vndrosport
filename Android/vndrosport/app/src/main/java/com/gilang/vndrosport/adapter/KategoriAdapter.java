@@ -2,6 +2,7 @@ package com.gilang.vndrosport.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.gilang.vndrosport.R;
 import com.gilang.vndrosport.model.KategoriModel;
 import com.gilang.vndrosport.model.KeranjangModel;
+import com.gilang.vndrosport.page.Allproduk;
+import com.gilang.vndrosport.page.Detailproduk;
 
 import java.util.List;
 
@@ -30,12 +33,18 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.MyKate
 		View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_list_kategori, parent, false);
 		KategoriAdapter.MyKategoriHolder holder;
 		holder = new KategoriAdapter.MyKategoriHolder(mView);
+
 		return holder;
 	}
 
 	@Override
 	public void onBindViewHolder (@NonNull KategoriAdapter.MyKategoriHolder holder, final int position){
 		holder.mJudul.setText(mKategoriList.get(position).getNamaKategori());
+		holder.itemView.setOnClickListener(view -> {
+			Intent mIntent = new Intent(view.getContext(), Allproduk.class);
+			mIntent.putExtra("idKategori",mKategoriList.get(position).getIdKategori());
+			view.getContext().startActivity(mIntent);
+		});
 	}
 	@Override
 

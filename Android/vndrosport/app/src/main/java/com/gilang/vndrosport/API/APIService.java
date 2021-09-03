@@ -85,10 +85,17 @@ public interface APIService {
 	Call<LoginModel> loginUser(@Field("email") String email,
 							   @Field("password") String password);
 
-	/* Mendapatkan API Berita */
+	/* Mendapatkan API Semua produk */
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
 	@GET("api/produk")
 	Call<ResponseProduk> produkHome();
+
+	/* Mendapatkan API Produk per kategori */
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@GET("api/kategori/q")
+	Call<ResponseProduk> produkKategori(@Query("id_user") String idUser,
+										@Query("token") String token,
+										@Query("id_kategori") String idKategori);
 
 	/* Mendapatkan API Berita */
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})

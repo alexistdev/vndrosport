@@ -22,6 +22,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:background="#0000"
+				android:textColor = "?android:textColorPrimary"
 				android:gravity="center|start"
 				android:paddingStart="15dp"
 				android:paddingEnd="15dp"

@@ -25,7 +25,7 @@
 				android:layout_margin="5dp"
 				android:contentDescription="@string/pesanan1"
 				android:scaleType="fitXY"
-				android:src="@drawable/raket"
+				android:src="@drawable/trolley"
 				tools:ignore="ImageContrastCheck" />
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -44,12 +44,14 @@
 						android:layout_weight="1"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:textColor = "?android:textColorPrimary"
 						android:text="@string/pesanan2"
 						android:textSize="16sp"/>
 					<TextView
 						android:id="@+id/txt_status"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:textColor = "?android:textColorPrimary"
 						android:text="@string/pesanan3"
 						android:layout_weight="4"
 						android:textSize="12sp"/>
@@ -65,6 +67,7 @@
 						android:id="@+id/txt_namaProduk"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:textColor = "?android:textColorPrimary"
 						android:text="@string/pesanan4"
 						android:textSize="16sp"/>
 				</LinearLayout>
@@ -79,6 +82,7 @@
 						android:layout_weight="1"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
+						android:textColor = "?android:textColorPrimary"
 						android:text="@string/pesanan5"
 						android:textSize="16sp"/>
 					<ImageView

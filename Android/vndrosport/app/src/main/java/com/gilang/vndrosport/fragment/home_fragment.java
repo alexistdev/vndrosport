@@ -37,10 +37,8 @@ import retrofit2.internal.EverythingIsNonNull;
 
 public class home_fragment extends Fragment {
 
-	private RecyclerView gridSpesial,gridProduk;
-	private SpesialAdapter spesialAdapter;
+	private RecyclerView gridProduk;
 	private ProdukAdapter produkAdapter;
-	private List<SpesialModel> daftarSpesial;
 	private List<ProdukModel> daftarProduk;
 	private LinearLayout mDelivery,mPayment,mKategori,mAll;
 
@@ -51,7 +49,6 @@ public class home_fragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_home, container, false);
 		dataInit(view);
 		setupRecyclerView();
-		setData(getContext());
 		setProduk(getContext());
 		mDelivery.setOnClickListener(v -> {
 			Intent intent = new Intent(getContext(), Pengiriman.class);
@@ -75,7 +72,6 @@ public class home_fragment extends Fragment {
 	}
 
 	private void dataInit(View mview){
-		gridSpesial = mview.findViewById(R.id.rcSpesial);
 		gridProduk = mview.findViewById(R.id.rcProduk);
 		mDelivery = mview.findViewById(R.id.pengiriman);
 		mPayment = mview.findViewById(R.id.pembayaran);
@@ -114,40 +110,9 @@ public class home_fragment extends Fragment {
 	}
 
 
-	private void setData(Context mContext) {
-		try {
-			Call<ResponseSpesial> call=  APIService.Factory.create(mContext).tampilSpesial();
-			call.enqueue(new Callback<ResponseSpesial>() {
-				@EverythingIsNonNull
-				@Override
-				public void onResponse(Call<ResponseSpesial> call, Response<ResponseSpesial> response) {
-					if(response.isSuccessful()){
-						if(response.body() != null){
-							daftarSpesial = response.body().getDaftarSpesial();
-							spesialAdapter.replaceData(daftarSpesial);
-						}
-					}
-				}
-				@EverythingIsNonNull
-				@Override
-				public void onFailure(Call<ResponseSpesial> call, Throwable t) {
-					if(t instanceof NoConnectivityException) {
-						pesan("Internet Offline!");
-					}
-				}
-			});
-		} catch (Exception e) {
-			e.printStackTrace();
-			pesan(e.getMessage());
-		}
-	}
+
 
 	private void setupRecyclerView() {
-		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-		spesialAdapter = new SpesialAdapter(new ArrayList<>());
-		gridSpesial.setLayoutManager(linearLayoutManager);
-		gridSpesial.setAdapter(spesialAdapter);
-
 		produkAdapter = new ProdukAdapter(new ArrayList<>(),getContext());
 		gridProduk.setHasFixedSize(false);
 		gridProduk.setLayoutManager(new GridLayoutManager(getContext(),2));

@@ -28,6 +28,5 @@ class Toko extends CI_Controller
 		$data['dataToko'] = $this->admin->get_data_toko()->result_array();
 		$view ='v_toko';
 		$this->_layout($data,$view);
-
 	}
 }
