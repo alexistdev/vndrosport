@@ -14,14 +14,73 @@ class M_admin extends CI_Model
 		$this->tbprovinsi = 'provinsi';
 		$this->tbkabupaten = 'kabupaten';
 		$this->tbtoko = 'toko';
-//		$this->tbjeniskendaraan = 'jenis_kendaraan';
+		$this->tbkategori = 'kategori';
+		$this->tbmerek = 'merek';
 //		$this->tbtipekendaraan = 'tipe_kendaraan';
 //		$this->tbkendaraan = 'kendaraan';
 //		$this->tbinbox = 'inbox';
 	}
 
+	#########################################################################################
+	#                                   tabel merek                     					#
+	#########################################################################################
+	public function get_data_merek($id=null)
+	{
+		if($id !=null){
+			$this->db->where("$this->tbmerek.id",$id);
+		}
+		$this->db->order_by("$this->tbmerek.id", "DESC");
+		return $this->db->get($this->tbmerek);
+	}
+
+	public function simpan_merek($data)
+	{
+		$this->db->insert($this->tbmerek,$data);
+	}
+
+	public function update_data_merek($dataMerek,$id)
+	{
+		$this->db->where('id',$id);
+		$this->db->update($this->tbmerek,$dataMerek);
+	}
+
+	public function hapus_merek($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete($this->tbmerek);
+	}
 
 
+
+	#########################################################################################
+	#                                   tabel kategori                    					#
+	#########################################################################################
+
+	public function get_data_kategori($id=null)
+	{
+		if($id !=null){
+			$this->db->where("$this->tbkategori.id",$id);
+		}
+		$this->db->order_by("$this->tbkategori.id", "DESC");
+		return $this->db->get($this->tbkategori);
+	}
+
+	public function simpan_kategori($data)
+	{
+		$this->db->insert($this->tbkategori,$data);
+	}
+
+	public function update_data_kategori($dataKategori,$id)
+	{
+		$this->db->where('id',$id);
+		$this->db->update($this->tbkategori,$dataKategori);
+	}
+
+	public function hapus_kategori($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete($this->tbkategori);
+	}
 	#########################################################################################
 	#                                   tabel admin                     					#
 	#########################################################################################

@@ -39,9 +39,9 @@ class Auth extends RestController
 					$this->response($dataSession,200);
 				} else {
 					$this->response([
-					'status' => false,
-					'message' => 'Email atau Password yang anda masukkan salah'
-				], 404);
+						'status' => false,
+						'message' => 'Email atau Password yang anda masukkan salah'
+					], 404);
 				}
 			} else {
 				$this->response([

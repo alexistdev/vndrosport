@@ -23,7 +23,11 @@
         <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/fragment_keranjang.xml" value="0.38697916666666665" />
         <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/fragment_order.xml" value="0.38697916666666665" />
         <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/single_list_kategori.xml" value="0.38697916666666665" />
+        <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/single_list_keranjang.xml" value="0.38697916666666665" />
         <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/single_list_pesanan.xml" value="0.38697916666666665" />
+        <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/single_list_product.xml" value="0.38697916666666665" />
+        <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/layout/single_list_spesial.xml" value="0.38697916666666665" />
+        <entry key="..\:/xampp/htdocs/vndrosport/Android/vndrosport/app/src/main/res/menu/item_bottom_navigation.xml" value="0.38697916666666665" />
       </map>
     </option>
   </component>

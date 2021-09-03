@@ -3,15 +3,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
 <html>
-<?php $this->load->view('toko/template/v_header') ?>
+<?php $this->load->view('admin/template/v_header') ?>
 
 <body class="hold-transition sidebar-mini pace-danger">
 <div class="wrapper">
 	<!-- Site wrapper -->
-	<?php $this->load->view('toko/template/v_navbar') ?>
-	<?php $this->load->view('toko/template/v_sidebar') ?>
-	<?php $this->load->view('toko/konten/k_produk') ?>
-	<?php $this->load->view('toko/template/v_footer') ?>
+	<?php $this->load->view('admin/template/v_navbar') ?>
+	<?php $this->load->view('admin/template/v_sidebar') ?>
+	<?php $this->load->view('admin/konten/k_kategori') ?>
+	<?php $this->load->view('admin/template/v_footer') ?>
 </div>
 <!-- jQuery -->
 <script src="<?= base_url('vendor/almasaeed2010/adminlte') ?>/plugins/jquery/jquery.min.js"></script>
@@ -29,10 +29,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script>
 
 	$(function () {
-		$("#tabelProduk").DataTable({
+		$("#tabelKecamatan").DataTable({
 			"responsive": true,
 			"autoWidth": false,
-
 		});
 	});
 
@@ -50,7 +49,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	/** Saat tombol modal diklik */
 	$(document).on("click", "#tombolHapus", function () {
 		var token = $(this).data('id');
-		var newUrl = "<?= base_url('admin/provinsi/hapus/'); ?>" + token;
+		var newUrl = "<?= base_url('admin/kategori/hapus/'); ?>" + token;
 		$("#urlKunci").attr('href', newUrl);
 	});
 </script>

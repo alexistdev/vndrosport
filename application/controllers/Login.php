@@ -78,6 +78,7 @@ class Login extends CI_Controller {
 			$this->session->set_flashdata('pesan', validation_errors());
 			$data['image'] = $this->_create_captcha();
 			$data['title'] = _myJudul();
+			$data['tag'] = 'user';
 			$view ='v_login';
 			$this->_layout($data,$view);
 		} else {

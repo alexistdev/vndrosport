@@ -65,7 +65,23 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 						</li>
 					</ul>
 				</li>
+				<li class="nav-item">
+					<a href="<?= base_url('admin/kategori'); ?>" class="nav-link">
+						<i class="nav-icon fas fa-clipboard-list"></i>
+						<p>
+							Kategori
+						</p>
+					</a>
+				</li>
 
+				<li class="nav-item">
+					<a href="<?= base_url('admin/merek'); ?>" class="nav-link">
+						<i class="nav-icon fas fa-list-alt"></i>
+						<p>
+							Merek
+						</p>
+					</a>
+				</li>
 				<li class="nav-item">
 					<a href="<?= base_url('admin/client'); ?>" class="nav-link">
 						<i class="nav-icon fas fa-user-friends"></i>

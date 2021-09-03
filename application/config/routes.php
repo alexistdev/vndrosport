@@ -9,11 +9,21 @@ $route['admin/provinsi'] = 'administrator/Provinsi/index';
 $route['admin/provinsi/add'] = 'administrator/Provinsi/add';
 $route['admin/provinsi/edit/(:any)'] = 'administrator/Provinsi/edit/$1';
 $route['admin/provinsi/hapus/(:any)'] = 'administrator/Provinsi/hapus/$1';
-$route['admin/kabupaten'] = 'administrator/Kabupatens';
+$route['admin/kabupaten'] = 'administrator/Kabupatens/index';
 $route['admin/kabupaten/add'] = 'administrator/Kabupatens/add';
 $route['admin/kabupaten/edit/(:any)'] = 'administrator/Kabupatens/edit/$1';
 $route['admin/kabupaten/hapus/(:any)'] = 'administrator/Kabupatens/hapus/$1';
-$route['admin/kecamatan'] = 'administrator/Kecamatan';
+$route['admin/kecamatan'] = 'administrator/Kecamatan/index';
+$route['admin/kategori'] = 'administrator/Kategori/index';
+$route['admin/kategori/add'] = 'administrator/Kategori/add';
+$route['admin/kategori/edit/(:any)'] = 'administrator/Kategori/edit/$1';
+$route['admin/kategori/hapus/(:any)'] = 'administrator/Kategori/hapus/$1';
+
+$route['admin/merek'] = 'administrator/Merek/index';
+$route['admin/merek/add'] = 'administrator/Merek/add';
+$route['admin/merek/edit/(:any)'] = 'administrator/Merek/edit/$1';
+$route['admin/merek/hapus/(:any)'] = 'administrator/Merek/hapus/$1';
+
 /* Route Administrator */
 $route['admin/login'] = 'administrator/Login/index';
 $route['admin/dashboard'] = 'administrator/Member/index';

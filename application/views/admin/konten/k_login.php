@@ -15,8 +15,11 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 				echo $this->session->flashdata('pesan3');
 				?>
 			</p>
-
-			<form action="<?= base_url('Login'); ?>" method="post">
+			<?php if(sanitasi($tag) != 'user' ) { ?>
+				<form action="<?= base_url('admin/login'); ?>" method="post">
+			<?php } else { ?>
+				<form action="<?= base_url('Login'); ?>" method="post">
+			<?php } ?>
 				<div class="input-group mb-3">
 					<input type="text" name="username" maxlength="30" class="form-control" value="<?= set_value('username'); ?>" placeholder="Username" required="required">
 					<div class="input-group-append">

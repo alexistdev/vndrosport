@@ -78,6 +78,7 @@ class Login extends CI_Controller {
 			$this->session->set_flashdata('pesan', validation_errors());
 			$data['image'] = $this->_create_captcha();
 			$data['title'] = _myJudul();
+			$data['tag'] = 'admin';
 			$view ='v_login';
 			$this->_layout($data,$view);
 		} else {
@@ -87,7 +88,7 @@ class Login extends CI_Controller {
 
 			if(!password_verify($password, $cekLogin->password)){
 				$this->session->set_flashdata('pesan2', '<div class="alert alert-danger" role="alert">Username atau password anda salah!</div>');
-				redirect("Login");
+				redirect("admin/login");
 			} else {
 				$level= $cekLogin->level;
 
@@ -102,7 +103,7 @@ class Login extends CI_Controller {
 
 					default:
 						$this->session->set_flashdata('pesan2', '<div class="alert alert-danger" role="alert">Anda tidak dapat login, silahkan hubungi administrator system!</div>');
-						redirect("Login");
+						redirect("admin/login");
 						break;
 				}
 			}
