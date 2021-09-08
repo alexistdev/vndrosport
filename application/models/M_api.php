@@ -19,6 +19,9 @@ class M_api extends CI_Model
 		$this->tbpesanan = 'pesanan';
 	}
 
+
+
+
 	#########################################################################################
 	#                                toko                           					#
 	#########################################################################################
@@ -254,6 +257,18 @@ class M_api extends CI_Model
 	{
 		$this->db->where("$this->tbpesanan.id_user",$idUser);
 		return $this->db->get($this->tbpesanan);
+	}
+
+	public function get_data_pesanan2($idPesanan)
+	{
+		$this->db->where("$this->tbpesanan.id",$idPesanan);
+		return $this->db->get($this->tbpesanan);
+	}
+
+	public function perbaharui_pesanan($data,$id)
+	{
+		$this->db->where("$this->tbpesanan.id",$id);
+		$this->db->update($this->tbpesanan,$data);
 	}
 
 }

@@ -69,8 +69,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										$pesan = "<span class=\"text-success font-weight-bold\">Diproses Toko</span>";
 									} else if ($status == 4) {
 										$pesan = "<span class=\"text-primary font-weight-bold\">Dikirimkan</span>";
-									} else {
+									} else if($status == 5){
 										$pesan = "selesai";
+									} else {
+										$pesan = "dibatalkan";
 									}
 									?>
 									<tr>

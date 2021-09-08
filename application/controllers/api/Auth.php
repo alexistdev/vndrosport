@@ -8,6 +8,7 @@ class Auth extends RestController
 {
 
 	public $api;
+	public $toko;
 
 	public function __construct()
 	{

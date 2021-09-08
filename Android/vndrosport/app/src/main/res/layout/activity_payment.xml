@@ -39,7 +39,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center_vertical"
-				android:text="CATATAN:"
+				android:text="@string/payment8"
 				android:textColor="@color/white"
 				android:textSize="20sp"
 				android:textStyle="bold"/>
@@ -57,7 +57,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:textColor="@color/black"
-				android:text="Pembayaran paling lambat 1x24 jam"
+				android:text="@string/payment7"
 				android:textSize="14sp"
 				android:layout_marginStart="5dp"
 				android:layout_gravity="center_vertical"
@@ -68,7 +68,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:textColor="@color/black"
-				android:text="Pengiriman akan dilakukan setelah pembayaran terkonfirmasi"
+				android:text="@string/payment6"
 				android:textSize="14sp"
 				app:drawableStartCompat="@drawable/ic_arrow"
 				android:layout_marginStart="5dp"
@@ -80,7 +80,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:textColor="@color/black"
-				android:text="Pembayaran akan diteruskan ke merchant setelah barang diterima"
+				android:text="@string/payment5"
 				app:drawableStartCompat="@drawable/ic_arrow"
 				android:textSize="14sp"
 				android:layout_marginStart="5dp"
@@ -113,7 +113,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center_vertical"
-				android:text="Pembayaran Transfer ke:"
+				android:text="@string/payment9"
 				android:textColor="@color/white"
 				android:textSize="20sp"
 				android:textStyle="bold"/>
@@ -141,4 +141,14 @@
 				android:layout_gravity="center_vertical"/>
 		</LinearLayout>
 	</androidx.cardview.widget.CardView>
+	<Button
+		android:id="@+id/btn_bayar"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:visibility="invisible"
+		android:layout_gravity="center"
+		android:text="@string/payment10"
+		android:background="@color/maroon"
+		android:textColor="@color/white"
+		android:layout_marginTop="20dp"/>
 </LinearLayout>

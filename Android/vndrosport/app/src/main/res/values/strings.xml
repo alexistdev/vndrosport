@@ -77,9 +77,6 @@
     <string name="cart120">No.Rek: 1290-01-00-3026506</string>
     <string name="cart121">PT VndroSport , tbk INC</string>
 
-	<!-- Payment   -->
-	<string name="payment1">BRI No.Rek: 1290-01-00-3026506</string>
-	<string name="payment2">PT VndroSport , tbk INC</string>
 
 
     <!--  Halaman Pesanan   -->
@@ -89,9 +86,13 @@
     <string name="pesanan4">Nama Produk</string>
     <string name="pesanan5">Total: Rp.100.000</string>
     <string name="pesanan6">Order: #</string>
-    <string name="pesanan7">Diproses</string>
+    <string name="pesanan7">Pending</string>
     <string name="pesanan8">Dikirim</string>
     <string name="pesanan9">Rp.</string>
+	<string name="pesanan10">Dibayar</string>
+	<string name="pesanan11">Diproses</string>
+	<string name="pesanan12">Selesai</string>
+	<string name="pesanan13">Dibatalkan</string>
 
     <!-- Akun   -->
     <string name="akun1">Email</string>
@@ -113,6 +114,16 @@
 	<string name="daftar3">Nomor Telepon</string>
 	<string name="daftar4">Sudah punya akun? Login</string>
 
-
+	<!-- Payment   -->
+	<string name="payment1">BRI No.Rek: 1290&#8211;01&#8211;00&#8211;3026506</string>
+	<string name="payment2">PT VndroSport , tbk INC</string>
+	<string name="payment3">Pembayaran Transfer ke:</string>
+	<string name="payment4">SUDAH BAYAR:</string>
+	<string name="payment5">Pembayaran akan diteruskan ke merchant setelah barang diterima</string>
+	<string name="payment6">Pengiriman akan dilakukan setelah pembayaran terkonfirmasi</string>
+	<string name="payment7">Pembayaran paling lambat 1x24 jam</string>
+	<string name="payment8">CATATAN:</string>
+	<string name="payment9">TRANSFER:</string>
+	<string name="payment10">Sudah Bayar</string>
 
 </resources>

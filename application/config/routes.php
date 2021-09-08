@@ -56,6 +56,7 @@ $route['api/akun'] = 'api/Akun/index';
 $route['api/kategori'] = 'api/Kategori/index';
 $route['api/kategori/q'] = 'api/Kategori/detail';
 $route['api/daftar'] = 'api/Daftar/index';
+$route['api/bayar'] = 'api/Bayar/index';
 
 /* Route Toko */
 $route['store/dashboard'] = 'store/Member/index';
