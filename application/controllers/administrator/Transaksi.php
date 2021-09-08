@@ -29,4 +29,26 @@ class Transaksi extends CI_Controller
 		$view = 'v_transaksi';
 		$this->_layout($data, $view);
 	}
+
+	public function setuju($idx=null)
+	{
+		$id = decrypt_url($idx);
+		$getData = $this->transaksi->get_data_transaksi($id);
+		if($idx == '' || $idx == null || $getData->num_rows() == 0) {
+			redirect('admin/transaksi');
+		} else {
+			echo $id;
+			$dataStatus = [
+				'status' => 3
+			];
+			$this->transaksi->perbaharui_status($dataStatus,$id);
+			$dataDetailStatus = [
+				'status' => 2,
+			];
+			$this->transaksi->perbaharui_status_detail($dataDetailStatus,$id);
+			$this->session->set_flashdata('pesan1', '<div class="alert alert-success" role="alert">Pesanan telah dikonfirmasi!</div>');
+			redirect('admin/transaksi');
+		}
+	}
+
 }

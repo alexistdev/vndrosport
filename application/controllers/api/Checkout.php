@@ -12,7 +12,7 @@ class Checkout extends RestController
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('m_api', 'api');
+		$this->load->model('M_api', 'api');
 	}
 
 	public function index_post()

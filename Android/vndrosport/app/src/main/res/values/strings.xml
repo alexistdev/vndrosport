@@ -125,5 +125,7 @@
 	<string name="payment8">CATATAN:</string>
 	<string name="payment9">TRANSFER:</string>
 	<string name="payment10">Sudah Bayar</string>
+	<string name="payment11">Sertakan Bukti pembayaran ke nomor wa : </string>
+	<string name="payment12">082176616541</string>
 
 </resources>

@@ -139,6 +139,28 @@
 				android:text="@string/payment1"
 				android:textSize="16sp"
 				android:layout_gravity="center_vertical"/>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
+
+				android:textStyle="bold"
+				android:textColor="@color/white"
+				android:text="@string/payment11"
+				android:textSize="16sp"
+				android:layout_gravity="center_vertical"/>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
+				android:layout_marginBottom="20dp"
+				android:textStyle="bold"
+				android:textColor="@color/green"
+				android:text="@string/payment12"
+				android:textSize="20sp"
+				android:layout_gravity="center_vertical"/>
 		</LinearLayout>
 	</androidx.cardview.widget.CardView>
 	<Button

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2021 at 12:42 PM
+-- Generation Time: Sep 08, 2021 at 11:05 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.21
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`, `level`, `email_admin`) VALUES
-(1, 'admin', '$2a$10$I4WobUyILHg08Ij4KY5BwuExe09ypyrcfvyyWMUVa3jraQ7oVPAae', 1, 'admin@gmail.com');
+(1, 'admin', '$2y$10$YoR5XEXKn6B9nODsjrF2uuQ1O9zlz7xgjEFxL.pbQ.R.i8Msuwf/.', 1, 'admin@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -80,13 +80,6 @@ CREATE TABLE `detailkeranjang` (
   `m_sub_total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `detailkeranjang`
---
-
-INSERT INTO `detailkeranjang` (`id`, `id_keranjang`, `id_produk`, `jumlah`, `m_sub_total`) VALUES
-(16, 7, 6, 4, 100000);
-
 -- --------------------------------------------------------
 
 --
@@ -110,11 +103,8 @@ CREATE TABLE `detailuser` (
 --
 
 INSERT INTO `detailuser` (`id`, `nama_lengkap`, `notelp`, `alamat`, `desa`, `kecamatan`, `kabupaten`, `provinsi`, `id_user`) VALUES
-(1, 'wakanda2', '0856020130021', 'alamatku2', NULL, NULL, NULL, NULL, 1),
-(2, 'samantha', '08123456789', NULL, NULL, NULL, NULL, NULL, 4),
-(3, 'Aaa', 'adadsad', NULL, NULL, NULL, NULL, NULL, 5),
-(4, 'alexsander hendra wijaya', '123456', NULL, NULL, NULL, NULL, NULL, 6),
-(5, 'Superhero', '085621235456', NULL, NULL, NULL, NULL, NULL, 7);
+(8, 'Hendraz', '08123456789', NULL, NULL, NULL, NULL, NULL, 10),
+(9, 'Paijo', '08123456789', NULL, NULL, NULL, NULL, NULL, 11);
 
 -- --------------------------------------------------------
 
@@ -127,22 +117,19 @@ CREATE TABLE `detail_pesanan` (
   `id_pesanan` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `sub_total` int(11) NOT NULL
+  `sub_total` int(11) NOT NULL,
+  `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `detail_pesanan`
 --
 
-INSERT INTO `detail_pesanan` (`id`, `id_pesanan`, `id_produk`, `jumlah`, `sub_total`) VALUES
-(1, 1, 2, 13, 5850000),
-(2, 1, 3, 13, 1430000),
-(3, 1, 4, 3, 750000),
-(4, 2, 6, 1, 25000),
-(5, 3, 6, 1, 25000),
-(6, 4, 6, 2, 50000),
-(7, 5, 6, 12, 300000),
-(8, 5, 4, 5, 1250000);
+INSERT INTO `detail_pesanan` (`id`, `id_pesanan`, `id_produk`, `jumlah`, `sub_total`, `status`) VALUES
+(11, 7, 7, 2, 50000, 3),
+(12, 8, 7, 1, 25000, 1),
+(13, 9, 7, 4, 100000, 1),
+(14, 10, 7, 7, 175000, 3);
 
 -- --------------------------------------------------------
 
@@ -191,8 +178,9 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id`, `nama_kategori`) VALUES
-(1, 'Raket'),
-(2, 'Bola');
+(1, 'RAKET234444'),
+(3, 'Sepatu'),
+(5, 'CELANA BADMINTON');
 
 -- --------------------------------------------------------
 
@@ -207,13 +195,6 @@ CREATE TABLE `keranjang` (
   `biaya_antar` int(11) NOT NULL,
   `total_biaya` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `keranjang`
---
-
-INSERT INTO `keranjang` (`id`, `id_user`, `sub_total`, `biaya_antar`, `total_biaya`) VALUES
-(7, 7, 100000, 20000, 120000);
 
 -- --------------------------------------------------------
 
@@ -231,7 +212,8 @@ CREATE TABLE `merek` (
 --
 
 INSERT INTO `merek` (`id`, `nama_merek`) VALUES
-(1, 'YONEX');
+(1, 'YONEX'),
+(3, 'LINING');
 
 -- --------------------------------------------------------
 
@@ -277,11 +259,10 @@ CREATE TABLE `pesanan` (
 --
 
 INSERT INTO `pesanan` (`id`, `id_user`, `judul`, `tanggal`, `sub_total`, `biaya_antar`, `total_jumlah`, `status`) VALUES
-(1, 1, 'Raket aluminium kelas atas', 1628562417, 8030000, 20000, 8050000, 1),
-(2, 1, 'adadada', 1628563245, 25000, 20000, 45000, 1),
-(3, 1, 'adadada', 1628563560, 25000, 20000, 45000, 1),
-(4, 1, 'adadada', 1628576506, 50000, 20000, 70000, 1),
-(5, 7, 'adadada', 1628677961, 1550000, 20000, 1570000, 1);
+(7, 11, 'Celana Keren', 1631065685, 50000, 20000, 70000, 4),
+(8, 11, 'Celana Keren', 1631083482, 25000, 20000, 45000, 2),
+(9, 11, 'Celana Keren', 1631083826, 100000, 20000, 120000, 2),
+(10, 11, 'Celana Keren', 1631089135, 175000, 20000, 195000, 4);
 
 -- --------------------------------------------------------
 
@@ -311,11 +292,7 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `id_kategori`, `id_merek`, `nama_produk`, `warna`, `ukuran`, `harga`, `stok`, `gambar`, `deskripsi`, `id_toko`, `created_at`, `updated_at`, `status`) VALUES
-(2, 1, 1, 'Raket aluminium kelas atas', 'polos', 'L', 450000, 12, 'raket.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, ', 1, 1221212, 1212121, 1),
-(3, 1, 1, 'Sepatu Bola Legendaris', 'merah', 'L', 110000, 12, 'sepatu.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, ', 1, 1221212, 1212121, 1),
-(4, 2, 1, 'Bola Sepak Keren', 'merah', 'L', 250000, 12, 'bola.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, ', 1, 1221212, 1212121, 1),
-(5, 2, 1, 'adada', 'dada', 'dadada', 2323232, 0, 'ad8HmrA6TI.jpg', '', 1, 0, 0, 0),
-(6, 2, 1, 'adadada', 'Merah', 'allsize', 25000, 0, 'sDiZju62g6.jpg', 'adada', 1, 0, 0, 0);
+(7, 5, 3, 'Celana Keren', 'Merah', 'All size', 25000, 5, 'JRQaAj5Mxv.jpg', 'ini produk terbaik yang pernah ada', 4, 1631064399, 1631064399, 1);
 
 -- --------------------------------------------------------
 
@@ -366,14 +343,6 @@ CREATE TABLE `spesial` (
   `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `spesial`
---
-
-INSERT INTO `spesial` (`id`, `id_produk`, `harga`) VALUES
-(1, 2, 400000),
-(2, 3, 400000);
-
 -- --------------------------------------------------------
 
 --
@@ -395,8 +364,8 @@ CREATE TABLE `toko` (
 --
 
 INSERT INTO `toko` (`id`, `nama_toko`, `email`, `telp`, `alamat`, `id_user`, `last_online`) VALUES
-(1, 'Alex Sport', 'alexistdev@gmail.com', '082371408678', 'Waykandis', 1, 1625616177),
-(2, 'Aaa', 'dekil@gmail.com', 'adadsad', '', 5, 1628399018);
+(4, 'Hendraz', 'hendra@gmail.com', '08123456789', 'wakanda2', 10, 1631061228),
+(5, 'Paijo', 'paijo@gmail.com', '08123456789', '', 11, 1631065562);
 
 -- --------------------------------------------------------
 
@@ -418,11 +387,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'alexistdev@gmail.com', '$2y$10$gSQbKOqpeYVMvxKMN1UCC.B1UtqH6H7O9aSh7X3CM1UxpXi.bowBW', 'XiTYHklpnU', 1625616177, 1628576476),
-(4, 'samantha@gmail.com', '$2y$10$eiOMo1Q0N72zHqM0pHie1eGK6I7CtmpEDTH9ETv7VWS8LgwzDDt6G', 'yekdXH2yl1', 1628397578, 1628397578),
-(5, 'dekil@gmail.com', '$2y$10$dsyJk4W0baiGbsa8nLwDWubqcSaWEdozy3O2g7w0r6plwiT8lONdu', '2KGdKDHsEs', 1628399018, 1628399018),
-(6, 'alexistdev2@gmail.com', '$2y$10$DssGDxsAAqIsaUXJRvBLLuHC5rY8wHX7NDfqbFlbdG4l/NYY4XQm.', 'r7V72aUDeD', 1628672615, 1628672615),
-(7, 'superhero@gmail.com', '$2y$10$y5Fu56ERDnVKr4Q/OyuPp.CaIl4ZIo3pQllNW.KeC6..NEeFoQsku', 'RbzcDW7a7r', 1628674001, 1628674001);
+(10, 'hendra@gmail.com', '$2y$10$1qHDVGKJfcbOj3kNInIijOmVmPvK86X2HTG6bsYAVjCetz1uni5/m', 'ehCEqSD8nJ', 1631061228, 1631061228),
+(11, 'paijo@gmail.com', '$2y$10$s7hAUYJ0L/GZRJE3HFvH0ulGeS8L6Xy49vKCUQYhsxJOGDr7ieb76', 'sSUgvCNwAI', 1631065562, 1631065562);
 
 --
 -- Indexes for dumped tables
@@ -558,19 +524,19 @@ ALTER TABLE `api_keys`
 -- AUTO_INCREMENT for table `detailkeranjang`
 --
 ALTER TABLE `detailkeranjang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `detailuser`
 --
 ALTER TABLE `detailuser`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `detail_pesanan`
 --
 ALTER TABLE `detail_pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `kabupaten`
@@ -582,19 +548,19 @@ ALTER TABLE `kabupaten`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `merek`
 --
 ALTER TABLE `merek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `negara`
@@ -606,13 +572,13 @@ ALTER TABLE `negara`
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `provinsi`
@@ -636,13 +602,13 @@ ALTER TABLE `spesial`
 -- AUTO_INCREMENT for table `toko`
 --
 ALTER TABLE `toko`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
