@@ -91,13 +91,24 @@ class M_admin extends CI_Model
 		return $this->db->get($this->tbadmin);
 	}
 
+	public function perbaharui_admin($data)
+	{
+		$this->db->where("$this->tbadmin.id_admin",1);
+		$this->db->update($this->tbadmin,$data);
+	}
+
+
+
 	#########################################################################################
 	#                          tabel user dan detailuser                   					#
 	#########################################################################################
 
 
-	public function get_detail_data_user()
+	public function get_detail_data_user($id=null)
 	{
+		if($id != null){
+			$this->db->where("$this->tbusers.id_user",$id);
+		}
 		$this->db->join($this->tbdetailuser,"$this->tbdetailuser.id_user = $this->tbusers.id_user");
 		return $this->db->get($this->tbusers);
 	}

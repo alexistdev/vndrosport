@@ -36,7 +36,7 @@ class Client extends CI_Controller
 	public function detail($idx=null)
 	{
 		$id = decrypt_url($idx);
-		$getData = $this->admin->get_data_user($id);
+		$getData = $this->admin->get_detail_data_user($id);
 		if($idx == '' || $idx == null || $getData->num_rows() == 0) {
 			redirect('admin/client');
 		} else {
@@ -56,10 +56,6 @@ class Client extends CI_Controller
 		$data['dataEmail'] = $getData->email;
 		$data['dataTelp'] = $getData->notelp;
 		$data['dataAlamat'] = $getData->alamat;
-		$data['dataDesa'] = $getData->desa;
-		$data['dataKecamatan'] = $getData->kecamatan;
-		$data['dataKabupaten'] = $getData->kabupaten;
-		$data['dataProvinsi'] = $getData->provinsi;
 		return $data;
 	}
 

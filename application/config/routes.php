@@ -30,10 +30,12 @@ $route['admin/dashboard'] = 'administrator/Member/index';
 $route['admin/setting'] = 'administrator/Setting/index';
 $route['admin/logout'] = 'administrator/Member/Logout';
 $route['admin/toko'] = 'administrator/Toko/index';
+$route['admin/toko/edit/(:any)'] = 'administrator/Toko/edit/$1';
 
 /* Client */
 $route['admin/client'] = 'administrator/Client';
 $route['admin/client/add'] = 'administrator/Client/add';
+$route['admin/client/(:any)'] = 'administrator/Client/detail/$1';
 $route['admin/client/hapus/(:any)'] = 'administrator/Client/hapus/$1';
 
 /* Api */

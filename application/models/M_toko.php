@@ -56,10 +56,24 @@ class M_toko extends CI_Model
 		return $this->db->get($this->toko);
 	}
 
+	public function get_detail_toko($idToko=null)
+	{
+		if($idToko != null){
+			$this->db->where("$this->toko.id",$idToko);
+		}
+		return $this->db->get($this->toko);
+	}
+
+	public function perbaharui_toko($data,$id)
+	{
+		$this->db->where("$this->toko.id",$id);
+		$this->db->update($this->toko,$data);
+	}
+
 
 	public function simpan_toko($data)
 	{
-		$this->db->insert($this->tbtoko,$data);
+		$this->db->insert($this->toko,$data);
 	}
 
 	#########################################################################################

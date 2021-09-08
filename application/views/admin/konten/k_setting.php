@@ -26,31 +26,32 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<div class="row">
 				<div class="col-md-6">
 					<?php
-					echo $this->session->flashdata('pesan');
-					echo $this->session->flashdata('pesan2'); ?>
+					echo $this->session->flashdata('pesan1'); ?>
 				</div>
 			</div>
-			<form action="<?= base_url('Setting'); ?>" method="post">
+			<form action="<?= base_url('admin/setting'); ?>" method="post">
 				<div class="row">
 					<!--	Form Ruas Kiri		-->
 					<div class="col-md-6">
 						<div class="card">
 							<div class="card-body">
-								<!-- Kode Jurusan -->
+								<!-- Password -->
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<label for="password1">Password <span class="text-danger">*</span></label>
+											<label for="password1">Password 1<span class="text-danger">*</span></label>
 											<input type="password" name="password1" id="password1" maxlength="16" class="form-control" value="<?= set_value('password1'); ?>" placeholder="******" required="required">
+											<?= form_error('password1'); ?>
 										</div>
 									</div>
 								</div>
-								<!-- Nama Jurusan -->
+								<!-- Ulangi Password -->
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
 											<label for="password2">Ulangi Password<span class="text-danger">*</span></label>
 											<input type="password" name="password2" id="password2" maxlength="16" class="form-control" value="<?= set_value('password2'); ?>" placeholder="******" required="required">
+											<?= form_error('password2'); ?>
 										</div>
 									</div>
 								</div>
