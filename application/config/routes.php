@@ -42,6 +42,7 @@ $route['admin/client/hapus/(:any)'] = 'administrator/Client/hapus/$1';
 /* Transaksi */
 $route['admin/transaksi'] = 'administrator/Transaksi/index';
 $route['admin/transaksi/setuju/(:any)'] = 'administrator/Transaksi/setuju/$1';
+//$route['admin/transaksi/detail/(:any)'] = 'administrator/Transaksi/setuju/$1';
 
 
 /* Api */
@@ -66,5 +67,6 @@ $route['store/produk'] = 'store/Produk/index';
 $route['store/produk/detail/(:any)'] = 'store/Produk/detail/$1';
 $route['store/transaksi'] = 'store/Transaksi/index';
 $route['store/transaksi/konfirm/(:num)/(:num)'] = 'store/Transaksi/konfirm/$1/$2';
+
 
 

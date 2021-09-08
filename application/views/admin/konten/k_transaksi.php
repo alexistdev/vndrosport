@@ -93,6 +93,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 												<a href="<?= base_url('admin/transaksi/setuju/'.encrypt_url(sanitasi($row['id']))); ?>"><button class="btn btn-sm btn-primary">Proses</button></a>
 												<button class="btn btn-sm btn-danger">Batalkan</button>
 											<?php } ?>
+											<?php if($status == 4) {?>
+												<a href="<?= base_url('admin/transaksi/detail/'.encrypt_url(sanitasi($row['id']))); ?>"><button class="btn btn-sm btn-success">Toko</button></a>
+											<?php } ?>
 										</td>
 									</tr>
 								<?php endforeach; ?>
