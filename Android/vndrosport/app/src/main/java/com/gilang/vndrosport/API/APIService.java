@@ -88,7 +88,7 @@ public interface APIService {
 	/* Mendapatkan API Semua produk */
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
 	@GET("api/produk")
-	Call<ResponseProduk> produkHome();
+	Call<ResponseProduk> produkHome(@Query("id_toko") String idToko);
 
 	/* Mendapatkan API Produk per kategori */
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})

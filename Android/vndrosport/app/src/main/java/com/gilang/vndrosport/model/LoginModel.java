@@ -7,14 +7,17 @@ public class LoginModel {
 	private final Boolean status;
 	@SerializedName("id_user")
 	private final String idUser;
+	@SerializedName("id_toko")
+	private final String idToko;
 	@SerializedName("token")
 	private final String token;
 	@SerializedName("message")
 	private final String message;
 
-	public LoginModel(Boolean status, String idUser, String token, String message) {
+	public LoginModel(Boolean status, String idUser, String idToko, String token, String message) {
 		this.status = status;
 		this.idUser = idUser;
+		this.idToko = idToko;
 		this.token = token;
 		this.message = message;
 	}
@@ -25,6 +28,10 @@ public class LoginModel {
 
 	public String getIdUser() {
 		return idUser;
+	}
+
+	public String getIdToko() {
+		return idToko;
 	}
 
 	public String getToken() {

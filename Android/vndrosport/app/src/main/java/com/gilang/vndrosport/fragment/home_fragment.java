@@ -2,6 +2,7 @@ package com.gilang.vndrosport.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.gilang.vndrosport.API.NoConnectivityException;
 import com.gilang.vndrosport.R;
 import com.gilang.vndrosport.adapter.ProdukAdapter;
 import com.gilang.vndrosport.adapter.SpesialAdapter;
+import com.gilang.vndrosport.config.Constants;
 import com.gilang.vndrosport.model.ProdukModel;
 import com.gilang.vndrosport.model.SpesialModel;
 import com.gilang.vndrosport.page.Allproduk;
@@ -49,7 +51,10 @@ public class home_fragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_home, container, false);
 		dataInit(view);
 		setupRecyclerView();
-		setProduk(getContext());
+		SharedPreferences sharedPreferences = requireContext().getSharedPreferences(
+				Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
+		String idToko = sharedPreferences.getString("idToko", "");
+		setProduk(getContext(),idToko);
 		mDelivery.setOnClickListener(v -> {
 			Intent intent = new Intent(getContext(), Pengiriman.class);
 			startActivity(intent);
@@ -80,9 +85,9 @@ public class home_fragment extends Fragment {
 
 	}
 
-	private void setProduk(Context mContext){
+	private void setProduk(Context mContext,String idToko){
 		try{
-			Call<ResponseProduk> call = APIService.Factory.create(mContext).produkHome();
+			Call<ResponseProduk> call = APIService.Factory.create(mContext).produkHome(idToko);
 			call.enqueue(new Callback<ResponseProduk>() {
 				@EverythingIsNonNull
 				@Override

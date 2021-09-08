@@ -62,6 +62,14 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 					</a>
 				</li>
 				<li class="nav-item">
+					<a href="<?= base_url('admin/transaksi'); ?>" class="nav-link">
+						<i class="nav-icon fas fa-dollar-sign"></i>
+						<p>
+							Transaksi
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
 					<a href="<?= base_url('admin/toko'); ?>" class="nav-link">
 						<i class="nav-icon fas fa-users-cog"></i>
 						<p>

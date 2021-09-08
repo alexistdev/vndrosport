@@ -7,7 +7,7 @@ import com.gilang.vndrosport.config.Constants;
 import com.google.gson.Gson;
 
 public class SessionHandle {
-	public static boolean login(Context context, String IdUser, String token){
+	public static boolean login(Context context, String IdUser, String token, String IdToko){
 		SharedPreferences sharedPreferences = context.getSharedPreferences(
 				Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -15,6 +15,7 @@ public class SessionHandle {
 		editor.putString(Constants.USER_SESSION, userJson);
 		editor.putString("idUser", IdUser);
 		editor.putString("token", token);
+		editor.putString("idToko", IdToko);
 		editor.apply();
 		return true;
 	}

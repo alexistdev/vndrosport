@@ -45,6 +45,7 @@ class Checkout extends RestController
 						'id_produk' => $row['id_produk'],
 						'jumlah' => $row['jumlah'],
 						'sub_total' => $row['m_sub_total'],
+						'status' => 1,
 					];
 					$this->api->simpan_detailpesanan($dataDetailPesanan);
 				}

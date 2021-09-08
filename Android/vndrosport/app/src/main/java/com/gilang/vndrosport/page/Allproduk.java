@@ -52,7 +52,10 @@ public class Allproduk extends AppCompatActivity {
 			final String idKategori = extra.getString("idKategori","0");
 			setKategori(getApplicationContext(),idKategori);
 		} else {
-			setData(getApplicationContext());
+			SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(
+					Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
+			String idToko = sharedPreferences.getString("idToko", "");
+			setData(getApplicationContext(),idToko);
 		}
 		initData();
 		setupRecyclerView();
@@ -92,9 +95,9 @@ public class Allproduk extends AppCompatActivity {
 		}
 	}
 
-	public void setData(Context mContext){
+	public void setData(Context mContext, String idToko){
 		try{
-			Call<ResponseProduk> call = APIService.Factory.create(mContext).produkHome();
+			Call<ResponseProduk> call = APIService.Factory.create(mContext).produkHome(idToko);
 			call.enqueue(new Callback<ResponseProduk>() {
 				@EverythingIsNonNull
 				@Override

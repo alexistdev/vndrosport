@@ -38,6 +38,11 @@ $route['admin/client/add'] = 'administrator/Client/add';
 $route['admin/client/(:any)'] = 'administrator/Client/detail/$1';
 $route['admin/client/hapus/(:any)'] = 'administrator/Client/hapus/$1';
 
+
+/* Transaksi */
+$route['admin/transaksi'] = 'administrator/Transaksi/index';
+$route['admin/transaksi/setuju'] = 'administrator/Transaksi/setuju';
+
 /* Api */
 $route['api/spesial'] = 'api/Spesial';
 $route['api/produk'] = 'api/Produk';

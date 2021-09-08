@@ -13,26 +13,31 @@ class Auth extends RestController
 	{
 		parent::__construct();
 		$this->load->model('M_api', 'api');
+		$this->load->model('M_toko', 'toko');
 	}
 
 	public function index_post()
 	{
 
 		$email = $this->post('email');
-		if(in_array($email,["",null])){
+		$password = $this->post('password');
+		if(in_array($email,["",null]) || in_array($password,["",null])){
 			$this->response([
 				'status' => false,
 				'message' => 'Email atau Password yang anda masukkan salah'
 			], 404);
 		} else {
-			$password = $this->post('password');
+
 			$cekLogin = $this->api->validasi_login($email);
 			if($cekLogin->num_rows() != 0){
 				$dataPass = $cekLogin->row()->password;
 				if(password_verify($password,$dataPass)){
+					$idUser = $cekLogin->row()->id_user;
+					$toko = $this->toko->get_data_toko($idUser)->row()->id;
 					$dataSession = [
 						'status' => true,
-						'id_user' => $cekLogin->row()->id_user,
+						'id_user' => $idUser,
+						'id_toko' => $toko,
 						'token' => $cekLogin->row()->remember_token,
 						'message' => 'Anda berhasil login',
 					];
