@@ -102,6 +102,18 @@ class M_toko extends CI_Model
 		$this->db->insert($this->produk,$data);
 	}
 
+	public function perbaharui_produk_toko($dataProduk,$id)
+	{
+		$this->db->where("$this->produk.id",$id);
+		$this->db->update($this->produk,$dataProduk);
+	}
+
+	public function hapus_produk($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete($this->produk);
+	}
+
 	#########################################################################################
 	#                                   tabel merek                       					#
 	#########################################################################################

@@ -10,11 +10,13 @@ class Produk extends RestController
 	public $api;
 	public $form_validation;
 	public $input;
+	public $produk;
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('M_api', 'api');
+		$this->load->model('M_produk', 'produk');
 		$this->load->library('form_validation');
 	}
 
@@ -42,7 +44,7 @@ class Produk extends RestController
 			$this->response($data, 404);
 		} else {
 			$idToko = $this->get('id_toko',TRUE);
-			$getProduk = $this->api->get_data_produk($idToko);
+			$getProduk = $this->produk->data_semua_produk($idToko);
 			if ($getProduk->num_rows() != 0) {
 				$data = [
 					'status' => true,

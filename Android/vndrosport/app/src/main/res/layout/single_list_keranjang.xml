@@ -29,14 +29,30 @@
 				android:orientation="vertical"
 				android:paddingStart="11dp"
 				android:paddingEnd="11dp">
-				<TextView
-					android:id="@+id/titleCart"
-					android:maxLines="2"
+				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:textColor = "?android:textColorPrimary"
-					android:text="@string/dash12"
-					app:drawableEndCompat="@drawable/ic_close" />
+					android:weightSum="3"
+					android:orientation="horizontal">
+					<TextView
+						android:layout_weight="3"
+						android:id="@+id/titleCart"
+						android:maxLines="2"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor = "?android:textColorPrimary"
+						android:text="@string/dash12"/>
+					<ImageView
+						android:id="@+id/btn_delete"
+						android:layout_weight="1"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:contentDescription="@string/app_name"
+						android:layout_gravity="end"
+						android:src="@drawable/ic_close"/>
+				</LinearLayout>
+
+
 				<LinearLayout
 					android:id="@+id/layoutDiscount"
 					android:layout_width="match_parent"

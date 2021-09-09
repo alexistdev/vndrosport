@@ -110,7 +110,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								<div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
 									<img src="<?= base_url('gambar/produk/'.sanitasi($gambarProduk)); ?>" alt="gambar produk" height="300px">
 									<div class="text-center mt-5 mb-3">
-										<a href="#" class="btn btn-sm btn-primary">Edit</a>
+										<a href="<?= base_url('store/produk/edit/'.$id); ?>" class="btn btn-sm btn-primary">Edit</a>
 										<a href="<?= base_url('store/produk'); ?>" class="btn btn-sm btn-danger">Batal</a>
 									</div>
 								</div>

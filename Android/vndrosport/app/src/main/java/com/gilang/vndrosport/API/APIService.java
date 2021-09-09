@@ -22,20 +22,61 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIService {
 
-	//API untuk Hapus produk di keranjang
+	/* Mendapatkan Keranjang */
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
-	@DELETE("api/bayar")
+	@GET("api/keranjang")
+	Call<ResponseKeranjang> dapatKeranjang(@Query("id_user") String idUser,
+										   @Query("token") String token);
+
+	/* Mendapatkan Total Keranjang */
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@GET("api/keranjang/total")
+	Call<TotalModel> dataTotal(@Query("id_user") String idUser,
+							   @Query("token") String token);
+
+	/* Menambah Produk */
+	@FormUrlEncoded
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@POST("api/keranjang")
+	Call<KeranjangModel> tambahKeranjang(@Field("id_user") String idUser,
+										 @Field("token") String mytoken,
+										 @Field("idProduk") String idProduk,
+										 @Field("jumlah") String jumlah);
+
+	/* Menambah Produk */
+	@FormUrlEncoded
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@PUT("api/keranjang")
+	Call<KeranjangModel> updateKeranjang(@Field("id_user") String idUser,
+										 @Field("token") String token,
+										 @Field("idProduk") String idProduk,
+										 @Field("opsi") String opsi);
+
+	//API untuk Hapus produk di keranjang
+	@FormUrlEncoded
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@HTTP(method = "DELETE", path = "api/keranjang", hasBody = true)
+	Call<KeranjangModel> hapusProduk(@Field ("id_user") String idUser,
+									 @Field("token") String mytoken,
+									 @Field("id_produk") String idProduk);
+
+
+
+
 
 	//API untuk Bayar
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
@@ -114,41 +155,13 @@ public interface APIService {
 	@GET("api/spesial")
 	Call<ResponseSpesial> tampilSpesial();
 
-	/* Mendapatkan API Berita */
+	/* Mendapatkan API produk detail */
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
 	@GET("api/produk/detail")
 	Call<ProdukModel> tampilDetail(@Query("id") String idProduk);
 
 
-	/* Mendapatkan Keranjang */
-	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
-	@GET("api/keranjang")
-	Call<ResponseKeranjang> dapatKeranjang(@Query("id_user") String idUser,
-										   @Query("token") String token);
 
-	/* Mendapatkan Total Keranjang */
-	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
-	@GET("api/keranjang/total")
-	Call<TotalModel> dataTotal(@Query("id_user") String idUser,
-									@Query("token") String token);
-
-	/* Menambah Produk */
-	@FormUrlEncoded
-	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
-	@POST("api/keranjang")
-	Call<KeranjangModel> tambahKeranjang(@Field("id_user") String idUser,
-									@Field("token") String mytoken,
-									@Field("idProduk") String idProduk,
-									@Field("jumlah") String jumlah);
-
-	/* Menambah Produk */
-	@FormUrlEncoded
-	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
-	@PUT("api/keranjang")
-	Call<KeranjangModel> updateKeranjang(@Field("id_user") String idUser,
-										 @Field("token") String token,
-										 @Field("idProduk") String idProduk,
-										 @Field("opsi") String opsi);
 
 
 	class Factory{

@@ -300,7 +300,7 @@ class Keranjang extends RestController
 						$this->produk->hapus_keranjang_byUser($idUser);
 						$this->response( [
 							'status' => true,
-							'message' => 'Keranjang berhasil dihapus'
+							'message' => 'Keranjang Kosong'
 						], 200 );
 					} else {
 						$mSubtotal = $dataDetail->row()->m_sub_total;

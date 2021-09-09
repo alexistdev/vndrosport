@@ -68,6 +68,7 @@ $route['store/dashboard'] = 'store/Member/index';
 $route['store/logout'] = 'store/Member/logout';
 $route['store/produk'] = 'store/Produk/index';
 $route['store/produk/detail/(:any)'] = 'store/Produk/detail/$1';
+$route['store/produk/hapus/(:any)'] = 'store/Produk/hapus/$1';
 $route['store/transaksi'] = 'store/Transaksi/index';
 $route['store/transaksi/konfirm/(:num)/(:num)'] = 'store/Transaksi/konfirm/$1/$2';
 

@@ -50,7 +50,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	/** Saat tombol modal diklik */
 	$(document).on("click", "#tombolHapus", function () {
 		var token = $(this).data('id');
-		var newUrl = "<?= base_url('admin/provinsi/hapus/'); ?>" + token;
+		var newUrl = "<?= base_url('store/produk/hapus/'); ?>" + token;
 		$("#urlKunci").attr('href', newUrl);
 	});
 </script>

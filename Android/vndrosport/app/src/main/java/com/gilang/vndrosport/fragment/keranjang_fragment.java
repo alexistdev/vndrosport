@@ -226,8 +226,49 @@ public class keranjang_fragment extends Fragment implements KeranjangAdapter.Cli
 
 	@Override
 	public void dataItemKeranjang(String idProduk, String Opsi, String msg) {
-		memperbaharuiKeranjang(idProduk,Opsi, msg);
+		if(!Opsi.equals("3")){
+			memperbaharuiKeranjang(idProduk,Opsi, msg);
+		} else{
+			menghapusProduk(idProduk,msg);
+		}
+
 	}
+
+	public void menghapusProduk(String idProduk, String msg)
+	{
+		SharedPreferences sharedPreferences = requireContext().getSharedPreferences(
+				Constants.KEY_USER_SESSION, Context.MODE_PRIVATE);
+		String token = sharedPreferences.getString("token", "");
+		String idUser = sharedPreferences.getString("idUser", "");
+		Call<KeranjangModel> call = APIService.Factory.create(getContext()).hapusProduk(idUser,token,idProduk);
+		call.enqueue(new Callback<KeranjangModel>() {
+			@EverythingIsNonNull
+			@Override
+			public void onResponse(Call<KeranjangModel> call, Response<KeranjangModel> response) {
+				if(response.isSuccessful()) {
+					if (response.body() != null) {
+						if(response.body().getMessage().equals("Keranjang Kosong")){
+							pesan(msg);
+							setupRecyclerView();
+							setData(getContext());
+							tidakTampil();
+						} else {
+							pesan(msg);
+							setupRecyclerView();
+							setData(getContext());
+							setTotal(getContext());
+						}
+					}
+				}
+			}
+			@EverythingIsNonNull
+			@Override
+			public void onFailure(Call<KeranjangModel> call, Throwable t) {
+				Log.e("Retrofit Get", t.toString());
+			}
+		});
+	}
+
 
 	public void memperbaharuiKeranjang(String idProduk, String Opsi, String msg)
 	{

@@ -51,7 +51,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									<th class="text-center">Toko</th>
 									<th class="text-center">Harga</th>
 									<th class="text-center">Ukuran</th>
-									<th class="text-center">Action</th>
 								</tr>
 								</thead>
 								<tbody>
@@ -64,7 +63,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										<td class="text-center"><?= sanitasi($row['nama_toko']); ?></td>
 										<td class="text-center">Rp. <?= number_format(sanitasi($row['harga']),0,",","."); ?></td>
 										<td class="text-center"><?= sanitasi($row['ukuran']); ?></td>
-										<td></td>
 									</tr>
 								<?php endforeach; ?>
 								</tbody>

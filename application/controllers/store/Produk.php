@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Produk extends CI_Controller
 {
@@ -30,8 +30,8 @@ class Produk extends CI_Controller
 		$idUser = $this->session->userdata('id_user');
 		$idToko = $this->toko->get_data_toko($idUser)->row()->id;
 		$data['dataProduk'] = $this->toko->get_data_produk($idToko)->result_array();
-		$view ='v_produk';
-		$this->_layout($data,$view);
+		$view = 'v_produk';
+		$this->_layout($data, $view);
 	}
 
 	public function add()
@@ -112,6 +112,7 @@ class Produk extends CI_Controller
 			$data['title'] = _store();
 			$data['selectMerek'] = $this->toko->get_data_merek();
 			$data['selectKategori'] = $this->toko->get_data_kategori();
+			$data['tag'] = 'add';
 			$view = 'v_tambahproduk';
 			$this->_layout($data, $view);
 		} else {
@@ -121,24 +122,24 @@ class Produk extends CI_Controller
 			$namaMerek = $this->input->post('namaMerek', TRUE);
 			$namaProduk = $this->input->post('namaProduk', TRUE);
 			$warna = $this->input->post('warna', TRUE);
-			$ukuran= $this->input->post('ukuran', TRUE);
+			$ukuran = $this->input->post('ukuran', TRUE);
 			$harga = $this->input->post('harga', TRUE);
-			$deskripsi= $this->input->post('deskripsi', TRUE);
-			$stok= $this->input->post('stok', TRUE);
+			$deskripsi = $this->input->post('deskripsi', TRUE);
+			$stok = $this->input->post('stok', TRUE);
 
 			$namaFile = angkaUnik();
 
 			/** upload file */
-			$config['upload_path']          = './gambar/produk';
-			$config['allowed_types']        = 'jpg|png|jpeg';
-			$config['max_size']             = 2024;
-			$config['file_name']            = $namaFile;
+			$config['upload_path'] = './gambar/produk';
+			$config['allowed_types'] = 'jpg|png|jpeg';
+			$config['max_size'] = 2024;
+			$config['file_name'] = $namaFile;
 			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('gambar')){
+			if (!$this->upload->do_upload('gambar')) {
 				$error = array('error' => $this->upload->display_errors());
-				$this->session->set_flashdata('pesan2', '<div class="alert alert-danger" role="alert">'.$error['error'].'</div>');
+				$this->session->set_flashdata('pesan2', '<div class="alert alert-danger" role="alert">' . $error['error'] . '</div>');
 				redirect('store/produk/add');
-			}else {
+			} else {
 				/** Menyimpan ke dalam tabel produk */
 				$dataProduk = [
 					'id_kategori' => $namaKategori,
@@ -162,25 +163,170 @@ class Produk extends CI_Controller
 		}
 	}
 
-	public function detail($idx=null)
+	public function edit($idx = null)
 	{
 		$id = decrypt_url($idx);
-		if(in_array($id,[null,""])){
+		if (in_array($id, [null, ""])) {
 			redirect('store/produk');
 		} else {
 			$getData = $this->toko->get_produk($id);
-			if($getData->num_rows() != 0){
-				$data = $this->_dataprepare($getData->row(),$id);
-				$data['title'] = _store();
-				$view ='v_detail_produk';
-				$this->_layout($data,$view);
+			if ($getData->num_rows() != 0) {
+				$this->form_validation->set_rules(
+					'namaKategori',
+					'Provinsi',
+					'trim|max_length[11]|required',
+					[
+						'max_length' => 'Anda harus memilih Kategori terlebih dahulu!',
+						'required' => 'Anda harus memilih Kategori terlebih dahulu!'
+					]
+				);
+				$this->form_validation->set_rules(
+					'namaMerek',
+					'Merek',
+					'trim|max_length[11]|required',
+					[
+						'max_length' => 'Anda harus memilih Merek terlebih dahulu!',
+						'required' => 'Anda harus memilih Merek terlebih dahulu!'
+					]
+				);
+				$this->form_validation->set_rules(
+					'namaProduk',
+					'Nama Produk',
+					'trim|max_length[80]|required',
+					[
+						'max_length' => 'Panjang karakter nama produk adalah 80 karakter!',
+						'required' => 'Anda harus mengisi Nama Produk terlebih dahulu!'
+					]
+				);
+				$this->form_validation->set_rules(
+					'warna',
+					'Warna Produk',
+					'trim|max_length[20]|required',
+					[
+						'max_length' => 'Panjang karakter warna produk adalah 20 karakter!',
+						'required' => 'Anda harus mengisi warna Produk terlebih dahulu!'
+					]
+				);
+				$this->form_validation->set_rules(
+					'ukuran',
+					'Ukuran Produk',
+					'trim|max_length[10]|required',
+					[
+						'max_length' => 'Panjang karakter ukuran produk adalah 20 karakter!',
+						'required' => 'Anda harus mengisi ukuran Produk terlebih dahulu!'
+					]
+				);
+				$this->form_validation->set_rules(
+					'harga',
+					'Harga Produk',
+					'trim|numeric|required',
+					[
+						'numeric' => 'Anda harus memasukkan format angka!',
+						'required' => 'Anda harus mengisi harga Produk terlebih dahulu!'
+					]
+				);
+				$this->form_validation->set_rules(
+					'stok',
+					'Stok Produk',
+					'trim|numeric|required',
+					[
+						'numeric' => 'Anda harus memasukkan format angka!',
+						'required' => 'Anda harus mengisi stok Produk terlebih dahulu!'
+					]
+				);
+				$this->form_validation->set_rules(
+					'deskripsi',
+					'Deskripsi',
+					'trim|max_length[1000]',
+					[
+						'max_length' => 'Panjang karakter ukuran produk adalah 1000 karakter!'
+					]
+				);
+				$this->form_validation->set_error_delimiters('<span class="text-danger text-sm" >', '</span>');
+				if ($this->form_validation->run() === false) {
+					$data['title'] = _store();
+					$data['selectMerek'] = $this->toko->get_data_merek();
+					$data['selectKategori'] = $this->toko->get_data_kategori();
+					$data['optionMerek'] = $getData->row()->id_merek;
+					$data['optionKategori'] = $getData->row()->id_kategori;
+					$data['namaProduk'] = $getData->row()->nama_produk;
+					$data['warnaProduk'] = $getData->row()->warna;
+					$data['ukuranProduk'] = $getData->row()->ukuran;
+					$data['hargaProduk'] = $getData->row()->harga;
+					$data['stokProduk'] = $getData->row()->stok;
+					$data['deskripsiProduk'] = $getData->row()->deskripsi;
+					$data['tag'] = 'edit';
+					$data['id'] = $idx;
+					$view = 'v_tambahproduk';
+					$this->_layout($data, $view);
+				} else {
+					$idUser = $this->session->userdata('id_user');
+					$idToko = $this->toko->get_data_toko($idUser)->row()->id;
+					$namaKategori = $this->input->post('namaKategori', TRUE);
+					$namaMerek = $this->input->post('namaMerek', TRUE);
+					$namaProduk = $this->input->post('namaProduk', TRUE);
+					$warna = $this->input->post('warna', TRUE);
+					$ukuran = $this->input->post('ukuran', TRUE);
+					$harga = $this->input->post('harga', TRUE);
+					$deskripsi = $this->input->post('deskripsi', TRUE);
+					$stok = $this->input->post('stok', TRUE);
+					$dataProduk = [
+						'id_kategori' => $namaKategori,
+						'id_merek' => $namaMerek,
+						'nama_produk' => $namaProduk,
+						'warna' => $warna,
+						'ukuran' => $ukuran,
+						'harga' => $harga,
+						'stok' => $stok,
+						'deskripsi' => $deskripsi,
+					];
+					$this->toko->perbaharui_produk_toko($dataProduk, $id);
+					$this->session->set_flashdata('pesan1', '<div class="alert alert-success" role="alert">Data produk berhasil diupdate!</div>');
+					redirect('store/produk/edit/' . $idx);
+				}
 			} else {
 				redirect('store/produk');
 			}
 		}
 	}
 
-	private function _dataprepare($getData,$idProduk)
+	public function hapus($idx = null)
+	{
+		$id = decrypt_url($idx);
+		if (in_array($id, [null, ""])) {
+			redirect('store/produk');
+		} else {
+			$getData = $this->toko->get_produk($id);
+			if ($getData->num_rows() != 0) {
+				$this->toko->hapus_produk($id);
+				$this->session->set_flashdata('pesan1', '<div class="alert alert-danger" role="alert">Data produk berhasil dihapus!</div>');
+				redirect('store/produk');
+			} else {
+				redirect('store/produk');
+			}
+		}
+	}
+
+	public function detail($idx = null)
+	{
+		$id = decrypt_url($idx);
+		if (in_array($id, [null, ""])) {
+			redirect('store/produk');
+		} else {
+			$getData = $this->toko->get_produk($id);
+			if ($getData->num_rows() != 0) {
+				$data = $this->_dataprepare($getData->row(), $id);
+				$data['title'] = _store();
+				$data['id'] = $idx;
+				$view = 'v_detail_produk';
+				$this->_layout($data, $view);
+			} else {
+				redirect('store/produk');
+			}
+		}
+	}
+
+	private function _dataprepare($getData, $idProduk)
 	{
 		$data = [];
 		$dataPenjualan = $this->toko->get_data_sale($idProduk)->num_rows();

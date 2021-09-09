@@ -78,6 +78,12 @@ public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.MyKe
 				Toast.makeText(v.getContext(), "Minimum pembelian adalah 1", Toast.LENGTH_SHORT).show();
 			}
 		});
+		holder.mDel.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				clickListener.dataItemKeranjang(mKeranjangList.get(position).getIdProduk(),"3", "Produk berhasil dihapus!");
+			}
+		});
 	}
 
 	@Override
@@ -92,7 +98,7 @@ public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.MyKe
 
 	public static class MyKeranjangHolder extends RecyclerView.ViewHolder {
 		@SuppressLint("StaticFieldLeak")
-		private static ImageView mGambar,mAdd,mMin;
+		private static ImageView mGambar,mAdd,mMin,mDel;
 		private final TextView mJudul,mharga,mJumlah;
 
 		MyKeranjangHolder(@NonNull View itemView) {
@@ -100,6 +106,7 @@ public class KeranjangAdapter extends RecyclerView.Adapter<KeranjangAdapter.MyKe
 			mGambar = itemView.findViewById(R.id.imgCart);
 			mAdd = itemView.findViewById(R.id.addCart);
 			mMin = itemView.findViewById(R.id.minCart);
+			mDel = itemView.findViewById(R.id.btn_delete);
 			mJudul = itemView.findViewById(R.id.titleCart);
 			mharga = itemView.findViewById(R.id.hargaCart);
 			mJumlah = itemView.findViewById(R.id.qtyCart);

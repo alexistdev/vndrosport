@@ -13,6 +13,14 @@ class M_produk extends CI_Model
 		$this->detailkeranjang = 'detailkeranjang';
 	}
 
+	/** data produk semua kecuali yang punya toko */
+	public function data_semua_produk($idToko)
+	{
+		$this->db->where("$this->produk.id_toko !=", $idToko);
+		$this->db->select("$this->produk.id,$this->produk.harga,$this->produk.nama_produk,$this->produk.gambar");
+		return $this->db->get($this->produk);
+	}
+
 	public function get_data_produk($id=null)
 	{
 		if($id != null){

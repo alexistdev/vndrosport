@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.gilang.vndrosport.R;
 import com.gilang.vndrosport.config.Constants;
@@ -44,10 +45,19 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyProdukHo
 
 	@Override
 	public void onBindViewHolder (@NonNull ProdukAdapter.MyProdukHolder holder, final int position){
-		Glide.with(context)
-				.load(Constants.IMAGES_URL+mProdukList.get(position).getGambarProduk())
-				.apply(new RequestOptions().error(R.drawable.no_image))
-				.into(MyProdukHolder.mGambar);
+		holder.mGambar.setImageDrawable(null);
+		if(mProdukList.get(position).getGambarProduk() != null) {
+			Glide.with(context)
+					.load(Constants.IMAGES_URL + mProdukList.get(position).getGambarProduk())
+					.placeholder(R.drawable.no_image)
+					.dontAnimate()
+//					.apply(new RequestOptions().error(R.drawable.no_image))
+					.apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE))
+					.into(MyProdukHolder.mGambar);
+		} else {
+			Glide.with(context).clear(holder.mGambar);
+			holder.mGambar.setImageDrawable(null);
+		}
 		Locale localeID = new Locale("in", "ID");
 		int harga = Integer.parseInt(mProdukList.get(position).getHargaProduk());
 		String eHarga = NumberFormat.getNumberInstance(localeID).format(harga);
@@ -72,11 +82,11 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyProdukHo
 	}
 
 	public static class MyProdukHolder extends RecyclerView.ViewHolder {
+		public static ImageView mGambar;
 		private final TextView mJudul;
 		private final TextView mHarga;
 		private final Button mBeli;
-		@SuppressLint("StaticFieldLeak")
-		private static ImageView mGambar;
+
 
 
 		MyProdukHolder(@NonNull View itemView) {
