@@ -159,6 +159,7 @@ class M_api extends CI_Model
 	public function get_judul_keranjang($idKeranjang)
 	{
 		$this->db->limit(1);
+		$this->db->where("$this->tbdetailkeranjang.id_keranjang",$idKeranjang);
 		$this->db->join($this->tbproduk,"$this->tbproduk.id = $this->tbdetailkeranjang.id_produk");
 		return $this->db->get($this->tbdetailkeranjang);
 	}
