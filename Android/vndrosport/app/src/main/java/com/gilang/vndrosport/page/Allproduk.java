@@ -60,6 +60,14 @@ public class Allproduk extends AppCompatActivity {
 		initData();
 		setupRecyclerView();
     }
+
+
+
+	@Override
+	protected void onResume(){
+		super.onResume();
+	}
+
     public void setKategori(Context mContext, String idKategori)
 	{
 		try{

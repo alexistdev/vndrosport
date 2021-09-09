@@ -18,6 +18,7 @@ class M_produk extends CI_Model
 	{
 		$this->db->where("$this->produk.id_toko !=", $idToko);
 		$this->db->select("$this->produk.id,$this->produk.harga,$this->produk.nama_produk,$this->produk.gambar");
+		$this->db->limit(8);
 		return $this->db->get($this->produk);
 	}
 
