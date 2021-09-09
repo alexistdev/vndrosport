@@ -51,4 +51,18 @@ class Transaksi extends CI_Controller
 		}
 	}
 
+	public function detail($idx = null)
+	{
+		$id = decrypt_url($idx);
+		$getData = $this->transaksi->get_data_transaksi($id);
+		if($idx == '' || $idx == null || $getData->num_rows() == 0) {
+			redirect('admin/transaksi');
+		} else {
+			$data['title'] = _myJudul();
+			$data['dataToko'] = $this->transaksi->get_detail_toko($id)->result_array();
+			$view = 'v_detailpaket';
+			$this->_layout($data, $view);
+		}
+	}
+
 }

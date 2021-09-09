@@ -42,7 +42,10 @@ $route['admin/client/hapus/(:any)'] = 'administrator/Client/hapus/$1';
 /* Transaksi */
 $route['admin/transaksi'] = 'administrator/Transaksi/index';
 $route['admin/transaksi/setuju/(:any)'] = 'administrator/Transaksi/setuju/$1';
-//$route['admin/transaksi/detail/(:any)'] = 'administrator/Transaksi/setuju/$1';
+$route['admin/transaksi/detail/(:any)'] = 'administrator/Transaksi/detail/$1';
+
+/* Transaksi */
+$route['admin/produk'] = 'administrator/Produk/index';
 
 
 /* Api */

@@ -8,13 +8,15 @@ class Keranjang extends RestController
 {
 
 	public $api;
+	public $produk;
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('m_api', 'api');
+		$this->load->model('M_api', 'api');
+		$this->load->model('M_produk', 'produk');
 	}
-
+	/* Start: Rest API untuk Menambah Keranjang Belanja*/
 	public function index_post()
 	{
 		$idUser = $this->post('id_user');
@@ -26,7 +28,7 @@ class Keranjang extends RestController
 		$cekUser = $this->api->cek_user($idUser,$myToken);
 		if($cekUser != 0){
 			//cek apakah idProduk Ada
-			$getProduk = $this->api->get_data_produk($idProduk);
+			$getProduk = $this->produk->data_produk_byID($idProduk);
 			if($getProduk->num_rows() != 0){
 				$hargaProduk = $getProduk->row()->harga;
 				//cek apakah user keranjangnya kosong atau tidak
@@ -36,6 +38,7 @@ class Keranjang extends RestController
 					$getIdProduk = $this->api->get_detail_keranjang($idProduk);
 					$msubTotal = $hargaProduk * $jumlah;
 					$idKeranjang = $getKeranjang->row()->id;
+
 					if($getIdProduk->num_rows() != 0){
 						//produk akan diperbaharui jumlahnya
 						$jumlahOld = $getIdProduk->row()->jumlah;
@@ -108,14 +111,18 @@ class Keranjang extends RestController
 					'message' => 'No data found'
 				], 404 );
 			}
+			// End Cek produk sudah ada atau belum
 		} else {
 			$this->response( [
 				'status' => false,
 				'message' => 'Not Authorized'
 			], 404 );
 		}
+		// End apakah token sudah benar
  	}
+	/* End: Rest API untuk Menambah Keranjang Belanja*/
 
+	/* Start: Rest API untuk Menampilkan Keranjang Belanja*/
 	public function index_get()
 	{
 		$idUser = $this->get('id_user');
@@ -144,7 +151,9 @@ class Keranjang extends RestController
 			], 404 );
 		}
 	}
+	/* End: Rest API untuk Menampilkan Keranjang Belanja*/
 
+	/* Start: Rest API untuk Menampilkan Total Keranjang Belanja*/
 	public function total_get()
 	{
 		$idUser = $this->get('id_user');
@@ -176,7 +185,9 @@ class Keranjang extends RestController
 			], 404 );
 		}
 	}
+	/* End: Rest API untuk Menampilkan Total Keranjang Belanja*/
 
+	/* Start: Rest API untuk Update barang Keranjang Belanja*/
 	public function index_put()
 	{
 		$idUser = $this->put('id_user');
@@ -186,7 +197,7 @@ class Keranjang extends RestController
 			$idProduk = $this->put('idProduk');
 			$opsi = $this->put('opsi');
 			//cek apakah idProduk Ada
-			$getProduk = $this->api->get_data_produk($idProduk);
+			$getProduk = $this->produk->data_produk_byID($idProduk);
 			if($getProduk->num_rows() != 0){
 				$getDetailKeranjang = $this->api->get_detail_keranjang($idProduk);
 				$idKeranjang = $getDetailKeranjang->row()->id_keranjang;
@@ -254,4 +265,77 @@ class Keranjang extends RestController
 		}
 
 	}
+	/* End: Rest API untuk Update barang Keranjang Belanja*/
+
+	/* Start: Rest API untuk Delete barang Keranjang Belanja*/
+	public function index_delete()
+	{
+		$idUser = $this->delete('id_user');
+		$myToken = $this->delete('token');
+		$cekUser = $this->api->cek_user($idUser,$myToken);
+		if($cekUser!= 0){
+			/*
+			Mengecek apakah ada id Keranjang
+			Jika ada ===> dapatkan id keranjang kemudian hapus id produk
+			*/
+			$cekKeranjang = $this->produk->get_keranjang_byuser($idUser);
+			if($cekKeranjang->num_rows() != 0){
+				$idProduk = $this->delete('id_produk');
+				$idKeranjang = $cekKeranjang->row()->id;
+				$subTotalOld = $cekKeranjang->row()->sub_total;
+				$biayaAntar = $cekKeranjang->row()->biaya_antar;
+
+
+				$dataDetail = $this->produk->get_detail_byproduk($idProduk);
+				/* Start: Cek jika ada produk maka langsung dihapus*/
+				if($dataDetail->num_rows() != 0){
+					/*
+						Start: Mengecek apakah ini adalah produk satu2nya di keranjang
+							Jika iya ===> hapus keranjang keseluruhan
+							Jika tidak ===> total keranjang diupdate
+					*/
+					$jumlahItem = $this->produk->get_detail_byidkeranjang($idKeranjang)->num_rows();
+					if($jumlahItem == 1){
+						//hapus semua keranjang dan detail keranjang;
+						$this->produk->hapus_keranjang_byUser($idUser);
+						$this->response( [
+							'status' => true,
+							'message' => 'Keranjang berhasil dihapus'
+						], 200 );
+					} else {
+						$mSubtotal = $dataDetail->row()->m_sub_total;
+						$subTotalNew = $subTotalOld- $mSubtotal;
+						$totalBiaya = $subTotalNew+$biayaAntar;
+						//update dulu keranjangnya
+						$dataKeranjang = [
+							'sub_total' => $subTotalNew,
+							'biaya_antar' => $biayaAntar,
+							'total_biaya' => $totalBiaya,
+						];
+						$this->produk->perbaharui_keranjang($dataKeranjang,$idKeranjang);
+						//hapus produknya
+						$this->produk->hapus_item_detailkeranjang($idProduk,$idKeranjang);
+						$this->response( [
+							'status' => true,
+							'message' => 'Keranjang berhasil dihapus'
+						], 200 );
+					}
+					/* End: Mengecek apakah ini adalah produk satu2nya*/
+				}
+				/* End: Cek jika ada produk maka langsung dihapus*/
+
+			}
+			/* End: Cek id Keranjang by User */
+
+
+
+		} else {
+			$this->response( [
+				'status' => false,
+				'message' => 'Not Authorized'
+			], 404 );
+		}
+	}
+
+	/* End: Rest API untuk Delete barang Keranjang Belanja*/
 }

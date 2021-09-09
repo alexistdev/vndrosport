@@ -38,7 +38,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="col-md-12">
 					<div class="card card-dark">
 						<div class="card-header">
-							<h3 class="card-title">Daftar Transaksi</h3>
+							<h3 class="card-title">Daftar Transaksi222222</h3>
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body">
@@ -95,6 +95,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<?php } ?>
 											<?php if($status == 4) {?>
 												<a href="<?= base_url('admin/transaksi/detail/'.encrypt_url(sanitasi($row['id']))); ?>"><button class="btn btn-sm btn-success">Toko</button></a>
+												<button class="btn btn-sm btn-warning">Selesai</button>
 											<?php } ?>
 										</td>
 									</tr>

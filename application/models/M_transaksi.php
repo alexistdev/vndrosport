@@ -10,6 +10,8 @@ class M_transaksi extends CI_Model
 		$this->pesanan = 'pesanan';
 		$this->detail = 'detail_pesanan';
 		$this->detailuser = 'detailuser';
+		$this->produk = 'produk';
+		$this->toko = 'toko';
 	}
 
 	public function get_data_transaksi($id=null)
@@ -32,6 +34,14 @@ class M_transaksi extends CI_Model
 	{
 		$this->db->where("$this->detail.id_pesanan",$id);
 		$this->db->update($this->detail,$data);
+	}
+
+	public function get_detail_toko($idPesanan)
+	{
+		$this->db->join($this->produk,"$this->produk.id = $this->detail.id_produk");
+		$this->db->join($this->toko,"$this->toko.id = $this->produk.id_toko");
+		$this->db->where("$this->detail.id_pesanan",$idPesanan);
+		return $this->db->get($this->detail);
 	}
 
 }

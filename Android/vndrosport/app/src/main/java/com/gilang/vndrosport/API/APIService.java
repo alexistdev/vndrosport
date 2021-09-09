@@ -22,6 +22,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -31,6 +32,11 @@ import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface APIService {
+
+	//API untuk Hapus produk di keranjang
+	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
+	@DELETE("api/bayar")
+
 	//API untuk Bayar
 	@Headers({"x-api-key: 92K5wAWs7MPqY54St72HB3ETEqjvRP22"})
 	@GET("api/bayar")

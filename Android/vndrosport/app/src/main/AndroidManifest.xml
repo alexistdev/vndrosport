@@ -16,10 +16,12 @@
         android:theme="@style/Theme.Vndrosport"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".page.Searching"
+            android:exported="true" />
+        <activity
             android:name=".page.Daftar"
             android:exported="true"
-			android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".page.Allproduk"
             android:exported="true"
