@@ -43,7 +43,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body">
-							<table id="tabelRiwayat" class="table table-bordered table-hover" style="width: 100%">
+							<table id="tabelMerek" class="table table-bordered table-hover" style="width: 100%">
 								<thead>
 								<tr>
 									<th class="text-center">No</th>

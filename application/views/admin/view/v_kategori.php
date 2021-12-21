@@ -29,9 +29,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script>
 
 	$(function () {
-		$("#tabelKecamatan").DataTable({
+		$("#tabelKategori").DataTable({
 			"responsive": true,
-			"autoWidth": false,
+			"columnDefs": [
+				{ "width": "5%", "targets": 0 }
+			],
 		});
 	});
 
