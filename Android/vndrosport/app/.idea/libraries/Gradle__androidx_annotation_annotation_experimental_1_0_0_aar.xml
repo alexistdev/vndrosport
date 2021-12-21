@@ -4,6 +4,9 @@
       <root url="jar://C:/Gradle/gradle-7.2/bin/caches/transforms-3/18e5cb54f886f7aa7e26ad4e22b3ac23/transformed/annotation-experimental-1.0.0/jars/classes.jar!/" />
       <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/18e5cb54f886f7aa7e26ad4e22b3ac23/transformed/annotation-experimental-1.0.0/res" />
       <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/18e5cb54f886f7aa7e26ad4e22b3ac23/transformed/annotation-experimental-1.0.0/AndroidManifest.xml" />
+      <root url="jar://C:/Gradle/gradle-7.2/bin/caches/transforms-3/8d73ba73229d8113aaafc324a6d50b9e/transformed/annotation-experimental-1.0.0/jars/classes.jar!/" />
+      <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/8d73ba73229d8113aaafc324a6d50b9e/transformed/annotation-experimental-1.0.0/AndroidManifest.xml" />
+      <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/8d73ba73229d8113aaafc324a6d50b9e/transformed/annotation-experimental-1.0.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

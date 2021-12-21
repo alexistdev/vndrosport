@@ -4,6 +4,9 @@
       <root url="jar://C:/Gradle/gradle-7.2/bin/caches/transforms-3/c19e4294406e91dbf6e7568838b37796/transformed/junit-1.1.3/jars/classes.jar!/" />
       <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/c19e4294406e91dbf6e7568838b37796/transformed/junit-1.1.3/res" />
       <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/c19e4294406e91dbf6e7568838b37796/transformed/junit-1.1.3/AndroidManifest.xml" />
+      <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/fff02fba0a409606078628d577e30393/transformed/junit-1.1.3/AndroidManifest.xml" />
+      <root url="jar://C:/Gradle/gradle-7.2/bin/caches/transforms-3/fff02fba0a409606078628d577e30393/transformed/junit-1.1.3/jars/classes.jar!/" />
+      <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/fff02fba0a409606078628d577e30393/transformed/junit-1.1.3/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://C:/Gradle/gradle-7.2/bin/caches/modules-2/files-2.1/androidx.test.ext/junit/1.1.3/f138cf897cc1e024dd714073df04f2425d845104/junit-1.1.3-javadoc.jar!/" />

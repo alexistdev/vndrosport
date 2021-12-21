@@ -4,6 +4,9 @@
       <root url="jar://C:/Gradle/gradle-7.2/bin/caches/transforms-3/28fece74d7507c299cac43b7a7a19bed/transformed/core-1.4.0/jars/classes.jar!/" />
       <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/28fece74d7507c299cac43b7a7a19bed/transformed/core-1.4.0/res" />
       <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/28fece74d7507c299cac43b7a7a19bed/transformed/core-1.4.0/AndroidManifest.xml" />
+      <root url="jar://C:/Gradle/gradle-7.2/bin/caches/transforms-3/75a9fd182acb413c70b758da510c107e/transformed/core-1.4.0/jars/classes.jar!/" />
+      <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/75a9fd182acb413c70b758da510c107e/transformed/core-1.4.0/AndroidManifest.xml" />
+      <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/75a9fd182acb413c70b758da510c107e/transformed/core-1.4.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://C:/Gradle/gradle-7.2/bin/caches/modules-2/files-2.1/androidx.test/core/1.4.0/96b4d161def059d92989a352500d05d215c33d5e/core-1.4.0-javadoc.jar!/" />

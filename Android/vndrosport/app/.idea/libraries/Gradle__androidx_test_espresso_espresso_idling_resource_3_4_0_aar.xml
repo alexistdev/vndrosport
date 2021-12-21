@@ -4,6 +4,9 @@
       <root url="jar://C:/Gradle/gradle-7.2/bin/caches/transforms-3/f1544ba954f54726eced4a443758976c/transformed/espresso-idling-resource-3.4.0/jars/classes.jar!/" />
       <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/f1544ba954f54726eced4a443758976c/transformed/espresso-idling-resource-3.4.0/res" />
       <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/f1544ba954f54726eced4a443758976c/transformed/espresso-idling-resource-3.4.0/AndroidManifest.xml" />
+      <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/4a8f9c89f37b937e9a97406cdc60e13d/transformed/espresso-idling-resource-3.4.0/AndroidManifest.xml" />
+      <root url="jar://C:/Gradle/gradle-7.2/bin/caches/transforms-3/4a8f9c89f37b937e9a97406cdc60e13d/transformed/espresso-idling-resource-3.4.0/jars/classes.jar!/" />
+      <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/4a8f9c89f37b937e9a97406cdc60e13d/transformed/espresso-idling-resource-3.4.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://C:/Gradle/gradle-7.2/bin/caches/modules-2/files-2.1/androidx.test.espresso/espresso-idling-resource/3.4.0/69a300fcf8de2c433672d07a6c436a19dfb9b8f9/espresso-idling-resource-3.4.0-javadoc.jar!/" />

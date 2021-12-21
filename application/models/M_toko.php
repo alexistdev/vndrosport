@@ -15,6 +15,12 @@ class M_toko extends CI_Model
 		$this->sale = 'sale';
 	}
 
+	public function perbaharui_store($id,$data)
+	{
+		$this->db->where("$this->user.id_user",$id);
+		$this->db->update($this->user,$data);
+	}
+
 	public function validasi_login($username)
 	{
 		$this->db->where('email', $username);

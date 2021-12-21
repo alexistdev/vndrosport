@@ -25,25 +25,6 @@ class Login extends CI_Controller {
 		$this->load->view('admin/view/' . $view, $data);
 	}
 
-	/** Method untuk generate captcha */
-	private function _create_captcha()
-	{
-		$cap = create_captcha(config_captcha());
-		$image = $cap['image'];
-		$this->session->set_userdata('captchaword', $cap['word']);
-		return $image;
-	}
-
-	/** Validasi Captcha */
-	public function _check_captcha($string)
-	{
-		if ($string == $this->session->userdata('captchaword')) {
-			return TRUE;
-		} else {
-			$this->form_validation->set_message('_check_captcha', 'Captcha yang anda masukkan salah!');
-			return FALSE;
-		}
-	}
 	public function index()
 	{
 		$this->form_validation->set_rules(
@@ -64,19 +45,10 @@ class Login extends CI_Controller {
 				'max_length' => 'Panjang karakter password maksimal 50 karakter!'
 			]
 		);
-		$this->form_validation->set_rules(
-			'captcha',
-			'Captcha',
-			'trim|callback__check_captcha|required|max_length[5]',
-			[
-				'required' => 'Captcha harus diisi!',
-				'max_length' => 'Panjang karakter captcha maksimal 5 karakter!'
-			]
-		);
+
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
 		if ($this->form_validation->run() === false) {
 			$this->session->set_flashdata('pesan', validation_errors());
-			$data['image'] = $this->_create_captcha();
 			$data['title'] = _myJudul();
 			$data['tag'] = 'user';
 			$view ='v_login';

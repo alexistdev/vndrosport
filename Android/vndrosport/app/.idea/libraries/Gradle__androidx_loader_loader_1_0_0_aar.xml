@@ -4,6 +4,9 @@
       <root url="jar://C:/Gradle/gradle-7.2/bin/caches/transforms-3/cc799678192709bceae81fa20a37187c/transformed/loader-1.0.0/jars/classes.jar!/" />
       <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/cc799678192709bceae81fa20a37187c/transformed/loader-1.0.0/res" />
       <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/cc799678192709bceae81fa20a37187c/transformed/loader-1.0.0/AndroidManifest.xml" />
+      <root url="jar://C:/Gradle/gradle-7.2/bin/caches/transforms-3/73cf6bf601d05be971a7dc6a3137548e/transformed/loader-1.0.0/jars/classes.jar!/" />
+      <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/73cf6bf601d05be971a7dc6a3137548e/transformed/loader-1.0.0/res" />
+      <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/73cf6bf601d05be971a7dc6a3137548e/transformed/loader-1.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

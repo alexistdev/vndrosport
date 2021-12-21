@@ -4,6 +4,9 @@
       <root url="jar://C:/Gradle/gradle-7.2/bin/caches/transforms-3/ca7a7de16b2505fe395c4817e5fa80ba/transformed/monitor-1.4.0/jars/classes.jar!/" />
       <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/ca7a7de16b2505fe395c4817e5fa80ba/transformed/monitor-1.4.0/res" />
       <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/ca7a7de16b2505fe395c4817e5fa80ba/transformed/monitor-1.4.0/AndroidManifest.xml" />
+      <root url="jar://C:/Gradle/gradle-7.2/bin/caches/transforms-3/9c27260828baaf7f3ffb7d6b45a19f2d/transformed/monitor-1.4.0/jars/classes.jar!/" />
+      <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/9c27260828baaf7f3ffb7d6b45a19f2d/transformed/monitor-1.4.0/res" />
+      <root url="file://C:/Gradle/gradle-7.2/bin/caches/transforms-3/9c27260828baaf7f3ffb7d6b45a19f2d/transformed/monitor-1.4.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://C:/Gradle/gradle-7.2/bin/caches/modules-2/files-2.1/androidx.test/monitor/1.4.0/2770e38fa6d39242c2fa2e9d2ca3275b1d9debd8/monitor-1.4.0-javadoc.jar!/" />

@@ -36,18 +36,7 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="icheck-primary">
-							<?= $image; ?>
-						</div>
-					</div>
-					<!-- /.col -->
-					<div class="col-md-6">
-						<input name="captcha" class="form-control" placeholder="Captcha"/>
-					</div>
-					<!-- /.col -->
-				</div>
+
 				<div class="row mt-4">
 					<div class="col-md-12">
 						<button type="submit" class="btn btn-primary btn-block">Login</button>
@@ -56,10 +45,6 @@ defined('BASEPATH') or exit('No direct script access allowed');?>
 			</form>
 
 			<!-- /.social-auth-links -->
-
-			<p class="mb-1 mt-4">
-				<a href="forgot-password.html">I forgot my password</a>
-			</p>
 
 		</div>
 		<!-- /.login-card-body -->
